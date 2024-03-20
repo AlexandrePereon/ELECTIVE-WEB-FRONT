@@ -12,7 +12,6 @@ module.exports = {
         'light-grey': '#1111',
         'light-black': '#1111',
         black: '#1111',
-        // Ajoutez d'autres couleurs personnalisées si nécessaire
       },
     },
   },

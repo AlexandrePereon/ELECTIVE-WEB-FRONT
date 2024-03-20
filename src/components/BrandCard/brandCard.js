@@ -1,4 +1,20 @@
 import React from "react";
+
+/**
+ * Composant card brand.
+ * 
+ * @typedef BrandCard
+ * @kind functionnal component
+ * 
+ * @param {Object} props - Les propriétés du composant.
+ * @param {string} props.logo - L'URL de l'image.
+ * @param {string} props.name - Le nom de la marque.
+ * @param {number} props.visitors - Le nombre de visiteurs.
+ * @param {string} props.revenues - Les revenus de la marque.
+ * @param {number} props.sales - Le nombre de ventes de la marque.
+ * @param {number} props.conversion - Le taux de conversion de la marque.
+ * @returns {React.JSX.Element} - Le composant BrandCard.
+ */
   
   const BrandCard = ({logo, name, visitors, revenues, sales, conversion}) => {
     return (
