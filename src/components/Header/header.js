@@ -1,11 +1,12 @@
 import React from "react";
 import SearchBar from "../SearchBar/searchBar";
+import TitleFade from "../TitleFade/titleFade";
 
 const Header = () => {
     return (
-        <header className="navbar bg-base-100">
+        <header className="navbar bg-light-black">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Uber</a>
+          <TitleFade title={"Cesi EATS"}/>
         </div>
        <SearchBar/>
         <div className="flex-none">
