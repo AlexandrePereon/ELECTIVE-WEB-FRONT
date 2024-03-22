@@ -9,6 +9,7 @@ import Statistic from "../components/Statistic/statistic";
 import Collapse from "../components/Collapse/collapse";
 import Hero from "../components/Hero/hero";
 import Modal from "../components/Modal/modal";
+import Tab from "../components/Tab/tab";
 
 const HomePage = () => {
     const [isOpen, setIsOpen]= useState(false)
@@ -20,6 +21,7 @@ const HomePage = () => {
             {/* <AlertBannerCookies/> */}
             <Header/>
             <Hero/>
+            <Tab/>
             <button onClick={()=>{setIsOpen(!isOpen)}}>Open modal</button>
             {isOpen && <Modal handleOnCloseModal={handleOnCloseModal}/>}
             <DiffText/>
