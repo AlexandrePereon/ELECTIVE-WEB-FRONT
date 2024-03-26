@@ -1,50 +1,29 @@
 import React from "react";
 import BrandCard from "../BrandCard/brandCard";
+import AddNumberButton from "../AddNumberButton/addNumberButton";
 
 const BrandListData = [
     {
       logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Google',
-      visitors: 3.5,
-      revenues: '5,768',
-      sales: 590,
-      conversion: 4.8,
+      name: 'Article1',
+      price: 2.5,
+      id : '1a3'
     },
     {
-      logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Twitter',
-      visitors: 2.2,
-      revenues: '4,635',
-      sales: 467,
-      conversion: 4.3,
+        logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
+        name: 'Article2',
+        price: 3.5,
+        id : '1b4'
     },
     {
-      logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Github',
-      visitors: 2.1,
-      revenues: '4,290',
-      sales: 420,
-      conversion: 3.7,
-    },
-    {
-      logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Vimeo',
-      visitors: 1.5,
-      revenues: '3,580',
-      sales: 389,
-      conversion: 2.5,
-    },
-    {
-      logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Facebook',
-      visitors: 3.5,
-      revenues: '6,768',
-      sales: 390,
-      conversion: 4.2,
-    },
+        logo: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
+        name: 'Article3',
+        price: 4.5,
+        id : '1c5'
+    }
   ];
 
-const Collapse = ({title, children}) => {
+const Collapse = ({title, listArticle, handleOnChange}) => {
     return(
         <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
@@ -56,13 +35,11 @@ const Collapse = ({title, children}) => {
             <BrandCard 
                 logo={brand.logo}
                 name={brand.name}
-                visitors={brand.visitors}
-                revenues={brand.revenues}
-                sales={brand.sales}
-                conversion={brand.conversion}
+                price={brand.price}
+                id={brand.id}
                 key={index}
             >
-                {children}
+                <AddNumberButton handleOnChange={handleOnChange} value={brand.id} numberOfArticle={listArticle.filter(id => id === brand.id).length}/>
             </BrandCard>
         ))}
             </div>

@@ -1,74 +1,97 @@
-import React,{ useState }  from "react";
+import React,{ useEffect, useState }  from "react";
 import FileUploader from "../../components/FileUploader/fileUploader";
 import Tab from "../../components/Tab/tab";
 import TitleFade from "../../components/TitleFade/titleFade";
-import BrandList from "../../components/BrandList/brandlist";
 import Collapse from "../../components/Collapse/collapse";
+import Input from "../../components/Input/input";
+import Loader from "../../components/Loader/loader";
+import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
+import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
 
 const SubmissionTunnel = () => {
     const [steps, setSteps] = useState(0);
-    const submissionTunnelForm = [
+    const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState([])
+    const [submissionTunnelForm, setSubmissionTunnelForm] = useState([
         {
-        titre : ['ajouter une image à votre article','ajouter une image à votre menu'],
-        type : "image"},
+        title : ['ajouter une image à votre article','ajouter une image à votre menu'],
+        type : "image",
+        id : "image",
+        value : null},
         {
-        titre : ['Titre de votre article','Titre de votre menu'],
-        type : "string"},
+        title : ['Nom de votre article','Nom de votre menu'],
+        type : "text",
+        id : "name",
+        value : null},
         {
-        titre : ['Description de votre article','Description de votre menu'],
-        type : "string"},
+        title : ['Description de votre article','Description de votre menu'],
+        type : "string",
+        id : "description",
+        value : null},
         {
-        titre : ['Prix de votre article','Prix de votre menu'],
-        type : "number"},
+        title : ['Prix de votre article','Prix de votre menu'],
+        type : "number",
+        id : "price",
+        value : null},
         {
-        titre : [null ,'Liste des articles'],
-        type : "object"}
-    ]
+        title : [null ,'Liste des articles'],
+        type : "list",
+        id : "article",
+        value : submissionTunnelFormListArticle}
+    ]);
+
+    const handleInputChange = (value, id) => {
+        const updatedForm = submissionTunnelForm.map(field => {
+            if (field.id === id) {
+                return { ...field, value: value };
+            }
+            return field;
+        });
+        setSubmissionTunnelForm(updatedForm);
+    };
+
+    const handleListArticleChange = (value, action) => {
+        if (action === "add"){
+            setSubmissionTunnelFormListArticle(prevList => [...prevList, value]);
+        } else if (action === "remove"){
+            setSubmissionTunnelFormListArticle(prevList => 
+                {
+                    const index = prevList.indexOf(value);
+                    if (index !== -1) {
+                        const newList = [...prevList];
+                        newList.splice(index, 1);
+                        return newList;
+                    }
+                    return prevList;
+                });
+        }
+        handleInputChange(submissionTunnelFormListArticle,"article")
+    };
+
+    // useEffect(()=>{
+    //     console.log(submissionTunnelForm,submissionTunnelFormListArticle)
+    // },[submissionTunnelForm, submissionTunnelFormListArticle])
     
     const submissionTunnelFormInput = submissionTunnelForm.map((item, index)=>{
         let input = null;
         switch (item.type) {
             case 'number':
-                input = 
-                <div className="sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium leading-6 ">
-                    {item.titre[steps]}
-                </label>
-                <div className="mt-2">
-                    <input
-                    type="number"
-                    name="firstName"
-                    id="firstName"
-                    autoComplete="givenName"
-                    className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    />
-                </div>
-            </div>
+                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} key={index}/>
                 break;
             case 'image':
-                input = <FileUploader/>
+                input = <FileUploader handleOnChange={handleInputChange} id={item.id} key={index}/>
             break;
-            case 'object':
-                if (item.titre[steps]) {
-                    input = <Collapse title={"Liste d'articles"}><button onClick={()=>{console.log("ajouté")}}>ADD</button></Collapse>
+            case 'list':
+                if (item.title[steps]) {
+                    input =
+                    <Collapse 
+                    title={item.title[steps]} 
+                    handleOnChange={handleListArticleChange} 
+                    listArticle={submissionTunnelFormListArticle} 
+                    key={index}/>
                 }
             break;
             default:
-                input = 
-                <div className="sm:col-span-3">
-                    <label htmlFor="first-name" className="block text-sm font-medium leading-6 ">
-                        {item.titre[steps]}
-                    </label>
-                    <div className="mt-2">
-                        <input
-                        type="text"
-                        name="firstName"
-                        id="firstName"
-                        autoComplete="givenName"
-                        className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                    </div>
-                </div>
+                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} key={index}/>
             break;
         }
         return input;
@@ -77,12 +100,34 @@ const SubmissionTunnel = () => {
     const handleOnSwitchSteps = (index) => {
         setSteps(index)
     }
+
+    const {handleSubmitArticle, isLoadingArticle, alertBannerArticle} = usePostRestaurantArticle();
+    const {handleSubmitMenu, isLoadingMenu, alertBannerMenu} = usePostRestaurantMenu();
+    const alertBanner = alertBannerArticle||alertBannerMenu;
+    const isLoading = isLoadingArticle||isLoadingMenu;
+    const submitRestaurantProduct = (type, e) => {
+        e.preventDefault();
+        if (type === 0) {
+            handleSubmitArticle(submissionTunnelForm)
+        } else {
+            handleSubmitMenu(submissionTunnelForm)
+        }
+
+    }
     return (
-        <div className="bg-white">
+        <form className="bg-white" onSubmit={(e)=>submitRestaurantProduct(steps, e)}>
+            {alertBanner && alertBanner}
             <Tab steps={steps} partsName={['Ajouter Article','Ajouter Menu']} handleOnSwitchSteps={handleOnSwitchSteps}/>
             <TitleFade title={steps === 0 ? 'Ajouter Article' : 'Ajouter Menu'}/>
             {submissionTunnelFormInput}
-        </div>
+            <button
+            type="submit"
+            className="rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            disabled={isLoading}
+            >
+            {isLoading ? <Loader/> : 'Save'} 
+            </button>
+        </form>
     )
 }
 

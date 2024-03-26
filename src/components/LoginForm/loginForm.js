@@ -32,7 +32,7 @@ const LoginForm = () => {
         }
       };
       
-  const { userData } = useAuthentication(responseUserData);
+  useAuthentication(responseUserData);
   const {alertBanner}= useDisplayAlert(message);
 
     return(
