@@ -9,24 +9,32 @@ import Statistic from "../components/Statistic/statistic";
 import Collapse from "../components/Collapse/collapse";
 import Hero from "../components/Hero/hero";
 import Modal from "../components/Modal/modal";
+import Tab from "../components/Tab/tab";
+import useUserVerifyData from "../hooks/data/useUserVerifyData";
 
 const HomePage = () => {
     const [isOpen, setIsOpen]= useState(false)
     const handleOnCloseModal = () => {
         setIsOpen(false)
     }
+
+    const getUserInfosFromLocalStorage = () => {
+        return JSON.parse(localStorage.getItem('userInfos'));
+      };
+
+    const userInfos = getUserInfosFromLocalStorage();
+    console.log(userInfos)
+
     return (
         <Fragment>
             {/* <AlertBannerCookies/> */}
-            <Header/>
+            <Header role={userInfos?.role}/>
             <Hero/>
+            {/* <Tab/> */}
             <button onClick={()=>{setIsOpen(!isOpen)}}>Open modal</button>
             {isOpen && <Modal handleOnCloseModal={handleOnCloseModal}/>}
             <DiffText/>
             <Graph/>
-            <Collapse/>
-            <BrandList/>
-            <Statistic/>
             <Footer/>
         </Fragment>
     )

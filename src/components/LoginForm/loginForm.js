@@ -1,25 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
 import axiosReq from "../../utils/axios";
+import useDisplayAlert from '../../hooks/useDisplayAlert';
+import useAuthentication from "../../hooks/useAuthentication";
+import Loader from "../Loader/loader";
 
 const LoginForm = () => {
+ 
+  const [isLoading, setIsLoading] = useState(false);
 
-    const submitLoginForm = async (e,email,password) => {
+  const [message, setMessage] = useState({code : null, description : null});
+  const [responseUserData, setResponseUserData] = useState(null);
+
+
+
+    const submitLoginForm = async (e) => {
       e.preventDefault();
+      setIsLoading(true);
       try {
-          const response = await axiosReq.post("/api/login", {
-              email: email,
-              password: password
-          }); 
-          console.log("Réponse du serveur :", response.data);
-      } catch (error) {
-          console.error("Erreur :", error);
-      }
-  };
+          const response = await axiosReq.post("/auth/login", {
+              email: e.target.elements.email.value,
+              password: e.target.elements.password.value
+          })
+          if (response) {
+            setMessage({code : response.status, description : response.data.message});
+            setIsLoading(false);
+            setResponseUserData(response.data)
+          }
+        } catch (error) {
+          setMessage({code : error.response.status, description : error.response.data.message});
+          setIsLoading(false);
+        }
+      };
+      
+  const { userData } = useAuthentication(responseUserData);
+  const {alertBanner}= useDisplayAlert(message);
 
     return(
               <>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                   <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+                  {message && alertBanner}
                     <a href="/">
                       <img
                         className="mx-auto h-10 w-auto"
@@ -33,7 +53,7 @@ const LoginForm = () => {
                   </div>
           
                   <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST" onSubmit={(e)=>{submitLoginForm(e,"yanis@gmail","azer");console.log("login")}}>
+                    <form className="space-y-6" action="#" method="POST" onSubmit={(e)=>{submitLoginForm(e)}}>
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium leading-6 ">
                           Email address
@@ -73,14 +93,16 @@ const LoginForm = () => {
                         </div>
                       </div>
           
-                      <div>
+                       <div>
                         <button
                           type="submit"
                           className="flex w-full justify-center rounded-md bg-green-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                          disabled={isLoading}
                         >
-                          Sign in
+                          {isLoading ? <Loader/> : 'Sign in'}
                         </button>
-                      </div>
+                      </div> 
+                      
                     </form>
           
                     <p className="mt-10 text-center text-sm text-gray-500">

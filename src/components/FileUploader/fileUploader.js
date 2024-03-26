@@ -7,25 +7,27 @@ const FileUploader = () => {
 
     const handleImageChange = (event) => {
     const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
+    
+    if (file) {
+      const reader = new FileReader();    
+      reader.onloadend = () => {
         setBase64Image(reader.result);
         const base64String = reader.result;
-        console.log('Image encodée en base 64 :', base64String);
-    };
-    reader.readAsDataURL(file);
+      };
+      reader.readAsDataURL(file);
+  } else {
+      console.error('No file selected.');
+  }
+
   };
 
   return (
     <div>
-       {base64Image && (
-        <div>
-          <h2>Prévisualisation de l'image :</h2>
-          <img src={base64Image} alt="Prévisualisation de l'image" style={{ maxWidth: '100%', maxHeight: '200px' }} />
-        </div>
-      )}
-      <h1>Uploader une image</h1>
+       {base64Image ? 
+          <img src={base64Image} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48" />
+        :
+          <img src="https://forma-btp.com/annuaire/content/img/form/default_profil.webp" alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48"/>
+      }
       <input type="file" accept="image/*" onChange={(e)=>{handleImageChange(e)}} />
     </div>
   );

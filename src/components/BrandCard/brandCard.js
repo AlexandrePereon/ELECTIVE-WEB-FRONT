@@ -16,7 +16,7 @@ import React from "react";
  * @returns {React.JSX.Element} - Le composant BrandCard.
  */
   
-  const BrandCard = ({logo, name, visitors, revenues, sales, conversion}) => {
+  const BrandCard = ({logo, name, visitors, revenues, sales, children}) => {
     return (
             <div className={`grid grid-cols-3 sm:grid-cols-5 border-b border-stroke`}>
               <div className="flex items-center gap-3 p-2.5 xl:p-5">
@@ -41,7 +41,7 @@ import React from "react";
               </div>
   
               <div className=" items-center justify-center p-2.5 sm:flex xl:p-5">
-                <p className="text-meta-5">{conversion}%</p>
+                 {children}
               </div>
             </div>
     );
