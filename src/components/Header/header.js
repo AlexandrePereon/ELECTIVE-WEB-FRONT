@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import SearchBar from "../SearchBar/searchBar";
 import TitleFade from "../TitleFade/titleFade";
 import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
+import HeaderDeliveryCart from "./headerDeliveryCart";
 
 
 const Header = ({role}) => {
@@ -10,6 +11,12 @@ const Header = ({role}) => {
 
   const handleSetIsSelected = () => {
     setIsSelected(!isSelected)
+  }
+
+  const logout = () =>{
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('userInfos');
+    window.location.href = '/login';
   }
 
   const menuTab = ["Mon compte","Les restaurants","Autres"]
@@ -35,10 +42,19 @@ const Header = ({role}) => {
           </div>
 
           <div className="flex items-center gap-2">
+          { role !== "user" && <HeaderDeliveryCart role={role} NumberValue={2}/>}
             <HeaderShoppingCart/>
             {
               role ?
+              <Fragment>
+                  <button 
+                  className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full "
+                  onClick={()=>logout()}
+                  >
+                  Logout
+                </button>
                 <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
+                </Fragment>
               :
                 <a 
                   href="/login"

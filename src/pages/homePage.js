@@ -19,7 +19,7 @@ const HomePage = () => {
     }
 
     const getUserInfosFromLocalStorage = () => {
-        return JSON.parse(localStorage.getItem('userInfos'));
+        return JSON.parse(sessionStorage.getItem('userInfos'));
       };
 
     const userInfos = getUserInfosFromLocalStorage();

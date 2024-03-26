@@ -8,13 +8,14 @@
  */
 const useAuthentication = (userData) => {
 
-    const saveUserDataToLocalStorage = (token, userInfos) => {
+    const saveUserDataToSessionStorage = (token, userInfos, expirationTimeAsMinutes) => {
       console.log(userInfos)
-        localStorage.setItem('token', token);
-        localStorage.setItem('userInfos', JSON.stringify(userInfos));
+        var dateExpiration = new Date().getTime() + (expirationTimeAsMinutes * 60 * 1000);
+        sessionStorage.setItem('token', JSON.stringify({ valeur: token, expiration: dateExpiration }));
+        sessionStorage.setItem('userInfos', JSON.stringify(userInfos));
       };
 
-      saveUserDataToLocalStorage(userData?.token, userData?.user || 'any');
+      saveUserDataToSessionStorage(userData?.token, userData?.user || 'any', 15);
     
     return { userData }
 }
