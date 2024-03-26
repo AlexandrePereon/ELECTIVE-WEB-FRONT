@@ -1,16 +1,9 @@
-import React,{useState} from "react";
+import React from "react";
 
-const Tab = () => {
-    const [activeStep, setActiveStep]= useState(null)
-    const tabData= ['Tab 1','Tab 2','Tab 3']
+const Tab = ({steps, partsName, handleOnSwitchSteps}) => {
 
-    const handleSetStep = (index) =>{
-        setActiveStep(index)
-    }
-    
-    const tabList = tabData.map((tab, index)=> {
-
-    return(<button role="tab" className={`tab ${activeStep === index && 'bg-medium-green text-black'}`} onClick={()=>{handleSetStep(index)}} key={index}>{tab}</button>)
+    const tabList = partsName.map((tab, index)=> {
+    return(<button type="button" className={`tab w-max ${steps === index && 'bg-medium-green text-black'}`} onClick={()=>{handleOnSwitchSteps(index)}} key={index}>{tab}</button>)
 })
     return(
         <div role="tablist" className="tabs tabs-boxed w-60 m-auto">

@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import axiosReq from "../../utils/axios";
+import useDisplayAlert from '../../hooks/useDisplayAlert';
 import Password from '../Password/password';
+import Loader from '../Loader/loader';
 
 const SignupForm = () => {
 
@@ -8,28 +10,39 @@ const SignupForm = () => {
 
     const handlesetIsPasswordValid = (isValid) => {
         setIsPasswordValid(isValid)
-    }
+    } 
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [message, setMessage] = useState({code : null, description : null});
 
     const submitSignupForm = async (e) => {
         e.preventDefault();
-        console.log (e.target.elements.password.value)
+        setIsLoading(true);
         try {
-            const response = await axiosReq.post("/api/register", {
-                username: e.target.elements.firstName.value + " " + e.target.elements.lastName.value,
+            const response = await axiosReq.post("/auth/register", {
+                firstName: e.target.elements.firstName.value,
+                lastName:  e.target.elements.lastName.value,
                 email: e.target.elements.email.value,
                 password: e.target.elements.password.value,
-                role: e.target.elements.role.value
-            }); 
-            console.log("Réponse du serveur :", response.data);
-        } catch (error) {
-            console.error("Erreur :", error);
-        }
+                role: e.target.elements.role.value,
+                partnerCode : "",
+            });
+            if (response) {
+                setMessage({code : response.status, description : "Bien connecté"});
+                setIsLoading(false);
+              }
+          } catch (error) {
+            setMessage({code : error.response.status, description : error.response.data.message});
+            setIsLoading(false);
+          }
     };
-    
 
-     
-  return (
-    <form style={{padding:'20%', paddingTop: '5%', paddingBottom:'5%'}} onSubmit={(e) => submitSignupForm(e)}>
+    const {alertBanner}= useDisplayAlert(message);
+    
+  return (            
+      <form style={{padding:'20%', paddingTop: '5%', paddingBottom:'5%'}} onSubmit={(e) => submitSignupForm(e)}>
+        {message && alertBanner}
             <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight ">
                 Create an account
             </h2>
@@ -105,9 +118,9 @@ const SignupForm = () => {
                     autoComplete="roleName"
                     className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     >
-                    <option>User</option>
-                    <option>Admin</option>
-                    <option>Professionnal</option>
+                    <option>user</option>
+                    <option>admin</option>
+                    <option>professionnal</option>
                     </select>
                 </div>
                 </div>
@@ -120,9 +133,9 @@ const SignupForm = () => {
         <button
           type="submit"
           className="rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            disabled={!isPasswordValid}
+            disabled={!isPasswordValid || isLoading}
         >
-          Save
+          {isLoading ? <Loader/> : 'Save'} 
         </button>
       </div>
     </form>
