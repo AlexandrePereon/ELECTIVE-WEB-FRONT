@@ -10,7 +10,7 @@ const useGetAllArticlesFromRestaurant = (restaurantID) => {
         const getAllArticlesFromRestaurant = async (restaurantID) => {
             setIsLoadingArticles(true);
             try {
-                const response = await axiosReq.get(`/restaurant/${restaurantID}/article`);
+                const response = await axiosReq.get(`/restaurant/${restaurantID}/articles`);
                 if (response) {
                     setArticlesData(response.data);
                 }
@@ -21,7 +21,6 @@ const useGetAllArticlesFromRestaurant = (restaurantID) => {
         };
 
         getAllArticlesFromRestaurant(restaurantID);
-
     }, [restaurantID]); // Déclenche l'effet lorsque restaurantID change
 
     return {articlesData, isLoadingArticles};

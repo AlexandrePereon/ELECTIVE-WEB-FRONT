@@ -15,7 +15,6 @@ const usePostRestaurantArticle = () => {
 
     const handleSubmitArticle = async (formData) => {
         setIsLoading(false);
-        console.log(formData.find(item => item.id === 'price').value)
         try {
             const response = await axiosReq.post("/restaurant/article/create", {
                 name: formData.find(item => item.id === 'name').value,

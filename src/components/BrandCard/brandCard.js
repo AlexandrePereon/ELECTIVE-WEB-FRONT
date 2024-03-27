@@ -17,10 +17,10 @@ import React from "react";
   
   const BrandCard = ({image, name, price, id, children}) => {
     return (
-            <div className={`grid grid-cols-3 sm:grid-cols-3 border-b border-stroke`}>
+            <div className={`grid grid-cols-3 sm:grid-cols-3 border-b border-stroke`} id={id}>
               <div className="flex items-center gap-3 p-2.5 xl:p-5">
                 <div className="flex-shrink-0">
-                  <img src={image} alt="Brand" />
+                  <img src={image} alt="Brand" className="w-12" />
                 </div>
                 <p className=" text-black">
                   {name}

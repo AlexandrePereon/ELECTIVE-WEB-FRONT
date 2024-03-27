@@ -1,31 +1,12 @@
 import React from "react";
 import BrandCard from "../BrandCard/brandCard";
 import AddNumberButton from "../AddNumberButton/addNumberButton";
+import Loader from "../Loader/loader";
+import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArticlesFromRestaurant";
 
-const BrandListData = [
-    {
-      image: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-      name: 'Article1',
-      price: 2.5,
-      id : '1a3'
-    },
-    {
-        image: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-        name: 'Article2',
-        price: 3.5,
-        id : '1b4'
-    },
-    {
-        image: 'https://react-demo.tailadmin.com/assets/brand-01-10b0313f.svg',
-        name: 'Article3',
-        price: 4.5,
-        id : '1c5'
-    }
-  ];
 
-const Collapse = ({title, listArticleToPost, handleOnChange}) => {
-    
-
+const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle}) => {
+    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant("6602d35f54f5df2e0bcf7fe9");
     return(
         <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
@@ -33,17 +14,22 @@ const Collapse = ({title, listArticleToPost, handleOnChange}) => {
                 {title}
             </div>
             <div className="collapse-content"> 
-            {BrandListData.map((brand, index) =>(
-            <BrandCard 
-                image={brand.image}
-                name={brand.name}
-                price={brand.price}
-                id={brand.id}
-                key={index}
-            >
-                <AddNumberButton handleOnChange={handleOnChange} value={brand.id} numberOfArticle={listArticleToPost.filter(id => id === brand.id).length}/>
-            </BrandCard>
-        ))}
+            {isLoadingArticles ?
+                <Loader/>
+                :
+                articlesData && articlesData.map((article, index) =>(
+                    <BrandCard 
+                        image={article.image}
+                        name={article.name}
+                        price={article.price}
+                        id={article._id}
+                        key={index}
+                    >
+                        <AddNumberButton handleOnChange={handleOnChange} value={article._id} numberOfArticle={submissionTunnelFormListArticle.filter(id => id === article._id).length}/>
+                    </BrandCard>
+                ))
+        }
+           
             </div>
         </div>
     );

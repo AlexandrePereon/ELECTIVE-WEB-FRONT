@@ -7,7 +7,6 @@ import Input from "../../components/Input/input";
 import Loader from "../../components/Loader/loader";
 import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
 import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
-import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArticlesFromRestaurant";
 
 const SubmissionTunnel = () => {
     const [steps, setSteps] = useState(0);
@@ -78,8 +77,6 @@ const SubmissionTunnel = () => {
         handleInputChange(submissionTunnelFormListArticle,"article")
     };
 
-    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant("6602d35f54f5df2e0bcf7fe9");
-console.log(articlesData)
     const submissionTunnelFormInput = submissionTunnelForm.map((item, index)=>{
         let input = null;
         switch (item.type) {
@@ -95,7 +92,7 @@ console.log(articlesData)
                     <Collapse 
                     title={item.title[steps]} 
                     handleOnChange={handleListArticleChange} 
-                    listArticleToPost={submissionTunnelFormListArticle} 
+                    submissionTunnelFormListArticle={submissionTunnelFormListArticle}
                     key={index}/>
                 }
             break;
