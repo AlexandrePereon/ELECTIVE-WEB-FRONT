@@ -1,22 +1,17 @@
 import axios from "axios";
 
 const getTokenFromSessionStorage = () => {
-  // Récupérer les données depuis sessionStorage
-  var données = sessionStorage.getItem('token');
-  // Si les données existent
-  if (données !== null) {
-      // Parser les données JSON
-      var donnéesObjet = JSON.parse(données);
-      // Si la date d'expiration n'est pas encore atteinte
-      if (new Date().getTime() < donnéesObjet.expiration) {
-          // Retourner la valeur
-          return donnéesObjet.valeur;
+  let data = sessionStorage.getItem('token');
+  if (data) {
+      let dataObject = JSON.parse(data);
+      if (new Date().getTime() < dataObject.expiration) {
+          return dataObject.valeur;
       } else {
-          // Supprimer les données expirées de sessionStorage
           sessionStorage.removeItem('token');
+          sessionStorage.removeItem('userInfos');
       }
   }
-  return null; // Retourner null si les données sont expirées ou inexistantes
+  return null;
 };
 
 const axiosReq = axios.create({
