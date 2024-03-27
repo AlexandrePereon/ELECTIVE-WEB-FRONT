@@ -21,10 +21,9 @@ const HomePage = () => {
     const getUserInfosFromLocalStorage = () => {
         return JSON.parse(localStorage.getItem('userInfos'));
       };
-const userInfos=null;
-    // const userInfos = getUserInfosFromLocalStorage();
-    // console.log(userInfos)
-    localStorage.clear();
+
+    const userInfos = getUserInfosFromLocalStorage();
+    console.log(userInfos)
 
 
     return (

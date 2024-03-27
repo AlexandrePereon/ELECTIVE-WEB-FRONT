@@ -7,6 +7,7 @@ import Input from "../../components/Input/input";
 import Loader from "../../components/Loader/loader";
 import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
 import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
+import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArticlesFromRestaurant";
 
 const SubmissionTunnel = () => {
     const [steps, setSteps] = useState(0);
@@ -39,6 +40,16 @@ const SubmissionTunnel = () => {
         value : submissionTunnelFormListArticle}
     ]);
 
+    useEffect(()=>{
+        const updatedForm = submissionTunnelForm.map(field => {
+            if (field.id === "article") {
+                return { ...field, value: submissionTunnelFormListArticle };
+            }
+            return field;
+        });
+        setSubmissionTunnelForm(updatedForm);
+    },[submissionTunnelFormListArticle])
+
     const handleInputChange = (value, id) => {
         const updatedForm = submissionTunnelForm.map(field => {
             if (field.id === id) {
@@ -67,10 +78,8 @@ const SubmissionTunnel = () => {
         handleInputChange(submissionTunnelFormListArticle,"article")
     };
 
-    // useEffect(()=>{
-    //     console.log(submissionTunnelForm,submissionTunnelFormListArticle)
-    // },[submissionTunnelForm, submissionTunnelFormListArticle])
-    
+    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant("6602d35f54f5df2e0bcf7fe9");
+console.log(articlesData)
     const submissionTunnelFormInput = submissionTunnelForm.map((item, index)=>{
         let input = null;
         switch (item.type) {
@@ -86,7 +95,7 @@ const SubmissionTunnel = () => {
                     <Collapse 
                     title={item.title[steps]} 
                     handleOnChange={handleListArticleChange} 
-                    listArticle={submissionTunnelFormListArticle} 
+                    listArticleToPost={submissionTunnelFormListArticle} 
                     key={index}/>
                 }
             break;
@@ -115,7 +124,7 @@ const SubmissionTunnel = () => {
 
     }
     return (
-        <form className="bg-white" onSubmit={(e)=>submitRestaurantProduct(steps, e)}>
+        <form onSubmit={(e)=>submitRestaurantProduct(steps, e)}>
             {alertBanner && alertBanner}
             <Tab steps={steps} partsName={['Ajouter Article','Ajouter Menu']} handleOnSwitchSteps={handleOnSwitchSteps}/>
             <TitleFade title={steps === 0 ? 'Ajouter Article' : 'Ajouter Menu'}/>

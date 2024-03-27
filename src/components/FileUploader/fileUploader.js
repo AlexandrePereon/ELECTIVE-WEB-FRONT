@@ -24,11 +24,11 @@ const FileUploader = ({handleOnChange, id}) => {
   return (
     <div>
        {base64Image ? 
-          <img src={base64Image} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48" />
+          <img src={base64Image} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto" />
         :
-          <img src="https://forma-btp.com/annuaire/content/img/form/default_profil.webp" alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48"/>
+          <img src="https://forma-btp.com/annuaire/content/img/form/default_profil.webp" alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto"/>
       }
-      <input type="file" accept="image/*" onChange={(e)=>{handleImageChange(e, id)}} id={id}/>
+      <input type="file" className="m-auto" accept="image/*" onChange={(e)=>{handleImageChange(e, id)}} id={id}/>
     </div>
   );
 };

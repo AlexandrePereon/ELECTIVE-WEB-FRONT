@@ -15,12 +15,12 @@ import React from "react";
  * @returns {React.JSX.Element} - Le composant BrandCard.
  */
   
-  const BrandCard = ({logo, name, price, id, children}) => {
+  const BrandCard = ({image, name, price, id, children}) => {
     return (
             <div className={`grid grid-cols-3 sm:grid-cols-3 border-b border-stroke`}>
               <div className="flex items-center gap-3 p-2.5 xl:p-5">
                 <div className="flex-shrink-0">
-                  <img src={logo} alt="Brand" />
+                  <img src={image} alt="Brand" />
                 </div>
                 <p className=" text-black">
                   {name}
