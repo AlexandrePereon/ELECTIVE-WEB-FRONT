@@ -77,9 +77,12 @@ const SignupForm = () => {
                     autoComplete="roleName"
                     className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     >
-                    <option>user</option>
-                    <option>admin</option>
-                    <option>professionnal</option>
+                    <option value="user">Utilisateur</option>
+                    <option value="deliveryman">Livreur</option>
+                    <option value="restaurant">Restaurateur</option>
+                    <option value="developer">Développeur</option>
+                    <option value="marketing">Service marketing</option>
+                    <option value="technical">Service technique</option>
                     </select>
                 </div>
                 </div>

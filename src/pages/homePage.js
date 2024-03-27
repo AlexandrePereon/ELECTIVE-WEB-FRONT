@@ -18,11 +18,11 @@ const HomePage = () => {
         setIsOpen(false)
     }
 
-    const getUserInfosFromLocalStorage = () => {
-        return JSON.parse(localStorage.getItem('userInfos'));
+    const getUserInfosFromSessionStorage = () => {
+        return JSON.parse(sessionStorage.getItem('userInfos'));
       };
 
-    const userInfos = getUserInfosFromLocalStorage();
+    const userInfos = getUserInfosFromSessionStorage();
     console.log(userInfos)
 
 
