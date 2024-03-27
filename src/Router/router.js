@@ -6,6 +6,11 @@ import Error404 from "../pages/error404";
 import LoginForm from "../components/LoginForm/loginForm";
 import SignupForm from "../components/SignupForm/signupForm";
 import SubmissionTunnel from "../pages/RestaurantPages/submissionTunnel";
+import UserHomePage from "../pages/ClientPages/userHomePage";
+import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
+import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
+import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
+import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
 
 const Router = () => {
   return (
@@ -17,6 +22,13 @@ const Router = () => {
         <Route path="*" element={<Error404/>} />
         <Route path="/login" element={<LoginForm/>} />
         <Route path="/signup" element={<SignupForm/>} />
+        <Route path="/user-accueil" element={<UserHomePage/>} />
+        <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
+        <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
+        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
+        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+       
+
         {/* <Route path="/delivery/current-delivery" element={} /> */}
         {/* DELIVERY ROUTES */}
         {/* <Route path="/delivery" element={} />
@@ -24,6 +36,8 @@ const Router = () => {
         <Route path="/delivery/current-delivery" element={} /> */}
         {/* RESTAURANT ROUTES */}
         <Route path="/restaurant/soumission" element={<SubmissionTunnel/>} />
+        
+        
       </Routes>
     </BrowserRouter>
   );
