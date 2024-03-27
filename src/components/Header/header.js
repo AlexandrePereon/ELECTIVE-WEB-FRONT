@@ -3,7 +3,7 @@ import SearchBar from "../SearchBar/searchBar";
 import TitleFade from "../TitleFade/titleFade";
 import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
-import HeaderDeliveryCart from "./headerDeliveryCart";
+import HeaderDelivery from "./headerDelivery";
 
 
 const Header = ({role}) => {
@@ -42,7 +42,7 @@ const Header = ({role}) => {
           </div>
 
           <div className="flex items-center gap-2">
-          { role !== "user" && <HeaderDeliveryCart role={role} NumberValue={2}/>}
+          { role !== "user" && <HeaderDelivery role={role} NumberValue={0}/>}
             <HeaderShoppingCart/>
             {
               role ?
