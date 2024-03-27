@@ -1,8 +1,18 @@
 import axios from "axios";
 
-const getTokenFromLocalStorage = () => {
-    return localStorage.getItem('token');
-  };
+const getTokenFromSessionStorage = () => {
+  let data = sessionStorage.getItem('token');
+  if (data) {
+      let dataObject = JSON.parse(data);
+      if (new Date().getTime() < dataObject.expiration) {
+          return dataObject.valeur;
+      } else {
+          sessionStorage.removeItem('token');
+          sessionStorage.removeItem('userInfos');
+      }
+  }
+  return null;
+};
 
 const axiosReq = axios.create({
     baseURL: "http://app.localhost",
@@ -10,7 +20,7 @@ const axiosReq = axios.create({
 
     axiosReq.interceptors.request.use(
         (config) => {
-          const token = getTokenFromLocalStorage(); 
+          const token = getTokenFromSessionStorage(); 
 
           if (token) {
             config.headers.Authorization = token;

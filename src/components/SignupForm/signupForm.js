@@ -29,8 +29,9 @@ const SignupForm = () => {
                 partnerCode : "",
             });
             if (response) {
-                setMessage({code : response.status, description : "Bien connecté"});
+                setMessage({code : response.status, description : "Compte bien créé"});
                 setIsLoading(false);
+                window.location.href = '/login';
               }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});
@@ -92,20 +93,6 @@ const SignupForm = () => {
                         />
                     </div>
                 </div>
-                <div className="sm:col-span-4">
-                    <label htmlFor="password" className="block text-sm font-medium leading-6 ">
-                        Password
-                    </label>
-                    <div className="mt-2">
-                        <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        autoComplete="password"
-                        className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        />
-                    </div>
-                </div>
                 <div className="sm:col-span-3">
                 <Password handlesetIsPasswordValid={handlesetIsPasswordValid}/>
                 <label htmlFor="role" className="block text-sm font-medium leading-6 ">
@@ -118,9 +105,12 @@ const SignupForm = () => {
                     autoComplete="roleName"
                     className="block w-full rounded-md border-0 py-1.5  shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                     >
-                    <option>user</option>
-                    <option>admin</option>
-                    <option>professionnal</option>
+                    <option value="user">Utilisateur</option>
+                    <option value="deliveryman">Livreur</option>
+                    <option value="restaurant">Restaurateur</option>
+                    <option value="developer">Développeur</option>
+                    <option value="marketing">Service marketing</option>
+                    <option value="technical">Service technique</option>
                     </select>
                 </div>
                 </div>

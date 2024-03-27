@@ -25,6 +25,7 @@ const LoginForm = () => {
             setMessage({code : response.status, description : response.data.message});
             setIsLoading(false);
             setResponseUserData(response.data)
+            window.location.href = `/${response.data.user.role}-accueil`;
           }
         } catch (error) {
           setMessage({code : error.response.status, description : error.response.data.message});
