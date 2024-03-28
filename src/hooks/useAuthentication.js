@@ -14,7 +14,7 @@ const useAuthentication = (userData) => {
         sessionStorage.setItem('userInfos', JSON.stringify(userInfos));
       };
 
-      saveUserDataToSessionStorage(userData?.token, userData?.user || 'any', 15);
+      saveUserDataToSessionStorage(userData?.token, userData?.user || 'any', 60);
     
     return { userData }
 }

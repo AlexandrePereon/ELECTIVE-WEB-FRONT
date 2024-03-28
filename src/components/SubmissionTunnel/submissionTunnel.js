@@ -20,16 +20,19 @@ const SubmissionTunnel = () => {
         {
         title : ['Nom de votre article','Nom de votre menu'],
         type : "text",
+        size : "medium",
         id : "name",
         value : null},
         {
         title : ['Description de votre article','Description de votre menu'],
-        type : "string",
+        type : "textarea",
+        size : "large",
         id : "description",
         value : null},
         {
         title : ['Prix de votre article','Prix de votre menu'],
         type : "number",
+        size : "small",
         id : "price",
         value : null},
         {
@@ -80,9 +83,6 @@ const SubmissionTunnel = () => {
     const submissionTunnelFormInput = submissionTunnelForm.map((item, index)=>{
         let input = null;
         switch (item.type) {
-            case 'number':
-                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} key={index}/>
-                break;
             case 'image':
                 input = <FileUploader handleOnChange={handleInputChange} id={item.id} key={index}/>
             break;
@@ -97,7 +97,7 @@ const SubmissionTunnel = () => {
                 }
             break;
             default:
-                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} key={index}/>
+                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} size={item.size} key={index}/>
             break;
         }
         return input;
