@@ -10,7 +10,7 @@ import Collapse from "../components/Collapse/collapse";
 import Hero from "../components/Hero/hero";
 import Modal from "../components/Modal/modal";
 import Tab from "../components/Tab/tab";
-import useUserVerifyData from "../hooks/data/useUserVerifyData";
+
 
 const HomePage = () => {
     const [isOpen, setIsOpen]= useState(false)
@@ -24,6 +24,8 @@ const HomePage = () => {
 
     const userInfos = getUserInfosFromSessionStorage();
     console.log(userInfos)
+
+
 
     return (
         <Fragment>

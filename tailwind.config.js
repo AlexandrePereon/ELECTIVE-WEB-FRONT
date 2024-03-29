@@ -12,6 +12,12 @@ module.exports = {
         'light-black': '#1E1E1E',
         black: '#000000',
       },
+      width: {
+        small: '16.666667%',
+        medium: '50%',
+        large: '83.333333%',
+        'x-large': '100%',
+      },
     },
   },
   plugins: [

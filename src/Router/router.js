@@ -5,7 +5,9 @@ import ProductPage from "../pages/productPage";
 import Error404 from "../pages/error404";
 import LoginForm from "../components/LoginForm/loginForm";
 import SignupForm from "../components/SignupForm/signupForm";
-import SubmissionTunnel from "../pages/RestaurantPages/submissionTunnel";
+import SubmissionTunnel from "../components/SubmissionTunnel/submissionTunnel";
+import AddProductPage from "../pages/RestaurantPages/addProductPage";
+import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
 import UserHomePage from "../pages/ClientPages/userHomePage";
 import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
 import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
@@ -35,7 +37,8 @@ const Router = () => {
         <Route path="/delivery/current-delivery" element={} />
         <Route path="/delivery/current-delivery" element={} /> */}
         {/* RESTAURANT ROUTES */}
-        <Route path="/restaurant/soumission" element={<SubmissionTunnel/>} />
+        <Route path="/restaurant/soumission" element={<AddProductPage/>} />
+        <Route path="/restaurant/creation_restaurant" element={<CreateRestaurantPage/>} />
         
         
       </Routes>

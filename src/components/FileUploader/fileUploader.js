@@ -1,18 +1,18 @@
 
 import React,{useState} from 'react';
 
-const FileUploader = () => {
+const FileUploader = ({handleOnChange, id}) => {
 
     const [base64Image, setBase64Image] = useState('');
 
-    const handleImageChange = (event) => {
+    const handleImageChange = (event, id) => {
     const file = event.target.files[0];
     
     if (file) {
       const reader = new FileReader();    
       reader.onloadend = () => {
         setBase64Image(reader.result);
-        const base64String = reader.result;
+        handleOnChange(reader.result, id)
       };
       reader.readAsDataURL(file);
   } else {
@@ -24,11 +24,11 @@ const FileUploader = () => {
   return (
     <div>
        {base64Image ? 
-          <img src={base64Image} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48" />
+          <img src={base64Image} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto" />
         :
-          <img src="https://forma-btp.com/annuaire/content/img/form/default_profil.webp" alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48"/>
+          <img src="https://forma-btp.com/annuaire/content/img/form/default_profil.webp" alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto"/>
       }
-      <input type="file" accept="image/*" onChange={(e)=>{handleImageChange(e)}} />
+      <input type="file" className="m-auto" accept="image/*" onChange={(e)=>{handleImageChange(e, id)}} id={id}/>
     </div>
   );
 };
