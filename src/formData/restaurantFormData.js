@@ -1,9 +1,9 @@
 const restaurantFormData = [
     {
-      title: "Photo du resturant",
-      type: "picture",
-      size: "w-x-large",
-      id: "image"
+    title: "Photo du restaurant",
+    type: "picture",
+    size: "w-x-large",
+    id: "image"
     },
     {
     title: "Nom du restaurant",
