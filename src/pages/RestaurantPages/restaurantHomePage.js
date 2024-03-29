@@ -8,7 +8,6 @@ const RestaurantHomePage = () => {
       };
 
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(userInfos)
 
     return (
         <Fragment>

@@ -37,8 +37,8 @@ const Router = () => {
         <Route path="/delivery/current-delivery" element={} />
         <Route path="/delivery/current-delivery" element={} /> */}
         {/* RESTAURANT ROUTES */}
-        <Route path="/restaurant/soumission" element={<AddProductPage/>} />
-        <Route path="/restaurant/creation_restaurant" element={<CreateRestaurantPage/>} />
+        <Route path="/restaurant-accueil/soumission" element={<AddProductPage/>} />
+        <Route path="/restaurant-accueil/creation_restaurant" element={<CreateRestaurantPage/>} />
         
         
       </Routes>

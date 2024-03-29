@@ -11,8 +11,8 @@ const FileUploader = ({handleOnChange, id}) => {
     if (file) {
       const reader = new FileReader();    
       reader.onloadend = () => {
-        setBase64Image(reader.result);
-        handleOnChange(reader.result, id)
+       setBase64Image(reader.result);
+       handleOnChange(reader.result.split(';base64,')[1], id)
       };
       reader.readAsDataURL(file);
   } else {

@@ -5,17 +5,17 @@ import SubmissionTunnel from "../../components/SubmissionTunnel/submissionTunnel
 
 const AddProductPage = () => {
 
-    const getUserInfosFromLocalStorage = () => {
-        return JSON.parse(localStorage.getItem('userInfos'));
+    const getUserInfosFromSessionStorage = () => {
+        return JSON.parse(sessionStorage.getItem('userInfos'));
       };
 
-    const userInfos = getUserInfosFromLocalStorage();
+    const userInfos = getUserInfosFromSessionStorage();
 
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
             <div className="w-4/6 m-auto">
-                <SubmissionTunnel/>
+                <SubmissionTunnel restaurantId={userInfos.restaurantId}/>
             </div>
             <Footer/>
         </Fragment>

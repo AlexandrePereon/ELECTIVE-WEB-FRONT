@@ -28,7 +28,11 @@ const useLogIn = () => {
               setMessage({code : response.status, description : response.data.message});
               setIsLoading(false);
               setResponseUserData(response.data)
-              window.location.href = `/${response.data.user.role}-accueil`;
+              if (response.data.user.role = "restaurant") {
+                window.location.href = `/${response.data.user.role}-accueil${response.data.user.restaurantId ? '' : '/creation_restaurant'}`;
+              } else {
+                window.location.href = `/${response.data.user.role}-accueil`;
+              }
             }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});

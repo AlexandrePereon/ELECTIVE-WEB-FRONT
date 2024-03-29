@@ -5,8 +5,8 @@ import Loader from "../Loader/loader";
 import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArticlesFromRestaurant";
 
 
-const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle}) => {
-    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant("6602d35f54f5df2e0bcf7fe9");
+const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, restaurantId}) => {
+    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant(restaurantId);
     return(
         <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
