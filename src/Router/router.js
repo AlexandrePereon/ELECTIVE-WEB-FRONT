@@ -11,33 +11,40 @@ import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
 import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
 import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
 import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
+import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMyDeliveriesPage";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* CLIENT ROUTES */}
-        <Route path="" element={<HomePage />} />
-        <Route path="/product" element={<ProductPage/>} />
+        {/* GENERAL ROUTES */}
         <Route path="*" element={<Error404/>} />
         <Route path="/login" element={<LoginForm/>} />
         <Route path="/signup" element={<SignupForm/>} />
-        <Route path="/user-accueil" element={<UserHomePage/>} />
-        <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
-        <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
-        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
-        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
-       
+        <Route path="" element={<HomePage />} />
 
-        {/* <Route path="/delivery/current-delivery" element={} /> */}
+        {/* CLIENT ROUTES */}
+        <Route path="/product" element={<ProductPage/>} />
+        <Route path="/user-accueil" element={<UserHomePage/>} />
+
         {/* DELIVERY ROUTES */}
         {/* <Route path="/delivery" element={} />
         <Route path="/delivery/current-delivery" element={} />
         <Route path="/delivery/current-delivery" element={} /> */}
+        <Route path="/deliveryman-accueil" element={<DeliverymanHomePage/>} />
+        <Route path="/deliveryman-accueil/mes-courses" element={<DeliverymanMyDeliveriesPage/>} />
+
+
         {/* RESTAURANT ROUTES */}
         <Route path="/restaurant/soumission" element={<SubmissionTunnel/>} />
+        <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
+
+        {/* DEVELOPPER ROUTES */}
+        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
         
-        
+        {/* MARKETING ROUTES */}
+        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+
       </Routes>
     </BrowserRouter>
   );

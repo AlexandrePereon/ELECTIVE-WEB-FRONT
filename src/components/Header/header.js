@@ -42,8 +42,8 @@ const Header = ({role}) => {
           </div>
 
           <div className="flex items-center gap-2">
-          { role !== "user" && <HeaderDelivery role={role} NumberValue={0}/>}
-            <HeaderShoppingCart/>
+          { role !== "user" ?<HeaderDelivery role={role} NumberValue={2}/> : <HeaderShoppingCart/>}
+            {/* <HeaderShoppingCart/> */}
             {
               role ?
               <Fragment>

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import {getTokenFromSessionStorage} from "../../utils/axios";
+
 
 const options = {
   legend: {
@@ -114,7 +116,6 @@ const options = {
   },
 };
 
-
 const Graph = () => {
   const [state, setState] = useState({
     series: [
@@ -137,9 +138,57 @@ const Graph = () => {
     }));
   };
 
-  useEffect(()=>{
-    handleReset(counter);
-  },[counter])
+  useEffect(() => {
+    // Création de l'URL du WebSocket avec l'en-tête personnalisé
+    const websocketUrl = 'ws://app.localhost/order/marketing';
+    console.log(`${getTokenFromSessionStorage()}`)
+    const header = {
+        'Authorization':`${getTokenFromSessionStorage()}` // Remplacez "votre_token" par votre token
+    };
+    // Convertir l'en-tête en chaîne JSON
+    const protocol1 = JSON.stringify(header);
+
+    // Créer une nouvelle instance WebSocket
+    //const socket = new WebSocket(websocketUrl, [protocol1]);
+    const socket = new WebSocket(websocketUrl);
+
+    // Événement lorsque la connexion est établie
+    socket.onopen = function(event) {
+      console.log('Connexion établie.');
+    };
+    
+    // Événement pour recevoir les messages
+    socket.onmessage = function(event) {
+      console.log('Message reçu:', event.data);
+    };
+    
+    // Événement en cas d'erreur
+    socket.onerror = function(error) {
+      console.error('Erreur de connexion:', error);
+    };
+    
+    // Événement lorsque la connexion est fermée
+    socket.onclose = function(event) {
+      console.log('Connexion fermée.');
+    };
+    
+    // Nettoyage de la connexion WebSocket lors du démontage du composant
+    return () => {
+      socket.close();
+    };
+    }, []); // Effectuer la connexion une seule fois au chargement du composant
+  
+  // useEffect(()=>{
+  //   handleReset(counter);
+  // },[counter])
+
+  // useEffect(() => {
+  //   socket.get(socket, (data) => {
+  //     console.log(data)
+  //     //handleReset(data.message);
+      
+  //   })
+  // }, [socket])
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">

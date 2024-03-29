@@ -1,4 +1,4 @@
-import axiosReq from "../../utils/axios";
+import {axiosReq} from "../../utils/axios";
 
 const useUserVerifyData = () => {
 

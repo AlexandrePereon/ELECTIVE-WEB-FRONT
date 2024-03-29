@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import axiosReq from "../../utils/axios";
+import {axiosReq} from "../../utils/axios";
 import useDisplayAlert from '../../hooks/useDisplayAlert';
 import Password from '../Password/password';
 import Loader from '../Loader/loader';
