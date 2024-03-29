@@ -32,7 +32,7 @@ const CreateRestaurantForm = () => {
     const {handleSubmit, isLoading, alertBanner} = usePostRestaurant();
 
     return (
-        <form action="#" method="POST" onSubmit={(e) => handleSubmit(e, imageValue[0])}>
+        <form action="#" method="POST" onSubmit={(e) => handleSubmit(e, imageValue)}>
             {alertBanner && alertBanner}
             <TitleFade title={"Création de votre restaurant"}/>
             {inputs}  
