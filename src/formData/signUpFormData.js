@@ -3,12 +3,12 @@ const signUpFormData = [
     title : "Prénom",
     type : "text",
     size : "w-medium",
-    id : "firstname"},
+    id : "firstName"},
     {
     title : "Nom",
     type : "text",
     size : "w-medium",
-    id : "lastname"},
+    id : "lastName"},
     {
     title : "Addresse email",
     type : "email",

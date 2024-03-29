@@ -1,9 +1,13 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import Input from "../Input/input";
 
-const Password = ({handlesetIsPasswordValid}) => {
+const Password = ({handlesetIsPasswordValid, title, id, type, size}) => {
 
     const [passwordValue,setPasswordValue] = useState(null);
+
+    const handleSetPasswordValue = (e) => {
+        setPasswordValue(e)
+    }
 
     const conditionTab = [{
         label : "1 maj",
@@ -39,24 +43,27 @@ const Password = ({handlesetIsPasswordValid}) => {
         );
     })
 
-    if( conditionTab[0].isCondionValid &&
-        conditionTab[1].isCondionValid &&
-        conditionTab[2].isCondionValid &&
-        conditionTab[3].isCondionValid
-    ) {
-        handlesetIsPasswordValid(true) 
-    } else {
-        handlesetIsPasswordValid(false) 
-    }
+    useEffect(()=>{
+        if( conditionTab[0].isCondionValid &&
+            conditionTab[1].isCondionValid &&
+            conditionTab[2].isCondionValid &&
+            conditionTab[3].isCondionValid
+        ) {
+            handlesetIsPasswordValid(true) 
+        } else {
+            handlesetIsPasswordValid(false) 
+        }
+    },[passwordValue])
+
 
     return(
               <>
                <Input
-                    title={"Mot de passe"}
-                    handleOnChange={setPasswordValue}
-                    id={"password"}
-                    type={"password"}
-                    size={"w-x-large"}
+                    title={title}
+                    handleOnChange={handleSetPasswordValue}
+                    id={id}
+                    type={type}
+                    size={size}
                />
                 <ul>
                     {conditionList}

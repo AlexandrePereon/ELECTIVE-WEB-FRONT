@@ -7,6 +7,7 @@ import LoginForm from "../components/LoginForm/loginForm";
 import SignupForm from "../components/SignupForm/signupForm";
 import SubmissionTunnel from "../components/SubmissionTunnel/submissionTunnel";
 import AddProductPage from "../pages/RestaurantPages/addProductPage";
+import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
 
 const Router = () => {
   return (
@@ -25,6 +26,7 @@ const Router = () => {
         <Route path="/delivery/current-delivery" element={} /> */}
         {/* RESTAURANT ROUTES */}
         <Route path="/restaurant/soumission" element={<AddProductPage/>} />
+        <Route path="/restaurant/creation-restaurant" element={<CreateRestaurantPage/>} />
       </Routes>
     </BrowserRouter>
   );

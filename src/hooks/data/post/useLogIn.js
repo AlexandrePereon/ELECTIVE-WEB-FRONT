@@ -1,47 +1,46 @@
 import {useState} from "react";
 import axiosReq from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
+import useAuthentication from "../../useAuthentication";
 
 /**
- * Hook sign up post data.
+ * Hook useLogIn post data.
  * 
- * @typedef useSignUp
+ * @typedef useLogIn
  * @kind hook
  * 
  * @returns {object} - 
  */
-const useSignUp = () => {
+const useLogIn = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
+    const [responseUserData, setResponseUserData] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            console.log(                 e.target.elements.firstName.value)
-            const response = await axiosReq.post("/auth/register", {
-                firstName: e.target.elements.firstName.value,
-                lastName:  e.target.elements.lastName.value,
+            const response = await axiosReq.post("/auth/login", {
                 email: e.target.elements.email.value,
-                password: e.target.elements.password.value,
-                role: e.target.elements.role.value,
-                partnerCode : "",
-            });
+                password: e.target.elements.password.value
+            })
             if (response) {
-                setMessage({code : response.status, description : response.data.message});
-                setIsLoading(false);
-                window.location.href = '/login';
-              }
+              setMessage({code : response.status, description : response.data.message});
+              setIsLoading(false);
+              setResponseUserData(response.data)
+              window.location.href = `/${response.data.user.role}-accueil`;
+            }
           } catch (error) {
-            console.log("ko")
             setMessage({code : error.response.status, description : error.response.data.message});
             setIsLoading(false);
           }
-    };
+        };
+
+    useAuthentication(responseUserData);
 
     const {alertBanner}= useDisplayAlert(message);
 
     return { handleSubmit, isLoading, alertBanner };
 };
 
-export default useSignUp;
+export default useLogIn;

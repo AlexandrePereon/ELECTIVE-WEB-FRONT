@@ -19,6 +19,10 @@ const SignupForm = () => {
     const inputs = signUpFormData.map((input, index)=>{
     if (input.type === "password") {
         return  <Password
+        title={input.title}
+        id={input.id}
+        type={input.type}
+        size={input.size}
         handlesetIsPasswordValid={handlesetIsPasswordValid}
         key={index}
         />
@@ -35,18 +39,22 @@ const SignupForm = () => {
     )
     
   return (            
-      <form style={{padding:'20%', paddingTop: '5%', paddingBottom:'5%'}} onSubmit={(e) => handleSubmit(e)}>
+      <form action="#" method="POST" onSubmit={(e) => handleSubmit(e)}>
         {alertBanner && alertBanner}
-  <TitleFade/>
+            <TitleFade title="Inscription"/>
             <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-2 ">Personal Information</h2>
                 {inputs}
             </div>
-        <ButtonValidationForm
-            isLoading={isLoading} 
-            cancelRedirection={"/login"} 
-            isPasswordValid={isPasswordValid}     
-        />
+            <div className="mt-6 flex items-center justify-end gap-x-6">
+                <a href="/login" className="text-sm font-semibold leading-6 ">
+                Cancel
+                </a>
+                <ButtonValidationForm
+                    isLoading={isLoading} 
+                    isPasswordValid={isPasswordValid}     
+                />
+            </div>
     </form>
   )
 }

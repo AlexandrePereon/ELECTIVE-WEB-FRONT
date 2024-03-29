@@ -23,6 +23,8 @@ const HomePage = () => {
       };
 
     const userInfos = getUserInfosFromSessionStorage();
+    console.log(userInfos)
+
 
 
     return (
