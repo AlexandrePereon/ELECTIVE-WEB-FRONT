@@ -15,6 +15,10 @@ const useAuthentication = (userData) => {
       };
 
       saveUserDataToSessionStorage(userData?.token, userData?.user || 'any', 60);
+
+    // const getUserInfosFromSessionStorage = () => {
+    //   return JSON.parse(sessionStorage.getItem('userInfos'));
+    // };
     
     return { userData }
 }
