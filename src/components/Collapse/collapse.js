@@ -6,7 +6,7 @@ import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArtic
 
 
 const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, restaurantId}) => {
-    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant(restaurantId);
+    const {articlesData, isLoadingArticles} = useGetAllArticlesFromRestaurant(restaurantId,1);
     return(
         <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
