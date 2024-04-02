@@ -11,6 +11,7 @@ const getTokenFromSessionStorage = () => {
       } else {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('userInfos');
+          window.location.href='/login';
       }
   }
   return null;

@@ -29,7 +29,7 @@ const Header = ({role}) => {
   
   
     return (
-      <header className=" relative shadow-lg px-3 py-2">
+      <header className="bg-light-grey relative shadow-lg px-3 py-2">
       <nav className="flex justify-between">
         <div className="w-[130px] md:w-[200px] flex items-center">
           <TitleFade title="CESI EATS"/>
