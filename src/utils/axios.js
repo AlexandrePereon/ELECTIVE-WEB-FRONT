@@ -41,7 +41,6 @@ const axiosReq = axios.create({
         (response) => response,
         async (error) => {
           const originalRequest = error.config;
-          const token = getTokenFromSessionStorage(); 
           if (error.response.status === 401 && !originalRequest._retry) {
             if (!refreshTokenRequest) {
               refreshTokenRequest = axiosReq.post('/auth/refresh', {
