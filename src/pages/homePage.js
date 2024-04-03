@@ -7,6 +7,7 @@ import Hero from "../components/Hero/hero";
 import Modal from "../components/Modal/modal";
 import useAuthentication from "../hooks/useAuthentication";
 
+
 const HomePage = () => {
     const [isOpen, setIsOpen]= useState(false)
     const handleOnCloseModal = () => {
