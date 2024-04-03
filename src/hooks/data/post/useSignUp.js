@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Hook sign up post data.
@@ -13,6 +14,7 @@ import useDisplayAlert from "../../useDisplayAlert";
 const useSignUp = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +32,7 @@ const useSignUp = () => {
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);
-                window.location.href = '/login';
+                navigate('/login');
               }
           } catch (error) {
             console.log("ko")

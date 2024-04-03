@@ -2,6 +2,7 @@ import {useState} from "react";
 import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 import useAuthentication from "../../useAuthentication";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Hook useLogIn post data.
@@ -15,6 +16,8 @@ const useLogIn = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
     const [responseUserData, setResponseUserData] = useState(null);
+    const navigate = useNavigate();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,7 +31,7 @@ const useLogIn = () => {
               setMessage({code : response.status, description : response.data.message});
               setIsLoading(false);
               setResponseUserData(response.data)
-              window.location.href = `/${response.data.user.role}-accueil`;
+              navigate(`/${response.data.user.role}-accueil`)
             }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});

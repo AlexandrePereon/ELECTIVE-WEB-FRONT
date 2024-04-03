@@ -13,9 +13,6 @@ const useAuthentication = (userData) => {
         sessionStorage.setItem('token', JSON.stringify({ valeur: token, expiration: dateExpiration }));
         sessionStorage.setItem('userInfos', JSON.stringify(userInfos));
         sessionStorage.setItem('refreshToken', refreshToken);
-        console.log(`token : ${token}`)
-        console.log(`refreshToken : ${refreshToken}`)
-        console.log(`Infos user : ${userInfos}`)
       };
 
       saveUserDataToSessionStorage(userData?.token, userData?.refreshToken, userData?.user || 'any', 15);

@@ -4,11 +4,12 @@ import TitleFade from "../TitleFade/titleFade";
 import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
 import HeaderDelivery from "./headerDelivery";
+import { useNavigate } from "react-router-dom";
 
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
-
+  const navigate = useNavigate()
   const handleSetIsSelected = () => {
     setIsSelected(!isSelected)
   }
@@ -16,7 +17,7 @@ const Header = ({role}) => {
   const logout = () =>{
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('userInfos');
-    window.location.href = '/login';
+    navigate('/login');
   }
 
   const menuTab = ["Mon compte","Les restaurants","Autres"]
@@ -43,7 +44,6 @@ const Header = ({role}) => {
 
           <div className="flex items-center gap-2">
           { role !== "user" ?<HeaderDelivery role={role} NumberValue={2}/> : <HeaderShoppingCart/>}
-            {/* <HeaderShoppingCart/> */}
             {
               role ?
               <Fragment>
