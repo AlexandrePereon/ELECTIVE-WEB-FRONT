@@ -15,9 +15,7 @@ const getTokenFromSessionStorage = () => {
   return null;
 };
 
-const axiosReq = axios.create({
-    baseURL: "http://app.localhost",
-    });
+const axiosReq = axios.create({baseURL: "http://app.localhost"});
 
     axiosReq.interceptors.request.use(
         (config) => {

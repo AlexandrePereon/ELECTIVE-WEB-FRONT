@@ -13,7 +13,7 @@ import React, { Fragment, useState } from "react";
  * @param {string} props.options - Les options pour les selects.
  * @returns {React.JSX.Element} - Le composant Input.
  */
-const Input = ({title, handleOnChange, id, type, size, options}) => {
+const Input = ({title, handleOnChange, id, type, size, options, isDisable, defaultValue}) => {
     const [isPasswordVisible,setIsPasswordVisible] = useState(false);
 
     let input= null;
@@ -40,13 +40,16 @@ const Input = ({title, handleOnChange, id, type, size, options}) => {
             break;
         default:
             input=<input
+            disabled={isDisable || false}
             type={type==="password" && isPasswordVisible && 'text' || type}
             name={id}
             id={id}
+            defaultValue={defaultValue}
             autoComplete={title}
             placeholder={title}
             onChange={(e)=>{handleOnChange && handleOnChange(e.target.value ,id)}}
-            className={`p-2 block text-black bg-white ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}/>
+            className={`p-2 block text-black bg-white ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+            />
             break;
     }
     return(
@@ -55,7 +58,7 @@ const Input = ({title, handleOnChange, id, type, size, options}) => {
                 <label htmlFor={id} className="block text-sm text-light-black font-medium leading-6 ">
                 {title}
                 </label>
-                {type === "password" &&
+                {type === "password" && !isDisable &&
                 <div className="flex ml-auto m-1">
                         <span className="label-text mr-2">Afficher</span>
                         <input type="checkbox" className="checkbox checkbox-success" onClick={() => setIsPasswordVisible(!isPasswordVisible)}/>
