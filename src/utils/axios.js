@@ -1,8 +1,11 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 let refreshTokenRequest = null;
 
+
 const getTokenFromSessionStorage = () => {
+  // const navigate = useNavigate()
   let data = sessionStorage.getItem('token');
   if (data) {
       let dataObject = JSON.parse(data);
@@ -11,7 +14,7 @@ const getTokenFromSessionStorage = () => {
       } else {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('userInfos');
-          window.location.href='/login';
+          // navigate('/login');
       }
   }
   return null;
@@ -36,8 +39,8 @@ const axiosReq = axios.create({baseURL: "http://app.localhost"});
       );
       
       axiosReq.interceptors.response.use(
-        (response) => response,
-        async (error) => {
+      (response) => response,
+      async (error) => {
           const originalRequest = error.config;
           if (error.response.status === 401 && !originalRequest._retry) {
             if (!refreshTokenRequest) {
@@ -49,11 +52,9 @@ const axiosReq = axios.create({baseURL: "http://app.localhost"});
             try {
               const response = await refreshTokenRequest;
               const Token = response.data.accessToken;
-      
               // Mettre à jour le jeton d'authentification dans le stockage local
               let dateExpiration = new Date().getTime() + (expirationTimeAsMinutes * 60 * 1000);
               sessionStorage.setItem('token', JSON.stringify({ valeur: Token, expiration: dateExpiration }));
-      
               // Réessayer la requête originale avec le nouveau jeton
               originalRequest.headers.Authorization = `${Token}`;
               return axiosReq(originalRequest);

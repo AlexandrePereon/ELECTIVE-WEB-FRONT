@@ -37,12 +37,7 @@ const Router = () => {
         <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
         <Route path="/restaurants" element={<RestaurantsSelectionPage/>} />
        
-
-        {/* <Route path="/delivery/current-delivery" element={} /> */}
         {/* DELIVERY ROUTES */}
-        {/* <Route path="/delivery" element={} />
-        <Route path="/delivery/current-delivery" element={} />
-        <Route path="/delivery/current-delivery" element={} /> */}
         <Route path="/deliveryman-accueil" element={<DeliverymanHomePage/>} />
         <Route path="/deliveryman-accueil/mes-courses" element={<DeliverymanMyDeliveriesPage/>} />
 

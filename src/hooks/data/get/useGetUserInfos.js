@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosReq from "../../../utils/axios";
+import {axiosReq} from "../../../utils/axios";
 
 const useGetUserInfos = () => {
 
