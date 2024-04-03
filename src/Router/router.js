@@ -14,6 +14,9 @@ import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
 import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
 import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
 import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMyDeliveriesPage";
+import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
+import MyAccountPage from "../pages/myAccountPage";
+import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
 
 const Router = () => {
   return (
@@ -28,7 +31,14 @@ const Router = () => {
         {/* CLIENT ROUTES */}
         <Route path="/product" element={<ProductPage/>} />
         <Route path="/user-accueil" element={<UserHomePage/>} />
+        <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
+        <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
+        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
+        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+        <Route path="/restaurants" element={<RestaurantsSelectionPage/>} />
+       
 
+        {/* <Route path="/delivery/current-delivery" element={} /> */}
         {/* DELIVERY ROUTES */}
         {/* <Route path="/delivery" element={} />
         <Route path="/delivery/current-delivery" element={} />
@@ -38,8 +48,12 @@ const Router = () => {
 
 
         {/* RESTAURANT ROUTES */}
-        <Route path="/restaurant/soumission" element={<AddProductPage/>} />
-        <Route path="/restaurant/creation_restaurant" element={<CreateRestaurantPage/>} />
+        <Route path="/restaurant-accueil/soumission" element={<AddProductPage/>} />
+        <Route path="/restaurant-accueil/creation_restaurant" element={<CreateRestaurantPage/>} />
+        <Route path="/restaurant-accueil/restaurant/:id?" element={<RestaurantPage/>} />
+        
+        {/* COMMONS ROUTES */}
+        <Route path="/mon-compte" element={<MyAccountPage/>} />
 
 
         {/* DEVELOPPER ROUTES */}

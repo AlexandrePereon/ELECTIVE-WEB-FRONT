@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import {axiosReq} from "../../../utils/axios";
 
-const useGetAllArticlesFromRestaurant = (restaurantID) => {
+const useGetAllArticlesFromRestaurant = (restaurantID,pagination) => {
 
     const [articlesData, setArticlesData] = useState(null);
-    const [isLoadingArticles, setIsLoadingArticles] = useState(false);
+    const [isLoadingArticles, setIsLoadingArticles] = useState(false);   
+    const [maxPageArticles, setMaxPageArticles] = useState(null);
 
     useEffect(() => {
-        const getAllArticlesFromRestaurant = async (restaurantID) => {
+        const getAllArticlesFromRestaurant = async (restaurantID,pagination) => {
             setIsLoadingArticles(true);
             try {
-                const response = await axiosReq.get(`/restaurant/${restaurantID}/articles`);
+                const response = await axiosReq.get(`/restaurant/${restaurantID}/articles/${pagination}`);
                 if (response) {
-                    setArticlesData(response.data);
+                    setMaxPageArticles(response.data.maxPage);
+                    setArticlesData(response.data.articles);
                 }
             } catch (error) {
             } finally {
@@ -20,10 +22,10 @@ const useGetAllArticlesFromRestaurant = (restaurantID) => {
             }
         };
 
-        getAllArticlesFromRestaurant(restaurantID);
-    }, [restaurantID]); // Déclenche l'effet lorsque restaurantID change
+        getAllArticlesFromRestaurant(restaurantID,pagination);
+    }, [restaurantID,pagination]); // Déclenche l'effet lorsque restaurantID change
 
-    return {articlesData, isLoadingArticles};
+    return {articlesData, isLoadingArticles, maxPageArticles};
 }
 
 export default useGetAllArticlesFromRestaurant;

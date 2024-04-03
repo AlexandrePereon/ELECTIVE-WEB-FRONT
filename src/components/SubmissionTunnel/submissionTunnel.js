@@ -7,40 +7,12 @@ import Input from "../../components/Input/input";
 import Loader from "../../components/Loader/loader";
 import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
 import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
+import productFormData from "../../formData/productFormData";
 
-const SubmissionTunnel = () => {
+const SubmissionTunnel = ({restaurantId}) => {
     const [steps, setSteps] = useState(0);
     const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState([])
-    const [submissionTunnelForm, setSubmissionTunnelForm] = useState([
-        {
-        title : ['ajouter une image à votre article','ajouter une image à votre menu'],
-        type : "image",
-        id : "image",
-        value : null},
-        {
-        title : ['Nom de votre article','Nom de votre menu'],
-        type : "text",
-        size : "medium",
-        id : "name",
-        value : null},
-        {
-        title : ['Description de votre article','Description de votre menu'],
-        type : "textarea",
-        size : "large",
-        id : "description",
-        value : null},
-        {
-        title : ['Prix de votre article','Prix de votre menu'],
-        type : "number",
-        size : "small",
-        id : "price",
-        value : null},
-        {
-        title : [null ,'Liste des articles'],
-        type : "list",
-        id : "article",
-        value : submissionTunnelFormListArticle}
-    ]);
+    const [submissionTunnelForm, setSubmissionTunnelForm] = useState(productFormData);
 
     useEffect(()=>{
         const updatedForm = submissionTunnelForm.map(field => {
@@ -93,6 +65,7 @@ const SubmissionTunnel = () => {
                     title={item.title[steps]} 
                     handleOnChange={handleListArticleChange} 
                     submissionTunnelFormListArticle={submissionTunnelFormListArticle}
+                    restaurantId={restaurantId}
                     key={index}/>
                 }
             break;
@@ -111,6 +84,7 @@ const SubmissionTunnel = () => {
     const {handleSubmitMenu, isLoadingMenu, alertBannerMenu} = usePostRestaurantMenu();
     const alertBanner = alertBannerArticle||alertBannerMenu;
     const isLoading = isLoadingArticle||isLoadingMenu;
+
     const submitRestaurantProduct = (type, e) => {
         e.preventDefault();
         if (type === 0) {
@@ -118,8 +92,8 @@ const SubmissionTunnel = () => {
         } else {
             handleSubmitMenu(submissionTunnelForm)
         }
-
     }
+
     return (
         <form onSubmit={(e)=>submitRestaurantProduct(steps, e)}>
             {alertBanner && alertBanner}

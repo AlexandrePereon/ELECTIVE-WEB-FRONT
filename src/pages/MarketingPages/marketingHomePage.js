@@ -4,12 +4,11 @@ import Footer from "../../components/Footer/footer";
 import Graph from "../../components/Graph/graph";
 import Statistic from "../../components/Statistic/statistic";
 import {getTokenFromSessionStorage} from "../../utils/axios";
+import useAuthentication from "../../hooks/useAuthentication";
 
 const MarketingHomePage = () => {
-    const getUserInfosFromSessionStorage = () => {
-        return JSON.parse(sessionStorage.getItem('userInfos'));
-      };
-
+    
+    const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
     console.log(userInfos)
     console.log(getTokenFromSessionStorage())

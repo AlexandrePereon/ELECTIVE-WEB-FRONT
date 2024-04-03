@@ -24,6 +24,7 @@ const usePostRestaurant = () => {
             if (response) {
                 setMessage({ code: response.status, description: response.data.message });
                 setIsLoading(false);
+                window.location.href = '/restaurant-accueil';
             }
         } catch (error) {
             setMessage({ code: error.response.status, description: error.response.data.message });

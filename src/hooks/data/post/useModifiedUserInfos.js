@@ -1,45 +1,35 @@
 import {useState} from "react";
-import {axiosReq} from "../../../utils/axios";
+import axiosReq from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 
-/**
- * Hook sign up post data.
- * 
- * @typedef useSignUp
- * @kind hook
- * 
- * @returns {object} - 
- */
-const useSignUp = () => {
-    const [isLoading, setIsLoading] = useState(false);
+const useModifiedUserInfos = () => {
+    const [isLoadingModificationUserInfos, setIsLoadingModificationUserInfos] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        setIsLoadingModificationUserInfos(true);
         try {
-            const response = await axiosReq.post("/auth/register", {
+            const response = await axiosReq.put("/auth/update", {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
                 email: e.target.elements.email.value,
-                password: e.target.elements.password.value,
-                role: e.target.elements.role.value,
-                partnerCode : "",
+                currentPassword: e.target.elements.currentPassword.value,
+                newPassword: e.target.elements.newPassword.value
             });
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
-                setIsLoading(false);
-                window.location.href = '/login';
+                setIsLoadingModificationUserInfos(false);
               }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});
-            setIsLoading(false);
+            setIsLoadingModificationUserInfos(false);
           }
     };
 
     const {alertBanner}= useDisplayAlert(message);
 
-    return { handleSubmit, isLoading, alertBanner };
+    return { handleSubmit, isLoadingModificationUserInfos, alertBanner };
 };
 
-export default useSignUp;
+export default useModifiedUserInfos;
