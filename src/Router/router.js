@@ -44,7 +44,7 @@ const Router = () => {
         <Route path="/restaurant-accueil/restaurant/:id?" element={<RestaurantPage/>} />
         
         {/* COMMONS ROUTES */}
-        <Route path="/mon-compte/" element={<MyAccountPage/>} />
+        <Route path="/mon-compte" element={<MyAccountPage/>} />
         
         
       </Routes>

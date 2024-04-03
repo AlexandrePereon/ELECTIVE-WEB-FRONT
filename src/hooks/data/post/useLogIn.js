@@ -14,7 +14,8 @@ import useAuthentication from "../../useAuthentication";
 const useLogIn = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
-    const [responseUserData, setResponseUserData] = useState(null);
+
+    const {saveUserDataToSessionStorage} = useAuthentication();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -27,7 +28,8 @@ const useLogIn = () => {
             if (response) {
               setMessage({code : response.status, description : response.data.message});
               setIsLoading(false);
-              setResponseUserData(response.data)
+              console.log(response.data)
+              saveUserDataToSessionStorage(response.data?.token, response.data?.user || 'any');
               if (response.data.user.role = "restaurant") {
                 window.location.href = `/${response.data.user.role}-accueil${response.data.user.restaurantId ? '' : '/creation_restaurant'}`;
               } else {
@@ -40,7 +42,6 @@ const useLogIn = () => {
           }
         };
 
-    useAuthentication(responseUserData);
 
     const {alertBanner}= useDisplayAlert(message);
 
