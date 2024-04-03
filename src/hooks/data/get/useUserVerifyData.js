@@ -1,4 +1,4 @@
-import axiosReq from "../../utils/axios";
+import {axiosReq} from "../../utils/axios";
 
 const useUserVerifyData = () => {
 
@@ -10,7 +10,6 @@ const useUserVerifyData = () => {
                 data = response;
               }
           } catch (error) {
-            console.log(error)
             data = 'expiré';
           }
     };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axiosReq from "../../../utils/axios";
+import {axiosReq} from "../../../utils/axios";
 
 const useGetAllArticlesFromRestaurant = (restaurantID,pagination) => {
 

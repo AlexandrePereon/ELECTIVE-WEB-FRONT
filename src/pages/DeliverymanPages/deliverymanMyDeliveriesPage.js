@@ -4,17 +4,17 @@ import Footer from "../../components/Footer/footer";
 import useAuthentication from "../../hooks/useAuthentication";
 
 
-const UserHomePage = () => {
+const DeliverymanMyDeliveriesPage = () => {
     const {getUserInfosFromSessionStorage} = useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
 
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <h1>Accueil Utilisateur</h1>
+            <h1>Mes livraisons</h1>
             <Footer/>
         </Fragment>
     )
 }
 
-export default UserHomePage;
+export default DeliverymanMyDeliveriesPage;

@@ -1,7 +1,8 @@
 import {useState} from "react";
-import axiosReq from "../../../utils/axios";
+import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 import useAuthentication from "../../useAuthentication";
+
 
 /**
  * Hook useLogIn post data.
@@ -14,7 +15,6 @@ import useAuthentication from "../../useAuthentication";
 const useLogIn = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
-
     const {saveUserDataToSessionStorage} = useAuthentication();
 
     const handleSubmit = async (e) => {
