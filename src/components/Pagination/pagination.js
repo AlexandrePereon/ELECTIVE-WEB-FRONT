@@ -1,11 +1,11 @@
 import React from "react";
 
-const Pagination = () => {
+const Pagination = ({pagination, handleSetPagination, maxPagination, type}) => {
     return(
         <div className="join">
-            <button className="join-item btn">«</button>
-            <input className="join-item btn">Page 22</input>
-            <button className="join-item btn">»</button>
+            <button className="join-item btn" onClick={()=>{handleSetPagination(pagination-1,type)}}>«</button>
+            <input className="join-item btn" value={pagination} max={maxPagination}/>
+            <button className="join-item btn" onClick={()=>{handleSetPagination(pagination+1,type)}}>»</button>
         </div>
     );
 }

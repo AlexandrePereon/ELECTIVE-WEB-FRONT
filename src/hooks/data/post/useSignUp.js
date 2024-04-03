@@ -20,7 +20,6 @@ const useSignUp = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            console.log(                 e.target.elements.firstName.value)
             const response = await axiosReq.post("/auth/register", {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
@@ -35,7 +34,6 @@ const useSignUp = () => {
                 navigate('/login');
               }
           } catch (error) {
-            console.log("ko")
             setMessage({code : error.response.status, description : error.response.data.message});
             setIsLoading(false);
           }

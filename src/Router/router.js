@@ -13,6 +13,8 @@ import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
 import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
 import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
 import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
+import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
+import MyAccountPage from "../pages/myAccountPage";
 import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMyDeliveriesPage";
 
 const Router = () => {
@@ -38,8 +40,12 @@ const Router = () => {
 
 
         {/* RESTAURANT ROUTES */}
-        <Route path="/restaurant/soumission" element={<AddProductPage/>} />
-        <Route path="/restaurant/creation_restaurant" element={<CreateRestaurantPage/>} />
+        <Route path="/restaurant-accueil/soumission" element={<AddProductPage/>} />
+        <Route path="/restaurant-accueil/creation_restaurant" element={<CreateRestaurantPage/>} />
+        <Route path="/restaurant-accueil/restaurant/:id?" element={<RestaurantPage/>} />
+        
+        {/* COMMONS ROUTES */}
+        <Route path="/mon-compte" element={<MyAccountPage/>} />
 
 
         {/* DEVELOPPER ROUTES */}
