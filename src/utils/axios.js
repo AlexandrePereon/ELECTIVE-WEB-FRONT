@@ -2,9 +2,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 let refreshTokenRequest = null;
-const navigate = useNavigate()
+
 
 const getTokenFromSessionStorage = () => {
+  // const navigate = useNavigate()
   let data = sessionStorage.getItem('token');
   if (data) {
       let dataObject = JSON.parse(data);
@@ -13,7 +14,7 @@ const getTokenFromSessionStorage = () => {
       } else {
           sessionStorage.removeItem('token');
           sessionStorage.removeItem('userInfos');
-          navigate('/login');
+          // navigate('/login');
       }
   }
   return null;
@@ -38,8 +39,8 @@ const axiosReq = axios.create({baseURL: "http://app.localhost"});
       );
       
       axiosReq.interceptors.response.use(
-        (response) => response,
-        async (error) => {
+      (response) => response,
+      async (error) => {
           const originalRequest = error.config;
           if (error.response.status === 401 && !originalRequest._retry) {
             if (!refreshTokenRequest) {

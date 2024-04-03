@@ -1,5 +1,5 @@
 import {useState} from "react";
-import axiosReq from "../../../utils/axios";
+import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 
 const useDeleteUserAccount = () => {
