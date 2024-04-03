@@ -10,12 +10,12 @@ const useModifiedUserInfos = () => {
         e.preventDefault();
         setIsLoadingModificationUserInfos(true);
         try {
-            
-            console.log(e.target.elements.firstName.value)
             const response = await axiosReq.put("/auth/update", {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
-                email: e.target.elements.email.value
+                email: e.target.elements.email.value,
+                currentPassword: e.target.elements.currentPassword.value,
+                newPassword: e.target.elements.newPassword.value
             });
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
