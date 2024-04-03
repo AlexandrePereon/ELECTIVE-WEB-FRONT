@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+
 /**
  * Composant title fade.
  * 
@@ -14,9 +14,7 @@ import { Link } from 'react-router-dom';
 const TitleFade = ({title}) => {
     return (
         <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-light-black to-medium-green">
-            <Link to="/" >
             {title}
-            </Link>
         </h1>
     )
 }

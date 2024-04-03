@@ -10,7 +10,6 @@ const useUserVerifyData = () => {
                 data = response;
               }
           } catch (error) {
-            console.log(error)
             data = 'expiré';
           }
     };

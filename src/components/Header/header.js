@@ -5,7 +5,7 @@ import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
 import HeaderDelivery from "./headerDelivery";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -33,7 +33,9 @@ const Header = ({role}) => {
       <header className="bg-light-grey relative shadow-lg px-3 py-2">
       <nav className="flex justify-between">
         <div className="w-[130px] md:w-[200px] flex items-center">
+          <Link to="/">
           <TitleFade title="CESI EATS"/>
+          </Link>
         </div>
         <div className="flex items-center gap-3">
           <div className={`navLinks duration-500 absolute md:static md:w-auto w-full md:h-auto h-[85vh] flex md:items-center gap-[1.5vw] top-[100%] left-[-100%] px-5 md:py-0 py-5 z-50 ${isSelected && "left-[0%] bg-white"}`} >

@@ -5,42 +5,37 @@ import useSetOptionGraph from '../../hooks/useSetOptionGraph';
 const Graph = ({dailySummary}) => {
   const [xDate, setXDate] = useState([]);
   const [yTotalPrice, setYTotalPrice] = useState([]);
-  const optionsDate = { day: '2-digit', month: '2-digit', year: 'numeric' };
 
-  
   useEffect(() => {
     setXDate([])
     setYTotalPrice([])
     dailySummary && dailySummary.map((item) => {
-      setXDate((prevXDate) => [...prevXDate, new Date(item._id).toLocaleDateString('fr-FR', optionsDate)]);
+      setXDate((prevXDate) => [...prevXDate, new Date(item._id).toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' })]);
       setYTotalPrice((prevYTotalPrice) => [...prevYTotalPrice, item.dailyTotalPrice]);
     });
   }, [dailySummary]);
-
+  
   const [state, setState] = useState({
     series: [
       {
-        name: 'Product One',
+        name: 'Montant total des commandes',
         data : yTotalPrice
       }
     ],
   });
 
 useEffect(()=>{
-  handleReset(yTotalPrice)
-},[xDate, yTotalPrice])
-  const handleReset = (newData) => {
-    setState(
-      {
-        series: [
-          {
-            name: 'Product One',
-            data : newData
-          }
-        ],
-      }
-    );
-  };
+  setState(
+    {
+      series: [
+        {
+          name: 'Montant total des commandes',
+          data : yTotalPrice
+        }
+      ],
+    }
+  );
+},[ yTotalPrice])
 
   const {optionsGraph} = useSetOptionGraph(yTotalPrice, xDate)
   
@@ -53,7 +48,7 @@ useEffect(()=>{
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-primary">Total Revenue</p>
+              <p className="font-semibold text-primary">Total des montants des commandes</p>
               <p className="text-sm font-medium">{xDate[0]} - aujourd'hui</p>
             </div>
           </div>
