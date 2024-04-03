@@ -12,7 +12,6 @@ const useAuthentication = () => {
     const getUserInfosFromSessionStorage = () => {
       return JSON.parse(sessionStorage.getItem('userInfos'));
     };
-    // getUserInfosFromSessionStorage();
   
     const saveUserDataToSessionStorage = (token, userInfos) => {
         let dateExpiration = new Date().getTime() + (60 * 60 * 1000);
@@ -24,7 +23,6 @@ const useAuthentication = () => {
         console.log(`Infos user : ${userInfos}`)
       };
 
-    
      return { saveUserDataToSessionStorage, getUserInfosFromSessionStorage }
 }
 

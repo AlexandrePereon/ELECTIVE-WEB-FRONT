@@ -10,20 +10,14 @@ const MarketingHomePage = () => {
     
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(userInfos)
-    console.log(getTokenFromSessionStorage())
 
         const websocketUrl = `ws://app.localhost/order/marketing?socketToken=${getTokenFromSessionStorage()}`;
-    
-        //Créer une nouvelle instance WebSocket
+
         const socket = new WebSocket(websocketUrl)
         console.log(socket)
 
     useEffect(() => {
-    //     // Événement lorsque la connexion est établie
         socket.onopen = function(event) {
-          console.log('Connexion établie.');
-          console.log('Event reçu:', event.type);
         };
         
     //     // Événement pour recevoir les messages
