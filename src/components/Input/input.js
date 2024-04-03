@@ -48,7 +48,7 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
             autoComplete={title}
             placeholder={title}
             onChange={(e)=>{handleOnChange && handleOnChange(e.target.value ,id)}}
-            className={`p-2 block text-black bg-white ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
+            className={`p-2 block text-black ${size} ${isDisable ? "bg-light-grey" : "bg-white"} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
             />
             break;
     }
