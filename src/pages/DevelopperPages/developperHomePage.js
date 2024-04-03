@@ -1,14 +1,12 @@
 import React,{ Fragment, useState }  from "react";
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
+import useAuthentication from "../../hooks/useAuthentication";
 
 const DevelopperHomePage = () => {
-    const getUserInfosFromSessionStorage = () => {
-        return JSON.parse(sessionStorage.getItem('userInfos'));
-      };
 
+    const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(userInfos)
 
     return (
         <Fragment>

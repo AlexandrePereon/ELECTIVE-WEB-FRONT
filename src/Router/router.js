@@ -15,6 +15,7 @@ import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
 import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
 import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
 import MyAccountPage from "../pages/myAccountPage";
+import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
 
 const Router = () => {
   return (
@@ -31,6 +32,7 @@ const Router = () => {
         <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
         <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
         <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+        <Route path="/restaurants" element={<RestaurantsSelectionPage/>} />
        
 
         {/* <Route path="/delivery/current-delivery" element={} /> */}

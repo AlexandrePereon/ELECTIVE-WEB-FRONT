@@ -1,10 +1,5 @@
 const userInfosFormData = [
     {
-    title : "Photos",
-    type : "picture",
-    size : "w-medium",
-    id : "image"},
-    {
     title : "Prénom",
     type : "text",
     size : "w-medium",

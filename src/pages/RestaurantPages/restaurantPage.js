@@ -5,16 +5,14 @@ import useGetAllMenusFromRestaurant from "../../hooks/data/get/useGetAllMenusFro
 import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArticlesFromRestaurant";
 import CardList from "../../components/CardList/cardList";
 import TitleFade from "../../components/TitleFade/titleFade";
+import useAuthentication from "../../hooks/useAuthentication";
 
 const RestaurantPage = () => {
-    const getUserInfosFromSessionStorage = () => {
-        return JSON.parse(sessionStorage.getItem('userInfos'));
-      };
 
+    const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
 
     const restaurantId = window.location.href.split('restaurant-accueil/restaurant/')[1];
-    console.log(restaurantId)
 
     const [paginationMenus, setPaginationMenus]=useState(1)
     const [paginationArticles, setPaginationArticles]=useState(1)
