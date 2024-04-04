@@ -34,10 +34,10 @@ const SubmissionTunnel = ({restaurantId}) => {
         setSubmissionTunnelForm(updatedForm);
     };
 
-    const handleListArticleChange = (value, action) => {
-        if (action === "add"){
+    const handleListArticleChange = (value,type, action) => {
+        if (action === "add" && type==="articles"){
             setSubmissionTunnelFormListArticle(prevList => [...prevList, value]);
-        } else if (action === "remove"){
+        } else if (action === "remove" && type==="articles"){
             setSubmissionTunnelFormListArticle(prevList => 
                 {
                     const index = prevList.indexOf(value);
