@@ -1,9 +1,52 @@
-import React,{ Fragment }  from "react";
+import React,{ Fragment, useState}  from "react";
+import CardList from "../components/CardList/cardList";
+import useAuthentication from "../hooks/useAuthentication";
+import Header from "../components/Header/header";
+import TitleFade from "../components/TitleFade/titleFade";
+import useGetAllRestaurants from "../hooks/data/get/useGetAllRestaurants";
+import Card from "../components/Card/card";
+import Skeleton from "../components/Skeleton/skeleton";
+import { Link } from 'react-router-dom';
 
 const RestaurantsSelectionPage = () => {
+    
+    const {getUserInfosFromSessionStorage}=useAuthentication();
+    const userInfos = getUserInfosFromSessionStorage();
+
+    const [pagination, setPagination]=useState(1)  
+    
+    const {restaurantsData, isLoadingRestaurants, maxPageRestaurants} = useGetAllRestaurants(pagination);
+    
+    const handleSetPagination = (value) => {
+        if((value>0) && (value<=maxPageRestaurants)){
+            setPagination(value)
+        }
+    }
+
     return (
         <Fragment>
-            <h1>restaurantsss</h1>
+            <Header role={userInfos?.role}/>
+            <TitleFade title="Page restaurants :"/>
+            <CardList 
+                cardData={restaurantsData} 
+                isLoading={isLoadingRestaurants}
+                pagination={pagination}
+                maxPagination={maxPageRestaurants}
+                handleSetPagination={handleSetPagination}
+                type="articles"
+            >  
+                {isLoadingRestaurants ?
+                    <Skeleton/> :
+                    restaurantsData && restaurantsData.map((item, index)=>
+                    <Card
+                    title={item.name}
+                    description={item.description}
+                    image={item.image}
+                    key={index}
+                    >
+                        <Link to={`/restaurant-accueil/restaurant/${item._id}`}>voir plus</Link>
+                    </Card>)} 
+            </CardList>
         </Fragment>
     )
 }

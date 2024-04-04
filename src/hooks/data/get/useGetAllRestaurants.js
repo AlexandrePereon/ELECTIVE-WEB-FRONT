@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
-import axiosReq from "../../../utils/axios";
+import {axiosReq} from "../../../utils/axios";
 
-const useGetAllRestaurants = () => {
+const useGetAllRestaurants = (pagination) => {
 
     const [restaurantsData, setRestaurantsData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);   
+    const [maxPageRestaurants, setMaxPageRestaurants] = useState(null);
     
     useEffect(()=>{
-        const getAllRestaurants = async () => {
+        const getAllRestaurants = async (pagination) => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/auth/user`);
+                const response = await axiosReq.get(`/restaurant/all/${pagination}`);
                 if (response) {
-                    setRestaurantsData(response.data);
+                    setMaxPageRestaurants(response.data.maxPage);
+                    setRestaurantsData(response.data.restaurants);
                 }
             } catch (error) {
             } finally {
@@ -20,11 +22,11 @@ const useGetAllRestaurants = () => {
             }
         };
 
-        getAllRestaurants();
+        getAllRestaurants(pagination);
     },[])
     
 
-    return {restaurantsData, isLoading};
+    return {restaurantsData, isLoadingRestaurants : isLoading, maxPageRestaurants};
 }
 
 export default useGetAllRestaurants;

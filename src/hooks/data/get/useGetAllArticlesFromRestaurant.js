@@ -23,7 +23,7 @@ const useGetAllArticlesFromRestaurant = (restaurantID,pagination) => {
         };
 
         getAllArticlesFromRestaurant(restaurantID,pagination);
-    }, [restaurantID,pagination]); // Déclenche l'effet lorsque restaurantID change
+    }, [restaurantID,pagination]);
 
     return {articlesData, isLoadingArticles, maxPageArticles};
 }

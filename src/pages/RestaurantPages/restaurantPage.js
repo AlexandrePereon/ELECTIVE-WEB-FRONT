@@ -6,6 +6,8 @@ import useGetAllArticlesFromRestaurant from "../../hooks/data/get/useGetAllArtic
 import CardList from "../../components/CardList/cardList";
 import TitleFade from "../../components/TitleFade/titleFade";
 import useAuthentication from "../../hooks/useAuthentication";
+import Card from "../../components/Card/card";
+import Skeleton from "../../components/Skeleton/skeleton";
 
 const RestaurantPage = () => {
 
@@ -23,11 +25,11 @@ const RestaurantPage = () => {
     
     const handleSetPagination = (value, type) => {
         if((value>0) && (value<=maxPageMenus)){
-           type === "menus" && setPaginationMenus(value);
-        }else if((value>0) && (value<=maxPageArticles)){
-        type === "articles" &&  setPaginationArticles(value)
-            
-         }
+            type === "menus" && setPaginationMenus(value);
+        }
+        if((value>0) && (value<=maxPageArticles)){
+            type === "articles" &&  setPaginationArticles(value) 
+        }
     }
 
     return (
@@ -36,22 +38,43 @@ const RestaurantPage = () => {
             <TitleFade title="Page restaurant"/>
             <TitleFade title="Liste articles :"/>
             <CardList 
-                cardData={articlesData} 
-                isLoading={isLoadingArticles}
                 pagination={paginationArticles}
                 maxPagination={maxPageArticles}
                 handleSetPagination={handleSetPagination}
                 type="articles"
-            />
+            >
+                {isLoadingArticles ?
+                    <Skeleton/> :
+                    articlesData && articlesData.map((item, index)=>
+                    <Card
+                    title={item.name}
+                    description={item.description}
+                    image={item.image}
+                    key={index}
+                    >
+                         <button className={`${isLoadingArticles && "skeleton"} btn btn-primary`}>Buy Now</button>
+                    </Card>)} 
+
+            </CardList>
             <TitleFade title="Liste menus :"/>
             <CardList 
-                cardData={menusData} 
-                isLoading={isLoadingMenus}
                 pagination={paginationMenus}
                 maxPagination={maxPageMenus}
                 handleSetPagination={handleSetPagination}
                 type="menus"
-            />
+            >
+                {isLoadingMenus ?
+                    <Skeleton/> :
+                    menusData && menusData.map((item, index)=>
+                    <Card
+                    title={item.name}
+                    description={item.description}
+                    image={item.image}
+                    key={index}
+                    >
+                        <button className={`${isLoadingMenus && "skeleton"} btn btn-primary`}>Buy Now</button>
+                    </Card>)} 
+                </CardList>
             <Footer/>
         </Fragment>
     )
