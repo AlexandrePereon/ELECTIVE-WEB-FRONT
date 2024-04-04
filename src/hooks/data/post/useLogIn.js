@@ -3,7 +3,6 @@ import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 import useAuthentication from "../../useAuthentication";
 
-
 /**
  * Hook useLogIn post data.
  * 
@@ -28,7 +27,7 @@ const useLogIn = () => {
             if (response) {
               setMessage({code : response.status, description : response.data.message});
               setIsLoading(false);
-              saveUserDataToSessionStorage(response.data?.token, response.data?.user || 'any');
+              saveUserDataToSessionStorage(response.data?.token, response.data?.user || 'any',response.data?.refreshToken );
               if (response.data.user.role === "restaurant") {
                 window.location.href = `/${response.data.user.role}-accueil${response.data.user.restaurantId ? '' : '/creation_restaurant'}`;
               } else {
@@ -36,6 +35,7 @@ const useLogIn = () => {
               }
             }
           } catch (error) {
+            console.log(error)
             setMessage({code : error.response.status, description : error.response.data.message});
             setIsLoading(false);
           }

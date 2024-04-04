@@ -1,23 +1,19 @@
 import React, { Fragment, useState } from "react";
-import SearchBar from "../SearchBar/searchBar";
 import TitleFade from "../TitleFade/titleFade";
 import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
 import HeaderDelivery from "./headerDelivery";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import useLogOut from "../../hooks/useLogOut";
+import HeaderNotification from "./headerNotification";
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
-  const navigate = useNavigate()
+  const {logout} = useLogOut();
+
   const handleSetIsSelected = () => {
     setIsSelected(!isSelected)
-  }
-
-  const logout = () =>{
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('userInfos');
-    navigate('/login');
   }
 
   const menuTab = ["Mon compte","Les restaurants","Autres"]
@@ -25,18 +21,20 @@ const Header = ({role}) => {
   const menu = menuTab.map((menu,index)=>{
     return (
       <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}><a href="#">{menu}</a></li>
-  )
+    )
   })
   
   
     return (
       <header className="bg-light-grey relative shadow-lg px-3 py-2">
       <nav className="flex justify-between">
+
         <div className="w-[130px] md:w-[200px] flex items-center">
-          <Link to="/">
-          <TitleFade title="CESI EATS"/>
+          <Link to={role?`/${role}-accueil`:'/'}>
+            <TitleFade title="CESI EATS"/>
           </Link>
         </div>
+
         <div className="flex items-center gap-3">
           <div className={`navLinks duration-500 absolute md:static md:w-auto w-full md:h-auto h-[85vh] flex md:items-center gap-[1.5vw] top-[100%] left-[-100%] px-5 md:py-0 py-5 z-50 ${isSelected && "left-[0%] bg-white"}`} >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-8">
@@ -45,23 +43,17 @@ const Header = ({role}) => {
           </div>
 
           <div className="flex items-center gap-2">
-          { role !== "user" ?<HeaderDelivery role={role} NumberValue={2}/> : <HeaderShoppingCart/>}
+          { role && <HeaderNotification role={role}/>}
             {
               role ?
               <Fragment>
-                  <button 
-                  className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full "
-                  onClick={()=>logout()}
-                  >
-                  Logout
-                </button>
-                <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
+                  <button className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full " onClick={()=>logout()}>
+                    Logout
+                  </button>
+                  <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
                 </Fragment>
               :
-                <a 
-                  href="/login"
-                  className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full "
-                >
+                <a href="/login" className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full ">
                   Login
                 </a>
             }
