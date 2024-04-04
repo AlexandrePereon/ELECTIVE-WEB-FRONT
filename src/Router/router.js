@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/homePage";
 import ProductPage from "../pages/productPage";
 import Error404 from "../pages/error404";
-import LoginForm from "../components/LoginForm/loginForm";
-import SignupForm from "../components/SignupForm/signupForm";
 import SubmissionTunnel from "../components/SubmissionTunnel/submissionTunnel";
 import AddProductPage from "../pages/RestaurantPages/addProductPage";
 import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
@@ -17,6 +15,8 @@ import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMy
 import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
 import MyAccountPage from "../pages/myAccountPage";
 import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
+import SignupPage from "../pages/signupPage";
+import LoginPage from "../pages/loginPage";
 
 const Router = () => {
   return (
@@ -24,8 +24,8 @@ const Router = () => {
       <Routes>
         {/* GENERAL ROUTES */}
         <Route path="*" element={<Error404/>} />
-        <Route path="/login" element={<LoginForm/>} />
-        <Route path="/signup" element={<SignupForm/>} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<SignupPage/>} />
         <Route path="" element={<HomePage />} />
 
         {/* CLIENT ROUTES */}

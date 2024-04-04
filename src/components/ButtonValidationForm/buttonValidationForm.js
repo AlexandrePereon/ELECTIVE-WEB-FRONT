@@ -2,7 +2,7 @@ import React from 'react'
 import Loader from '../Loader/loader';
 
 
-const ButtonValidationForm = ({isLoading, isPasswordValid, size}) => {
+const ButtonValidationForm = ({isLoading, isPasswordValid, size, title}) => {
 
   return (            
         <button
@@ -10,7 +10,7 @@ const ButtonValidationForm = ({isLoading, isPasswordValid, size}) => {
           className={`rounded-md ${size} bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-light-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
           disabled={isPasswordValid ? !isPasswordValid :  false}
         >
-          {isLoading ? <Loader/> : 'Sauvegarder'} 
+          {isLoading ? <Loader/> : title} 
         </button>
   )
 }

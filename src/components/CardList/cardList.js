@@ -5,7 +5,7 @@ const CardList = ({children, pagination, handleSetPagination, maxPagination, typ
 
     return(
         <div>
-            <div className="flex">
+            <div className="flex overflow-x-auto lg:overflow-x-visible ">
                 {children}
             </div>
             <Pagination 

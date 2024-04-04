@@ -53,7 +53,7 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
             break;
     }
     return(
-        <Fragment>
+        <div className="pb-2">
             <div className="flex">
                 <label htmlFor={id} className="block text-sm text-light-black font-medium leading-6 ">
                 {title}
@@ -65,7 +65,7 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
                 </div>}
             </div>
             {input}
-        </Fragment>
+        </div>
     );
 }
 

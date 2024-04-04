@@ -1,27 +1,43 @@
 import React, { Fragment, useState } from "react";
-import TitleFade from "../TitleFade/titleFade";
-import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
-import HeaderDelivery from "./headerDelivery";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import ConnexionButton from "../ConnexionButton/connexionButton";
+import logo from "../../assets/images/logoCesiEats.png"
 import useLogOut from "../../hooks/useLogOut";
 import HeaderNotification from "./headerNotification";
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
   const {logout} = useLogOut();
+  const navigate = useNavigate();
 
   const handleSetIsSelected = () => {
     setIsSelected(!isSelected)
   }
 
-  const menuTab = ["Mon compte","Les restaurants","Autres"]
+  const login = () =>{
+    navigate('/login');
+  }
+
+  const menuTab = [
+    {
+      title : "Mon compte",
+      link : "/mon-compte"
+    },
+    {
+      title : "Les restaurants",
+      link : "/restaurants"
+    }]
 
   const menu = menuTab.map((menu,index)=>{
     return (
-      <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}><a href="#">{menu}</a></li>
-    )
+      <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}>
+        <Link to={menu.link}>
+          {menu.title}
+        </Link>
+      </li>
+  )
   })
   
   
@@ -31,7 +47,7 @@ const Header = ({role}) => {
 
         <div className="w-[130px] md:w-[200px] flex items-center">
           <Link to={role?`/${role}-accueil`:'/'}>
-            <TitleFade title="CESI EATS"/>
+              <img src={logo} className="w-20"/>
           </Link>
         </div>
 
@@ -47,15 +63,17 @@ const Header = ({role}) => {
             {
               role ?
               <Fragment>
-                  <button className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full " onClick={()=>logout()}>
-                    Logout
-                  </button>
-                  <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
+                 <ConnexionButton
+                    handleOnClick={logout}
+                    title={"Log out"}
+                 />
+                <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
                 </Fragment>
               :
-                <a href="/login" className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full ">
-                  Login
-                </a>
+              <ConnexionButton
+                handleOnClick={login}
+                title={"Log in"}
+              />
             }
           </div>
         </div>

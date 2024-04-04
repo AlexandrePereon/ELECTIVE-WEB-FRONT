@@ -8,6 +8,8 @@ import useModifiedUserInfos from "../hooks/data/post/useModifiedUserInfos";
 import ButtonValidationForm from "../components/ButtonValidationForm/buttonValidationForm";
 import useDeleteUserAccount from "../hooks/data/post/useDeleteUserAccount";
 import Password from "../components/Password/password";
+import TitleFade from "../components/TitleFade/titleFade";
+import Footer from "../components/Footer/footer";
 
 const MyAccountPage = () => {
 
@@ -23,7 +25,7 @@ const MyAccountPage = () => {
     }
 
     
-    const [isEditable, setIsEditable] = useState(true)
+    const [isEditable, setIsEditable] = useState(false)
 
     const inputs = userInfosFormData.map((input, index)=>{
             if (input.id ==="newPassword" && isEditable) {
@@ -55,9 +57,11 @@ const MyAccountPage = () => {
     return (
         <Fragment>
             <Header role={userInfosData?.role}/>
+            <div className="sm:w-page m-auto pb-10">
+
             {alertBanner && alertBanner}
             {alertBannerDeleteAccount && alertBannerDeleteAccount}
-            <h1>myAccount</h1>
+            <TitleFade title="Espace mon compte"/>
             {isLoadingUserInfos ?
             <Loader/> :
             <Fragment>
@@ -81,16 +85,17 @@ const MyAccountPage = () => {
                     </div>
                 }
                 <form action="#" method="PUT" onSubmit={(e) => handleSubmit(e)}>
-                    <div className="border-b border-gray-900/10 pb-12">
+                    <div className={isEditable && "border-b border-gray-900/10 pb-2"}>
                         {inputs}
                     </div>
-                    <div className="mt-6 flex items-center justify-end gap-x-6">
-                        <ButtonValidationForm isLoading={isLoadingModificationUserInfos} size={"w-small"}/>
-                    </div>
+                   {isEditable && <div className="mt-6 flex items-center justify-end gap-x-6">
+                        <ButtonValidationForm isLoading={isLoadingModificationUserInfos} size={"w-small"} title={"Sauvegarder"}/>
+                    </div>}
                 </form>
             </Fragment>
             }
-        
+        </div>
+        <Footer/>
         </Fragment>
     )
 }

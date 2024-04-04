@@ -13,7 +13,7 @@ import React from "react";
 
 const TitleFade = ({title}) => {
     return (
-        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-light-black to-medium-green">
+        <h1 className="py-5 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-light-black to-medium-green">
             {title}
         </h1>
     )

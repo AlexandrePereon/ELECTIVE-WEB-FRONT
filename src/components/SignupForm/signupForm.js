@@ -5,6 +5,7 @@ import useSignUp from '../../hooks/data/post/useSignUp';
 import Input from '../Input/input';
 import ButtonValidationForm from '../ButtonValidationForm/buttonValidationForm';
 import signUpFormData from '../../formData/signUpFormData';
+import { Link } from 'react-router-dom';
 
 const SignupForm = () => {
 
@@ -41,18 +42,18 @@ const SignupForm = () => {
   return (            
       <form action="#" method="POST" onSubmit={(e) => handleSubmit(e)}>
         {alertBanner && alertBanner}
-            <TitleFade title="Inscription"/>
-            <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-2 ">Personal Information</h2>
+            <div className="border-b border-gray-900/10 pb-2">
+            <h2 className="text-base font-semibold leading-2 ">Informations personnelles :</h2>
                 {inputs}
             </div>
-            <div className="mt-6 flex items-center justify-end gap-x-6">
-                <a href="/login" className="text-sm font-semibold leading-6 ">
-                Cancel
-                </a>
+            <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
+                <Link to="/login" className="text-sm font-semibold leading-6 ">
+                    retour
+                </Link>
                 <ButtonValidationForm
                     isLoading={isLoading} 
-                    isPasswordValid={isPasswordValid}     
+                    isPasswordValid={isPasswordValid}   
+                    title={"Inscrivez-vous"}  
                 />
             </div>
     </form>
