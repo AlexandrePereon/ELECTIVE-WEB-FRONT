@@ -35,7 +35,12 @@ const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, resta
                         id={article._id}
                         key={index}
                     >
-                        <AddNumberButton handleOnChange={handleOnChange} value={article._id} numberOfArticle={submissionTunnelFormListArticle.filter(id => id === article._id).length}/>
+                        <AddNumberButton 
+                            handleOnChange={handleOnChange} 
+                            value={article._id} 
+                            numberOfArticle={submissionTunnelFormListArticle.filter(id => id === article._id).length}
+                            type="articles"
+                        />
                     </BrandCard>
                 ))}
                 <Pagination 
