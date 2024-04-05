@@ -19,7 +19,6 @@ const getTokenFromSessionStorage = () => {
 
 
 const axiosReq = axios.create({baseURL: "http://app.localhost"});
-const {logout} = useLogOut();
 let refreshTokenRequest = null;
 
 axiosReq.interceptors.request.use(
@@ -38,6 +37,7 @@ axiosReq.interceptors.request.use(
 axiosReq.interceptors.response.use(
   (response) => response,
   async (error) => {
+    const {logout} = useLogOut();
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       if (!refreshTokenRequest) {

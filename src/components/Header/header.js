@@ -1,27 +1,60 @@
 import React, { Fragment, useState } from "react";
-import TitleFade from "../TitleFade/titleFade";
-import HeaderShoppingCart from "./headerShoppingCart";
 import HeaderProfile from "./headerProfile";
-import HeaderDelivery from "./headerDelivery";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import ConnexionButton from "../ConnexionButton/connexionButton";
+import logo from "../../assets/images/logoCesiEats.png"
 import useLogOut from "../../hooks/useLogOut";
 import HeaderNotification from "./headerNotification";
+import { userHeader, restaurantHeader, deliverymanHeader, developerHeader, marketingHeader, technicalHeader } from "./headerContent";
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
   const {logout} = useLogOut();
+  const navigate = useNavigate();
 
   const handleSetIsSelected = () => {
     setIsSelected(!isSelected)
   }
 
-  const menuTab = ["Mon compte","Les restaurants","Autres"]
+  const login = () =>{
+    navigate('/login');
+  }
 
-  const menu = menuTab.map((menu,index)=>{
+  let menuTab = [];
+
+  switch (role) {
+    case "user":
+      menuTab = userHeader;
+      break;
+    case "restaurant":
+      menuTab = restaurantHeader;
+    break;
+    case "deliveryman":
+      menuTab = deliverymanHeader;
+    break;
+    case "developer":
+      menuTab = developerHeader;
+    break;
+    case "marketing":
+      menuTab = marketingHeader;
+    break;
+    case "technical":
+      menuTab = technicalHeader;
+    break;
+    default:
+      menuTab = [];
+      break;
+  }
+
+  const menu = menuTab && menuTab.map((menu,index)=>{
     return (
-      <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}><a href="#">{menu}</a></li>
-    )
+      <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}>
+        <Link to={menu.link}>
+          {menu.title}
+        </Link>
+      </li>
+  )
   })
   
   
@@ -31,7 +64,7 @@ const Header = ({role}) => {
 
         <div className="w-[130px] md:w-[200px] flex items-center">
           <Link to={role?`/${role}-accueil`:'/'}>
-            <TitleFade title="CESI EATS"/>
+              <img src={logo} className="w-20"/>
           </Link>
         </div>
 
@@ -47,15 +80,17 @@ const Header = ({role}) => {
             {
               role ?
               <Fragment>
-                  <button className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full " onClick={()=>logout()}>
-                    Logout
-                  </button>
-                  <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
+                 <ConnexionButton
+                    handleOnClick={logout}
+                    title={"Déconnexion"}
+                 />
+                <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
                 </Fragment>
               :
-                <a href="/login" className="hover:bg-clip-text hover:text-transparent bg-gradient-to-br from-[#2b68e0] to-[#e710ea] border-solid border-2 border-[#5356e3]  font-bold text-white px-5 py-2 rounded-full ">
-                  Login
-                </a>
+              <ConnexionButton
+                handleOnClick={login}
+                title={"Connexion"}
+              />
             }
           </div>
         </div>

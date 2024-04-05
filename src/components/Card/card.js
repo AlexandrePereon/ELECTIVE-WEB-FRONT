@@ -3,7 +3,7 @@ import React from "react";
 const Card = ({isLoading, image, title, description, children}) => {
 
     return(
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-100 shadow-xl mr-1">
             <figure className={`${isLoading && "skeleton"} h-40`}>
                {!isLoading && <img src={image} alt="" className="w-x-large h-auto" />}
             </figure>

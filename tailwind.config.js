@@ -17,6 +17,7 @@ module.exports = {
         medium: '50%',
         large: '83.333333%',
         'x-large': '100%',
+        page: '60%',
       },
     },
   },

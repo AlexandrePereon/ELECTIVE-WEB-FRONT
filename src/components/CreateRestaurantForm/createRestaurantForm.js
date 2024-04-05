@@ -36,7 +36,7 @@ const CreateRestaurantForm = () => {
             {alertBanner && alertBanner}
             <TitleFade title={"Création de votre restaurant"}/>
             {inputs}  
-            <ButtonValidationForm isLoading={isLoading}/>              
+            <ButtonValidationForm isLoading={isLoading} title={"Créer le restaurant"}/>              
         </form>
     )
 }
