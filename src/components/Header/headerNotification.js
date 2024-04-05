@@ -2,32 +2,26 @@ import React, {useState, useEffect } from "react";
 import {getTokenFromSessionStorage} from "../../utils/axios";
 import NotificationCard from "../NotificationCard/notificationCard";
 import useNotificationSeen from "../../hooks/data/post/useNotificationSeen";
+import useWebSocket from "../../hooks/useWebSocket";
 
+
+   
 const HeaderNotification = ({role}) => {
+    const{socket}=useWebSocket("/order/notification");
     const [numberNotif, setNumberNotif] = useState(0)
     const [tabNotif, setTabNotif] = useState()
     const{handleSubmit}=useNotificationSeen();
-    const websocketUrl = `ws://app.localhost/order/notification?socketToken=${getTokenFromSessionStorage()}`; // Modifier l'url pour la vrai
-    const socketNotif = new WebSocket(websocketUrl)
     
     useEffect(() => {
-        socketNotif.onopen = function (event) {
-            console.log('Connexion établie à la socket des notification.');
-          };
-        socketNotif.onmessage = function(event) {  // todo : mettre à jour la socket (prendre en compte les erreurs de retour)
+        socket.onmessage = function(event) { 
             try{
                 const dataWebSocket = JSON.parse(event.data);
                 setNumberNotif(dataWebSocket.length)
                 setTabNotif(dataWebSocket)
-
             } catch(error) {
                 console.log(error)
             }
             };
-        socketNotif.onerror = function (error) {
-            console.error('Erreur de connexion:', error);
-        };
-
         return () => {
             socketNotif.close();
         };
