@@ -17,6 +17,26 @@ const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, resta
     }
     
     const {articlesData, isLoadingArticles, maxPageArticles} = useGetAllArticlesFromRestaurant(restaurantId,paginationArticles);
+    
+    const articlesList = articlesData ? 
+        articlesData.map((article, index) =>(
+            <BrandCard 
+                image={article.image}
+                name={article.name}
+                price={article.price}
+                id={article._id}
+                key={index}
+            >
+                <AddNumberButton 
+                    handleOnChange={handleOnChange} 
+                    value={article._id} 
+                    numberOfArticle={submissionTunnelFormListArticle.filter(id => id === article._id).length}
+                    type="articles"
+                />
+            </BrandCard>))
+        :
+        <p>Aucun article</p> 
+    
     return(
         <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
@@ -27,28 +47,14 @@ const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, resta
             {isLoadingArticles ?
                 <Loader/>
                 :
-                articlesData && articlesData.map((article, index) =>(
-                    <BrandCard 
-                        image={article.image}
-                        name={article.name}
-                        price={article.price}
-                        id={article._id}
-                        key={index}
-                    >
-                        <AddNumberButton 
-                            handleOnChange={handleOnChange} 
-                            value={article._id} 
-                            numberOfArticle={submissionTunnelFormListArticle.filter(id => id === article._id).length}
-                            type="articles"
-                        />
-                    </BrandCard>
-                ))}
-                <Pagination 
+                articlesList
+                }
+                {articlesData && <Pagination 
                     pagination={paginationArticles} 
                     handleSetPagination={handleSetPagination}
                     maxPagination={maxPageArticles}
                     type={"articles"}
-                />
+                />}
            
             </div>
         </div>

@@ -34,9 +34,13 @@ const CreateRestaurantForm = () => {
     return (
         <form action="#" method="POST" onSubmit={(e) => handleSubmit(e, imageValue)}>
             {alertBanner && alertBanner}
-            <TitleFade title={"Création de votre restaurant"}/>
-            {inputs}  
-            <ButtonValidationForm isLoading={isLoading} title={"Créer le restaurant"}/>              
+            <div className="border-b border-gray-900/10 pb-2">
+                <TitleFade title={"Création de votre restaurant"}/>
+                {inputs}  
+            </div>
+            <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
+                <ButtonValidationForm isLoading={isLoading} title={"Créer le restaurant"}/>              
+            </div>
         </form>
     )
 }

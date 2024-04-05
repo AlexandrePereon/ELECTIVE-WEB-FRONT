@@ -33,7 +33,7 @@ const Router = () => {
         <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
         <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
         <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
-        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+        <Route path="/commercial-tableau-de-bord/" element={<MarketingHomePage/>} />
         <Route path="/restaurants" element={<RestaurantsSelectionPage/>} />
        
         {/* DELIVERY ROUTES */}

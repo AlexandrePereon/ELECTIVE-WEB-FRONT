@@ -5,9 +5,14 @@ import Graph from "../../components/Graph/graph";
 import Statistic from "../../components/Statistic/statistic";
 import {getTokenFromSessionStorage} from "../../utils/axios";
 import useAuthentication from "../../hooks/useAuthentication";
+import Tab from "../../components/Tab/tab";
 
 const MarketingHomePage = () => {
-    
+    const [steps, setSteps] = useState(0);
+    const handleOnSwitchSteps = (value) => {
+      steps(value);
+    }
+
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
     const [stats, setStats] = useState([])
@@ -43,11 +48,20 @@ const MarketingHomePage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <h1>Accueil Marketing</h1>
-
-            <Graph dailySummary={dailySummary}/>
-
-            <Statistic stats={stats}/>
+            <Tab 
+              steps={steps} 
+              partsName={["Tableau de bord","Gestion des comptes"]} 
+              handleOnSwitchSteps={handleOnSwitchSteps}
+            />
+            { steps === 1 ?
+              <Fragment>
+                <h1>Accueil Marketing</h1>
+                <Graph dailySummary={dailySummary}/>
+                <Statistic stats={stats}/>
+              </Fragment>
+            :
+              <h1>Gestion</h1>
+            }
 
             <Footer/>
         </Fragment>
