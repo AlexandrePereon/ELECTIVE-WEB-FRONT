@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/homePage";
 import ProductPage from "../pages/productPage";
 import Error404 from "../pages/error404";
-import SubmissionTunnel from "../components/SubmissionTunnel/submissionTunnel";
 import AddProductPage from "../pages/RestaurantPages/addProductPage";
 import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
 import UserHomePage from "../pages/ClientPages/userHomePage";

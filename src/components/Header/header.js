@@ -6,6 +6,7 @@ import ConnexionButton from "../ConnexionButton/connexionButton";
 import logo from "../../assets/images/logoCesiEats.png"
 import useLogOut from "../../hooks/useLogOut";
 import HeaderNotification from "./headerNotification";
+import { userHeader, restaurantHeader, deliverymanHeader, developerHeader, marketingHeader, technicalHeader } from "./headerContent";
 
 const Header = ({role}) => {
   const [isSelected, setIsSelected] = useState(false);
@@ -20,17 +21,33 @@ const Header = ({role}) => {
     navigate('/login');
   }
 
-  const menuTab = [
-    {
-      title : "Mon compte",
-      link : "/mon-compte"
-    },
-    {
-      title : "Les restaurants",
-      link : "/restaurants"
-    }]
+  let menuTab = [];
 
-  const menu = menuTab.map((menu,index)=>{
+  switch (role) {
+    case "user":
+      menuTab = userHeader;
+      break;
+    case "restaurant":
+      menuTab = restaurantHeader;
+    break;
+    case "deliveryman":
+      menuTab = deliverymanHeader;
+    break;
+    case "developer":
+      menuTab = developerHeader;
+    break;
+    case "marketing":
+      menuTab = marketingHeader;
+    break;
+    case "technical":
+      menuTab = technicalHeader;
+    break;
+    default:
+      menuTab = [];
+      break;
+  }
+
+  const menu = menuTab && menuTab.map((menu,index)=>{
     return (
       <li className={`relative max-w-fit pr-3 md:pr-0 py-1 ${isSelected && "absolute h-1 bottom-0 left-0  hover:w-full transition-all duration-300"}`} key={index}>
         <Link to={menu.link}>
@@ -65,14 +82,14 @@ const Header = ({role}) => {
               <Fragment>
                  <ConnexionButton
                     handleOnClick={logout}
-                    title={"Log out"}
+                    title={"Déconnexion"}
                  />
                 <HeaderProfile isSelected={isSelected} handleSetIsSelected={handleSetIsSelected}/>
                 </Fragment>
               :
               <ConnexionButton
                 handleOnClick={login}
-                title={"Log in"}
+                title={"Connexion"}
               />
             }
           </div>
