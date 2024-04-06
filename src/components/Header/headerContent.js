@@ -16,7 +16,11 @@ export const restaurantHeader = [
     {
       title : "Ajout de produits",
       link : "/restaurant-accueil/soumission"
-}];
+    },
+    {
+        title : "Tableau de bord",
+        link : "/restaurant-accueil/tableau-de-bord"
+    }];
 
 export const deliverymanHeader = [
     {
@@ -40,8 +44,12 @@ export const marketingHeader = [
       link : "/mon-compte"
     },
     {
-      title : "Les restaurants",
-      link : "/restaurants"
+      title : "Tableau de bord",
+      link : "/commercial-tableau-de-bord/"
+    },
+    {
+      title : "Gestion des comptes",
+      link : "/commercial-tableau-de-bord/gestion-comptes"
 }];
 
 export const technicalHeader = [

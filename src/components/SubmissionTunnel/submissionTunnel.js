@@ -8,6 +8,7 @@ import Loader from "../../components/Loader/loader";
 import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
 import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
 import productFormData from "../../formData/productFormData";
+import ButtonValidationForm from "../ButtonValidationForm/buttonValidationForm";
 
 const SubmissionTunnel = ({restaurantId}) => {
     const [steps, setSteps] = useState(0);
@@ -70,7 +71,15 @@ const SubmissionTunnel = ({restaurantId}) => {
                 }
             break;
             default:
-                input = <Input title={item.title[steps]} handleOnChange={handleInputChange} id={item.id} type={item.type} size={item.size} key={index}/>
+                input = 
+                    <Input 
+                        title={item.title[steps]} 
+                        handleOnChange={handleInputChange} 
+                        id={item.id} 
+                        type={item.type} 
+                        size={item.size}
+                        key={index}
+                    />
             break;
         }
         return input;
@@ -98,15 +107,13 @@ const SubmissionTunnel = ({restaurantId}) => {
         <form onSubmit={(e)=>submitRestaurantProduct(steps, e)}>
             {alertBanner && alertBanner}
             <Tab steps={steps} partsName={['Ajouter Article','Ajouter Menu']} handleOnSwitchSteps={handleOnSwitchSteps}/>
-            <TitleFade title={steps === 0 ? 'Ajouter Article' : 'Ajouter Menu'}/>
-            {submissionTunnelFormInput}
-            <button
-            type="submit"
-            className="rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            disabled={isLoading}
-            >
-            {isLoading ? <Loader/> : 'Save'} 
-            </button>
+            <div className="border-b border-gray-900/10 pb-2">
+                <TitleFade title={steps === 0 ? 'Ajouter Article' : 'Ajouter Menu'}/>
+                {submissionTunnelFormInput}
+            </div>
+            <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
+                {isLoading ? <Loader/> : <ButtonValidationForm title="Ajouter" isLoading={isLoading} size={"w-small"}/>} 
+            </div>
         </form>
     )
 }

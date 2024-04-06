@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
+import useAuthentication from "../../useAuthentication";
 /**
  * Hook create restaurant.
  * 
@@ -13,6 +14,8 @@ const usePostRestaurant = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
+    const {updateRestaurantIdInSessionStorage} = useAuthentication();
+
     const handleSubmit = async (e, imageValue) => {
         e.preventDefault();
         setIsLoading(false);
@@ -24,6 +27,7 @@ const usePostRestaurant = () => {
             if (response) {
                 setMessage({ code: response.status, description: response.data.message });
                 setIsLoading(false);
+                updateRestaurantIdInSessionStorage(response.data.id)
                 window.location.href = '/restaurant-accueil';
             }
         } catch (error) {

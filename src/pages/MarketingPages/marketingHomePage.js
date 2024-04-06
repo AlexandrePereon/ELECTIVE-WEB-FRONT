@@ -4,9 +4,14 @@ import Footer from "../../components/Footer/footer";
 import Graph from "../../components/Graph/graph";
 import Statistic from "../../components/Statistic/statistic";
 import useAuthentication from "../../hooks/useAuthentication";
+import Tab from "../../components/Tab/tab";
 import useWebSocket from "../../hooks/useWebSocket";
 
 const MarketingHomePage = () => {
+    const [steps, setSteps] = useState(0);
+    const handleOnSwitchSteps = (value) => {
+      setSteps(value);
+    }
     const{socket}=useWebSocket("/order/marketing");
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
@@ -32,11 +37,20 @@ const MarketingHomePage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <h1>Accueil Marketing</h1>
-
-            <Graph dailySummary={dailySummary}/>
-
-            <Statistic stats={stats}/>
+            <Tab 
+              steps={steps} 
+              partsName={["Tableau de bord","Gestion des comptes"]} 
+              handleOnSwitchSteps={handleOnSwitchSteps}
+            />
+            { steps === 0 ?
+              <Fragment>
+                <h1>Accueil Marketing</h1>
+                <Graph dailySummary={dailySummary}/>
+                <Statistic stats={stats}/>
+              </Fragment>
+            :
+              <h1>Gestion</h1>
+            }
 
             <Footer/>
         </Fragment>

@@ -21,19 +21,21 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
         case "textarea":
             input=<textarea 
             type={type}
+            disabled={isDisable || false}
+            defaultValue={defaultValue}
             name={id}
             id={id}
             autoComplete={title}
             placeholder={title}
             onChange={(e)=>{handleOnChange && handleOnChange(e.target.value ,id)}}
-            className={`textarea text-black p-2 block bg-white ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}/>
+            className={`${isDisable ? "bg-light-grey" : "bg-white"}  text-black p-2 block ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}/>
             break;
         case "select":
             input=<select
                     name={id}
                     id={id}
                     autoComplete="Nom du rôle"
-                    className="p-2 block text-black bg-white ${size} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="p-2 block text-black bg-white rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     >
                         {options.map((option, index)=><option value={option.value} key={index}>{option.name}</option>)}
                     </select>

@@ -1,3 +1,5 @@
+import React, {useEffect, useState} from "react";
+
 /**
  * Hook authentication data.
  * 
@@ -20,7 +22,17 @@ const useAuthentication = () => {
         sessionStorage.setItem('refreshToken', refreshToken);
       };
 
-     return { saveUserDataToSessionStorage, getUserInfosFromSessionStorage }
+    
+    const [userInfos, setUserInfos] = useState(getUserInfosFromSessionStorage());
+    const updateRestaurantIdInSessionStorage = (restaurantId) => {
+      setUserInfos(prevState => ({...prevState, restaurantId : restaurantId}));
+    }
+
+    useEffect(()=>{
+      sessionStorage.setItem('userInfos', JSON.stringify(userInfos));
+    },[userInfos])
+
+     return { saveUserDataToSessionStorage, getUserInfosFromSessionStorage, updateRestaurantIdInSessionStorage }
 }
 
 export default useAuthentication;

@@ -16,6 +16,8 @@ import MyAccountPage from "../pages/myAccountPage";
 import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
 import SignupPage from "../pages/signupPage";
 import LoginPage from "../pages/loginPage";
+import ProtectedRoute from "./protectedRoute";
+import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
 
 const Router = () => {
   return (
@@ -28,33 +30,80 @@ const Router = () => {
         <Route path="" element={<HomePage />} />
 
         {/* CLIENT ROUTES */}
-        <Route path="/product" element={<ProductPage/>} />
-        <Route path="/user-accueil" element={<UserHomePage/>} />
-        <Route path="/restaurant-accueil" element={<RestaurantHomePage/>} />
-        <Route path="/deleveryman-accueil" element={<DeliverymanHomePage/>} />
-        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
-        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
-        <Route path="/restaurants" element={<RestaurantsSelectionPage/>} />
+        <Route path="/user-accueil" element={
+          <ProtectedRoute allowedRoles={['user']}>
+            <UserHomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/user-accueil/restaurants" element={
+          <ProtectedRoute allowedRoles={['user']}>
+            <RestaurantsSelectionPage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/user-accueil/restaurant/:id?" element={<RestaurantPage/>} />
        
         {/* DELIVERY ROUTES */}
-        <Route path="/deliveryman-accueil" element={<DeliverymanHomePage/>} />
-        <Route path="/deliveryman-accueil/mes-courses" element={<DeliverymanMyDeliveriesPage/>} />
+        <Route path="/deliveryman-accueil" element={
+          <ProtectedRoute allowedRoles={['deliveryman']}>
+            <DeliverymanHomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/deliveryman-accueil/mes-courses" element={
+          <ProtectedRoute allowedRoles={['deliveryman']}>
+            <DeliverymanMyDeliveriesPage/>
+          </ProtectedRoute>
+        } />
 
 
         {/* RESTAURANT ROUTES */}
-        <Route path="/restaurant-accueil/soumission" element={<AddProductPage/>} />
-        <Route path="/restaurant-accueil/creation_restaurant" element={<CreateRestaurantPage/>} />
-        <Route path="/restaurant-accueil/restaurant/:id?" element={<RestaurantPage/>} />
+        <Route path="/restaurant-accueil" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <RestaurantHomePage/>
+          </ProtectedRoute>
+        }/>
+        <Route path="/restaurant-accueil/soumission" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <AddProductPage/>
+          </ProtectedRoute>
+        }/>
+        <Route path="/restaurant-accueil/creation_restaurant" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <CreateRestaurantPage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/restaurant-accueil/modification-article/:id" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <ModificationProductPage elementType="article" />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/restaurant-accueil/modification-menu/:id" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <ModificationProductPage elementType="menu" />
+          </ProtectedRoute>
+        } />
         
         {/* COMMONS ROUTES */}
-        <Route path="/mon-compte" element={<MyAccountPage/>} />
+        <Route path="/mon-compte" element={
+          <ProtectedRoute allowedRoles={['user', 'restaurant', 'deliveryman', 'developer', 'marketing', 'technical']}>
+            <MyAccountPage/>
+          </ProtectedRoute>
+        } />
 
 
         {/* DEVELOPPER ROUTES */}
-        <Route path="/developper-accueil" element={<DevelopperHomePage/>} />
+        <Route path="/developper-accueil" element={
+        <ProtectedRoute allowedRoles={['developper']}>
+                  <DevelopperHomePage/>
+        </ProtectedRoute>
+        } />
         
         {/* MARKETING ROUTES */}
-        <Route path="/marketing-accueil" element={<MarketingHomePage/>} />
+        <Route path="/marketing-accueil" element={
+          <ProtectedRoute allowedRoles={['marketing']}>
+            <MarketingHomePage/>
+          </ProtectedRoute>
+        } />
 
       </Routes>
     </BrowserRouter>

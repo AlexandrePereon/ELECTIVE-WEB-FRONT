@@ -1,9 +1,9 @@
 
 import React,{useState} from 'react';
 
-const FileUploader = ({handleOnChange, id}) => {
+const FileUploader = ({imagePreviewModification, handleOnChange, id}) => {
 
-    const [base64Image, setBase64Image] = useState('');
+    const [base64Image, setBase64Image] = useState(imagePreviewModification || '');
 
     const handleImageChange = (event, id) => {
     const file = event.target.files[0];
