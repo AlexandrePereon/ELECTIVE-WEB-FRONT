@@ -6,7 +6,7 @@ import ButtonValidationForm from "../ButtonValidationForm/buttonValidationForm";
 
 
 const ModificationProductForm = ({restaurantId, productData, formData, handleSetImageValue, handleSubmit, imageValue}) => {
-    const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState(productData?.articles.map(article => article._id))
+    const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState(productData?.articles?.map(article => article._id))
 
     const handleListArticleChange = (value, type, action) => {
         if (action === "add" && type==="articles"){

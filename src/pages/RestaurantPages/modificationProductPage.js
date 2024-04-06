@@ -11,6 +11,7 @@ import useGetArticleById from "../../hooks/data/get/useGetArticleById";
 import useModifiedArticle from "../../hooks/data/post/useModifiedArticle";
 import useGetMenuById from "../../hooks/data/get/useGetMenuById";
 import useModifiedMenu from "../../hooks/data/post/useModifiedMenu";
+import TitleFade from "../../components/TitleFade/titleFade";
 
 
 const ModificationProductPage = ({elementType}) => {
@@ -37,8 +38,6 @@ const ModificationProductPage = ({elementType}) => {
         productData = articleData;
         handleSubmit = handleSubmitArticleModification;
     }
-
-    console.log(productData?.image)
     
     const [imageValue, setImageValue] = useState(productData?.image);
     const handleSetImageValue = (value) => {
@@ -48,16 +47,19 @@ const ModificationProductPage = ({elementType}) => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            {isLoadingArticle || isLoadingMenu ? <Loader/>:
-            <ModificationProductForm 
-                formData={form} 
-                productData={productData} 
-                restaurantId={userInfos?.restaurantId}
-                handleSetImageValue={handleSetImageValue}
-                handleSubmit={handleSubmit}
-                imageValue={imageValue}
-                productId={id}
-            />}
+            <div className="sm:w-page m-auto pb-10">
+                <TitleFade title={`Modification d'un ${elementType}`}/>
+                {isLoadingArticle || isLoadingMenu ? <Loader/>:
+                <ModificationProductForm 
+                    formData={form} 
+                    productData={productData} 
+                    restaurantId={userInfos?.restaurantId}
+                    handleSetImageValue={handleSetImageValue}
+                    handleSubmit={handleSubmit}
+                    imageValue={imageValue}
+                    productId={id}
+                />}
+            </div>
             <Footer/>
         </Fragment>
     )

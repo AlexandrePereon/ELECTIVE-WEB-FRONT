@@ -37,12 +37,6 @@ const MyProductsAccountForm = ({productData,handleDelete, pagination, maxPage, t
                     </button>
                 </form>
             </BrandCard>
-            <Pagination 
-                pagination={pagination} 
-                handleSetPagination={handleSetPagination}
-                maxPagination={maxPage}
-                type={type}
-            />
         </Fragment>)
     })        
     
@@ -51,6 +45,12 @@ const MyProductsAccountForm = ({productData,handleDelete, pagination, maxPage, t
             {/* {alertBanner && alertBanner} */}
             <TitleFade title={`Espace modification ${type}`}/>
             {productsList}
+            <Pagination 
+                pagination={pagination} 
+                handleSetPagination={handleSetPagination}
+                maxPagination={maxPage}
+                type={type}
+            />
         </Fragment>
     );
 }
