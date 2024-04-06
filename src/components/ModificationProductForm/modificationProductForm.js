@@ -6,9 +6,9 @@ import ButtonValidationForm from "../ButtonValidationForm/buttonValidationForm";
 
 
 const ModificationProductForm = ({restaurantId, productData, formData, handleSetImageValue, handleSubmit, imageValue}) => {
+    const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState(productData?.articles.map(article => article._id))
 
-    const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState([])
-    const handleListArticleChange = (value,type, action) => {
+    const handleListArticleChange = (value, type, action) => {
         if (action === "add" && type==="articles"){
             setSubmissionTunnelFormListArticle(prevList => [...prevList, value]);
         } else if (action === "remove" && type==="articles"){
@@ -61,7 +61,7 @@ const ModificationProductForm = ({restaurantId, productData, formData, handleSet
     })
 
     return (
-            <form onSubmit={(e)=>handleSubmit(e, productData._id, imageValue)} className="border-b border-gray-900/10 pb-2">
+            <form onSubmit={(e)=>handleSubmit(e, productData._id, imageValue, submissionTunnelFormListArticle)} className="border-b border-gray-900/10 pb-2">
                 {/* {alertBanner && alertBanner} */}
                 {modificationProductFormInput}
                 <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">

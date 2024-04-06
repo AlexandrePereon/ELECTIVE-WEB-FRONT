@@ -6,7 +6,7 @@ const useModifiedMenu = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleSubmit = async (e, menuId, imageValue) => {
+    const handleSubmit = async (e, menuId, imageValue, articlesList) => {
         e.preventDefault();
         setIsLoading(true);
         try {
@@ -14,6 +14,7 @@ const useModifiedMenu = () => {
                 name : e.target.elements.name.value ,
                 image : imageValue,
                 description : e.target.elements.description.value,
+                articles : articlesList,
                 price : e.target.elements.price.value
             });
             if (response) {

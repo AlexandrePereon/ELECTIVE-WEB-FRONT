@@ -17,7 +17,6 @@ const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, resta
     }
     
     const {articlesData, isLoadingArticles, maxPageArticles} = useGetAllArticlesFromRestaurant(restaurantId,paginationArticles);
-    
     const articlesList = articlesData ? 
         articlesData.map((article, index) =>(
             <BrandCard 

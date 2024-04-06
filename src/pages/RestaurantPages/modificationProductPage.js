@@ -37,8 +37,10 @@ const ModificationProductPage = ({elementType}) => {
         productData = articleData;
         handleSubmit = handleSubmitArticleModification;
     }
+
+    console.log(productData?.image)
     
-    const [imageValue, setImageValue] = useState(productData && productData.image);
+    const [imageValue, setImageValue] = useState(productData?.image);
     const handleSetImageValue = (value) => {
         setImageValue(value)
     }
