@@ -10,7 +10,7 @@ import Tab from "../../components/Tab/tab";
 const MarketingHomePage = () => {
     const [steps, setSteps] = useState(0);
     const handleOnSwitchSteps = (value) => {
-      steps(value);
+      setSteps(value);
     }
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
@@ -53,7 +53,7 @@ const MarketingHomePage = () => {
               partsName={["Tableau de bord","Gestion des comptes"]} 
               handleOnSwitchSteps={handleOnSwitchSteps}
             />
-            { steps === 1 ?
+            { steps === 0 ?
               <Fragment>
                 <h1>Accueil Marketing</h1>
                 <Graph dailySummary={dailySummary}/>
