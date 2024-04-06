@@ -16,7 +16,7 @@ const useAuthentication = () => {
     };
   
     const saveUserDataToSessionStorage = (token, userInfos, refreshToken) => {
-        let dateExpiration = new Date().getTime() + (60 * 60 * 1000);
+        let dateExpiration = new Date().getTime() + (15 * 60 * 1000);
         sessionStorage.setItem('token', JSON.stringify({ valeur: token, expiration: dateExpiration }));
         sessionStorage.setItem('userInfos', JSON.stringify(userInfos));
         sessionStorage.setItem('refreshToken', refreshToken);

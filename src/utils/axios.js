@@ -20,6 +20,7 @@ const getTokenFromSessionStorage = () => {
 
 const axiosReq = axios.create({baseURL: "http://app.localhost"});
 let refreshTokenRequest = null;
+const {logout} = useLogOut();
 
 axiosReq.interceptors.request.use(
   (config) => {
@@ -36,9 +37,9 @@ axiosReq.interceptors.request.use(
       
 axiosReq.interceptors.response.use(
   (response) => response,
-  async (error) => {
-    const {logout} = useLogOut();
+  async (error) => {  
     const originalRequest = error.config;
+    console.log(originalRequest)
     if (error.response.status === 401 && !originalRequest._retry) {
       if (!refreshTokenRequest) {
         refreshTokenRequest = axiosReq.post('/auth/refresh', {
@@ -48,19 +49,19 @@ axiosReq.interceptors.response.use(
 
       try {
         const response = await refreshTokenRequest;
-        const Token = response.data.accessToken;
-        let dateExpiration = new Date().getTime() + (60 * 60 * 1000);
+        const Token = response.data.token;
+        let dateExpiration = new Date().getTime() + (15 * 60 * 1000);
         sessionStorage.setItem('token', JSON.stringify({ valeur: Token, expiration: dateExpiration }));
         originalRequest.headers.Authorization = `${Token}`;
         return axiosReq(originalRequest);
       } catch (refreshError) {
-          logout();
         console.error('Erreur lors du rafraîchissement du jeton :', refreshError);
-          logout();
+        logout();
       } finally {
         refreshTokenRequest = null;
       }
     }
+
     return Promise.reject(error);
   }
 );
