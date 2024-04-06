@@ -6,9 +6,11 @@ import ModificationProductForm from "../../components/ModificationProductForm/mo
 import articleFormData from "../../formData/articleFormData";
 import menuFormData from "../../formData/menuFormData";
 import { useParams } from "react-router";
-import useGetArticleById from "../../hooks/data/get/useGetArticleById";
 import Loader from "../../components/Loader/loader";
+import useGetArticleById from "../../hooks/data/get/useGetArticleById";
 import useModifiedArticle from "../../hooks/data/post/useModifiedArticle";
+import useGetMenuById from "../../hooks/data/get/useGetMenuById";
+import useModifiedMenu from "../../hooks/data/post/useModifiedMenu";
 
 
 const ModificationProductPage = ({elementType}) => {
@@ -18,13 +20,18 @@ const ModificationProductPage = ({elementType}) => {
 
     
     const {articleData, isLoadingArticle}=useGetArticleById(id) 
-    const { handleSubmitArticleModification, isLoading, alertBanner } = useModifiedArticle();
+    const { handleSubmitArticleModification } = useModifiedArticle();
+
+    const {menuData, isLoadingMenu}=useGetMenuById(id) 
+    const { handleSubmitMenuModification } = useModifiedMenu();
 
     let form = null;
     let productData = null;
     let handleSubmit = null;
     if (elementType=== "menu") {
         form = menuFormData
+        productData = menuData;
+        handleSubmit = handleSubmitMenuModification;
     }else{
         form = articleFormData;
         productData = articleData;
@@ -39,7 +46,7 @@ const ModificationProductPage = ({elementType}) => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            {isLoadingArticle ? <Loader/>:
+            {isLoadingArticle || isLoadingMenu ? <Loader/>:
             <ModificationProductForm 
                 formData={form} 
                 productData={productData} 

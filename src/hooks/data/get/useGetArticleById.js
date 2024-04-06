@@ -7,7 +7,7 @@ const useGetArticleById = (articleID) => {
     const [isLoadingArticle, setIsLoadingArticle] = useState(false);   
 
     useEffect(() => {
-        const getAllArticlesFromRestaurant = async (articleID) => {
+        const getArticleById = async (articleID) => {
             setIsLoadingArticle(true);
             try {
                 const response = await axiosReq.get(`/restaurant/article/${articleID}`);
@@ -20,7 +20,7 @@ const useGetArticleById = (articleID) => {
             }
         };
 
-        getAllArticlesFromRestaurant(articleID);
+        getArticleById(articleID);
     }, [articleID]);
 
     return {articleData, isLoadingArticle};
