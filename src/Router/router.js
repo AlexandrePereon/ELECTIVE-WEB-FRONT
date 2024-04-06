@@ -17,6 +17,7 @@ import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
 import SignupPage from "../pages/signupPage";
 import LoginPage from "../pages/loginPage";
 import ProtectedRoute from "./protectedRoute";
+import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
 
 const Router = () => {
   return (
@@ -68,6 +69,17 @@ const Router = () => {
         <Route path="/restaurant-accueil/creation_restaurant" element={
           <ProtectedRoute allowedRoles={['restaurant']}>
             <CreateRestaurantPage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/restaurant-accueil/modification-article/:id" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <ModificationProductPage elementType="article" />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/restaurant-accueil/modification-menu/:id" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <ModificationProductPage elementType="menu" />
           </ProtectedRoute>
         } />
         
