@@ -23,7 +23,7 @@ const HeaderNotification = ({role}) => {
             }
             };
         return () => {
-            socketNotif.close();
+            socket.close();
         };
       }, []); 
 
