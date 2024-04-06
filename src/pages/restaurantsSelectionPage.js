@@ -44,7 +44,7 @@ const RestaurantsSelectionPage = () => {
                     image={item.image}
                     key={index}
                     >
-                        <Link to={`/restaurant-accueil/restaurant/${item._id}`}>voir plus</Link>
+                        <Link to={`/user-accueil/restaurant/${item._id}`}>voir plus</Link>
                     </Card>)} 
             </CardList>
         </Fragment>

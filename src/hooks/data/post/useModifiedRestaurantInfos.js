@@ -6,11 +6,11 @@ const useModifiedRestaurantInfos = () => {
     const [isLoadingModificationRestaurantInfos, setisLoadingModificationRestaurantInfos] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleSubmit = async (e, restaurantId, imageValue) => {
+    const handleSubmit = async (e, imageValue) => {
         e.preventDefault();
         setisLoadingModificationRestaurantInfos(true);
         try {
-            const response = await axiosReq.put(`/restaurant/${restaurantId}`, {
+            const response = await axiosReq.put(`/restaurant/`, {
                 name : e.target.elements.name.value ,
                 image : imageValue,
                 description : e.target.elements.description.value,

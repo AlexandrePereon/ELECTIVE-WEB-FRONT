@@ -6,15 +6,16 @@ import useAuthentication from "../../hooks/useAuthentication";
 import ProductRestaurantForm from "../../components/ProductRestaurantForm/productRestaurantForm";
 import useGetRestaurantById from "../../hooks/data/get/useGetRestaurantById";
 import Loader from "../../components/Loader/loader";
+import { useParams } from "react-router";
 
 const RestaurantPage = () => {
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
 
-    const restaurantId = window.location.href.split('restaurant-accueil/restaurant/')[1];
+    const {id}=useParams();
 
-    const {restaurantData, isLoading} = useGetRestaurantById(restaurantId && restaurantId);
+    const {restaurantData, isLoading} = useGetRestaurantById(id);
 
     console.log(restaurantData)
 
@@ -30,7 +31,7 @@ const RestaurantPage = () => {
                 </div>
                 <div className="sm:w-page m-auto pb-10">
                     <TitleFade title={restaurantData.name}/>
-                    <ProductRestaurantForm restaurantId={restaurantId}/> 
+                    <ProductRestaurantForm restaurantId={id}/> 
                 </div>
                 
             </Fragment>  

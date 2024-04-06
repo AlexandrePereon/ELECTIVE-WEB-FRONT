@@ -5,7 +5,7 @@ export const userHeader = [
     },
     {
       title : "Les restaurants",
-      link : "/restaurants"
+      link : "/user-accueil/restaurants"
 }];
 
 export const restaurantHeader = [
