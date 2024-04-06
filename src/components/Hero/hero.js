@@ -6,7 +6,7 @@ const Hero = () => {
     return(
         <div className="hero min-h-screen bg-light-grey">
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={photoHero} alt="" className="max-w-sm rounded-lg shadow-2xl" />
+                <img src={photoHero} alt="" className="sm:max-w-sm rounded-lg shadow-2xl" />
                 <div>
                 <TitleFade title="Bienvenue sur CESI Eats"/>
                 <p className="py-6">Découvrez une palette de saveurs irrésistibles livrées directement chez vous ! Où chaque bouchée est une aventure. Commandez dès maintenant ..</p>

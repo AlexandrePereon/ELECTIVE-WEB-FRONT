@@ -10,10 +10,9 @@ import {axiosReq} from "../../../utils/axios";
  * @returns {object} - 
  */
 const useNotificationSeen = () => {
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const handleSubmit = async () => {
         try {
-            const response = await axiosReq.put("/order/notified" , {})
+            const response = await axiosReq.put("/order/notified")
             if (response) {
               console.log("Notification mis à jour")
             }

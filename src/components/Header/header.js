@@ -68,14 +68,14 @@ const Header = ({role}) => {
           </Link>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center">
           <div className={`navLinks duration-500 absolute md:static md:w-auto w-full md:h-auto h-[85vh] flex md:items-center gap-[1.5vw] top-[100%] left-[-100%] px-5 md:py-0 py-5 z-50 ${isSelected && "left-[0%] bg-white"}`} >
             <ul className="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-8">
                 {menu}
              </ul>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
           { role && <HeaderNotification role={role}/>}
             {
               role ?

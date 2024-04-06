@@ -18,6 +18,7 @@ import SignupPage from "../pages/signupPage";
 import LoginPage from "../pages/loginPage";
 import ProtectedRoute from "./protectedRoute";
 import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
+import DashboardRestaurantPage from "../pages/RestaurantPages/dashboardRestaurantPage";
 
 const Router = () => {
   return (
@@ -40,7 +41,11 @@ const Router = () => {
             <RestaurantsSelectionPage/>
           </ProtectedRoute>
         } />
-        <Route path="/user-accueil/restaurant/:id?" element={<RestaurantPage/>} />
+        <Route path="/user-accueil/restaurant/:id?" element={
+        <ProtectedRoute allowedRoles={['user']}>
+          <RestaurantPage/>
+        </ProtectedRoute>
+        } />
        
         {/* DELIVERY ROUTES */}
         <Route path="/deliveryman-accueil" element={
@@ -76,10 +81,14 @@ const Router = () => {
             <ModificationProductPage elementType="article" />
           </ProtectedRoute>
         } />
-
         <Route path="/restaurant-accueil/modification-menu/:id" element={
           <ProtectedRoute allowedRoles={['restaurant']}>
             <ModificationProductPage elementType="menu" />
+          </ProtectedRoute>
+        } />
+        <Route path="/restaurant-accueil/tableau-de-bord" element={
+          <ProtectedRoute allowedRoles={['restaurant']}>
+            <DashboardRestaurantPage/>
           </ProtectedRoute>
         } />
         
