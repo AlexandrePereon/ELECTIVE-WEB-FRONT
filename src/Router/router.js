@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "../pages/homePage";
-import ProductPage from "../pages/productPage";
 import Error404 from "../pages/error404";
 import AddProductPage from "../pages/RestaurantPages/addProductPage";
 import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
@@ -19,6 +18,7 @@ import LoginPage from "../pages/loginPage";
 import ProtectedRoute from "./protectedRoute";
 import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
 import DashboardRestaurantPage from "../pages/RestaurantPages/dashboardRestaurantPage";
+import HistoryOrderPage from "../pages/historyOrderPage";
 
 const Router = () => {
   return (
@@ -46,16 +46,16 @@ const Router = () => {
           <RestaurantPage/>
         </ProtectedRoute>
         } />
-       
+
         {/* DELIVERY ROUTES */}
         <Route path="/deliveryman-accueil" element={
           <ProtectedRoute allowedRoles={['deliveryman']}>
             <DeliverymanHomePage/>
           </ProtectedRoute>
         } />
-        <Route path="/deliveryman-accueil/mes-courses" element={
+        <Route path="/deliveryman-accueil/espace-livraison" element={
           <ProtectedRoute allowedRoles={['deliveryman']}>
-            <DeliverymanMyDeliveriesPage/>
+            <HistoryOrderPage/>
           </ProtectedRoute>
         } />
 
@@ -92,19 +92,25 @@ const Router = () => {
           </ProtectedRoute>
         } />
         
+
         {/* COMMONS ROUTES */}
         <Route path="/mon-compte" element={
           <ProtectedRoute allowedRoles={['user', 'restaurant', 'deliveryman', 'developer', 'marketing', 'technical']}>
             <MyAccountPage/>
           </ProtectedRoute>
         } />
+        <Route path="/historique-des-commandes" element={
+          <ProtectedRoute allowedRoles={['user','restaurant']}>
+            <HistoryOrderPage/>
+          </ProtectedRoute>
+        } />
 
 
         {/* DEVELOPPER ROUTES */}
         <Route path="/developper-accueil" element={
-        <ProtectedRoute allowedRoles={['developper']}>
-                  <DevelopperHomePage/>
-        </ProtectedRoute>
+          <ProtectedRoute allowedRoles={['developper']}>
+            <DevelopperHomePage/>
+          </ProtectedRoute>
         } />
         
         {/* MARKETING ROUTES */}
