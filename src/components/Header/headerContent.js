@@ -57,11 +57,11 @@ export const marketingHeader = [
     },
     {
       title : "Tableau de bord",
-      link : "/commercial-tableau-de-bord/"
+      link : "/marketing-accueil/tableau-de-bord"
     },
     {
       title : "Gestion des comptes",
-      link : "/commercial-tableau-de-bord/gestion-comptes"
+      link : "/marketing-accueil/gestion-compte"
 }];
 
 export const technicalHeader = [
