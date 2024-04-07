@@ -3,8 +3,9 @@ import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import useAuthentication from "../../hooks/useAuthentication";
 import Hero from "../../components/Hero/hero";
+import TitleFade from "../../components/TitleFade/titleFade";
 
-const DevelopperHomePage = () => {
+const TechnicalHomePage = () => {
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
@@ -13,10 +14,9 @@ const DevelopperHomePage = () => {
         <Fragment>
             <Header role={userInfos?.role}/>
             <Hero/>
-            <h1>Accueil Developper</h1>
             <Footer/>
         </Fragment>
     )
 }
 
-export default DevelopperHomePage;
+export default TechnicalHomePage;

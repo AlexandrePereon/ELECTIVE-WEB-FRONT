@@ -19,6 +19,10 @@ import ProtectedRoute from "./protectedRoute";
 import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
 import DashboardRestaurantPage from "../pages/RestaurantPages/dashboardRestaurantPage";
 import HistoryOrderPage from "../pages/historyOrderPage";
+import DevelopperApiPage from "../pages/DevelopperPages/developperApiPage";
+import ComposantsPage from "../pages/composantsPage";
+import TechnicalHomePage from "../pages/TechnicalPages/technicalHomePage";
+import TechnicalPerformancePage from "../pages/TechnicalPages/technicalPerformancePage";
 
 const Router = () => {
   return (
@@ -104,12 +108,22 @@ const Router = () => {
             <HistoryOrderPage/>
           </ProtectedRoute>
         } />
+        <Route path="/composants" element={
+          <ProtectedRoute allowedRoles={['developer', 'technical']}>
+            <ComposantsPage/>
+          </ProtectedRoute>
+        } />
 
 
         {/* DEVELOPPER ROUTES */}
-        <Route path="/developper-accueil" element={
-          <ProtectedRoute allowedRoles={['developper']}>
+        <Route path="/developer-accueil" element={
+          <ProtectedRoute allowedRoles={['developer']}>
             <DevelopperHomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/mon-api" element={
+          <ProtectedRoute allowedRoles={['developer']}>
+            <DevelopperApiPage/>
           </ProtectedRoute>
         } />
         
@@ -117,6 +131,18 @@ const Router = () => {
         <Route path="/marketing-accueil" element={
           <ProtectedRoute allowedRoles={['marketing']}>
             <MarketingHomePage/>
+          </ProtectedRoute>
+        } />
+
+        {/* TECHNICAL ROUTES */}
+        <Route path="/technical-accueil" element={
+          <ProtectedRoute allowedRoles={['technical']}>
+            <TechnicalHomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/performance" element={
+          <ProtectedRoute allowedRoles={['technical']}>
+            <TechnicalPerformancePage/>
           </ProtectedRoute>
         } />
 
