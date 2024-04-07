@@ -7,6 +7,7 @@ import HistoryOrderSectionInProgress from "../components/HistoryOrderSections/hi
 import HistoryOrderSectionFinished from "../components/HistoryOrderSections/historyOrderSectionFinished";
 import HistoryOrderSectionRequest from "../components/HistoryOrderSections/historyOrderSectionRequest";
 import HistoryOrderSectionFinalization from "../components/HistoryOrderSections/historyOrderSectionFinalization";
+import HistoryOrderSectionToDeliver from "../components/HistoryOrderSections/historyOrderSectionToDeliver";
 
 const HistoryOrderPage = () => {
 
@@ -19,8 +20,9 @@ const HistoryOrderPage = () => {
     let content = null;
     switch (userInfos?.role) {
         case 'user':
-            parts = ['Commandes en cours','Commandes passées']
-            content=[<HistoryOrderSectionInProgress role={userInfos?.role}/>,
+            parts = ['Demande de commandes','Commandes en cours','Commandes passées']
+            content=[<HistoryOrderSectionRequest role={userInfos?.role}/>,
+                    <HistoryOrderSectionInProgress role={userInfos?.role}/>,
                     <HistoryOrderSectionFinished role={userInfos?.role}/>]
 
             break;
@@ -31,8 +33,8 @@ const HistoryOrderPage = () => {
                     <HistoryOrderSectionFinished role={userInfos?.role}/>]
         break;
         case 'deliveryman':
-            parts = ['Demande de commandes','Aquittement de commandes']
-            content=[<HistoryOrderSectionRequest role={userInfos?.role}/>,
+            parts = ['Commandes à livrer','Aquittement de commandes']
+            content=[<HistoryOrderSectionToDeliver role={userInfos?.role}/>,
                     <HistoryOrderSectionFinalization role={userInfos?.role}/>]
         break;
     }
