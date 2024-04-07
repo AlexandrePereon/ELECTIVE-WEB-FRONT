@@ -36,12 +36,8 @@ export const deliverymanHeader = [
       link : "/mon-compte"
     },
     {
-      title : "Livraisons disponibles",
-      link : "/restaurants"
-    },
-    {
       title : "Espace livraison",
-      link : "deliveryman-accueil/espace-livraison"
+      link : "/deliveryman-accueil/espace-livraison"
     }];
 
 export const developerHeader = [
