@@ -26,7 +26,7 @@ const useSignUp = () => {
                 email: e.target.elements.email.value,
                 password: e.target.elements.password.value,
                 role: e.target.elements.role.value,
-                partnerCode : "",
+                partnerCode : e.target.elements.partnerCode.value,
             });
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
