@@ -21,6 +21,7 @@ import DashboardRestaurantPage from "../pages/RestaurantPages/dashboardRestauran
 import HistoryOrderPage from "../pages/historyOrderPage";
 import MarketingDashboardPage from "../pages/MarketingPages/marketingDashboardPage";
 import MarketingAccountManagementPage from "../pages/MarketingPages/marketingAccountManagementPage";
+import MarketingModificationAccountPage from "../pages/MarketingPages/marketingModificationAccountPage";
 
 const Router = () => {
   return (
@@ -129,6 +130,11 @@ const Router = () => {
         <Route path="/marketing-accueil/gestion-compte" element={
           <ProtectedRoute allowedRoles={['marketing']}>
             <MarketingAccountManagementPage/>
+          </ProtectedRoute>
+        }/>
+        <Route path="/marketing-accueil/gestion-compte/modification/:id?" element={
+          <ProtectedRoute allowedRoles={['marketing']}>
+            <MarketingModificationAccountPage/>
           </ProtectedRoute>
         }/>
 
