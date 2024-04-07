@@ -35,6 +35,11 @@ const signUpFormData = [
         value :"technical"}],
     size : "w-medium",
     id : "role"},
+    {
+    title : "Code parrainage",
+    type : "partnerCode",
+    size : "w-medium",
+    id : "partnerCode"},
 ]
 
 export default signUpFormData;

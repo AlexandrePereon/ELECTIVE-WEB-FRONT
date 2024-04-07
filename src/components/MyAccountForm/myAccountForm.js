@@ -78,6 +78,7 @@ const MyAccountForm = ({userInfosData}) => {
                 <div className={isEditable && "border-b border-gray-900/10 pb-2"}>
                     {inputs}
                 </div>
+                {!isEditable && <div>Vous avez parrainé {userInfosData.partnerNumber} personne{userInfosData.partnerNumber>1 && "s"}</div>}
                {isEditable && <div className="mt-6 flex items-center justify-end gap-x-6">
                     <ButtonValidationForm isLoading={isLoadingModificationUserInfos} size={"w-small"} title={"Sauvegarder"}/>
                 </div>}
