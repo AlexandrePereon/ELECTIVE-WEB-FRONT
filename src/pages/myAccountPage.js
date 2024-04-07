@@ -16,8 +16,6 @@ const MyAccountPage = () => {
         setSteps(index)
     }
 
-    console.log(userInfosData)
-
     let form = null;
     switch (steps) {
         case 0:

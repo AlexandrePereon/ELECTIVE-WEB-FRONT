@@ -8,7 +8,6 @@ const RestaurantHomePage = () => {
 
     const {getUserInfosFromSessionStorage}= useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(userInfos)
     return (
         <Fragment>
             <Header role={userInfos?.role}/>

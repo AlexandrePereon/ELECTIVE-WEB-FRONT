@@ -19,7 +19,6 @@ const DashboardRestaurantPage = () => {
       socket.onmessage = function (event) {
         try {
           const dataWebSocket = JSON.parse(event.data);
-          console.log(dataWebSocket)
           setStats(Object.entries(dataWebSocket && dataWebSocket.orderCountsByStatus).map(([cle, valeur]) => ({ status: cle, value: valeur })))
           setDailySummary(dataWebSocket && dataWebSocket.dailySummary)
         } catch (error) {
@@ -30,7 +29,6 @@ const DashboardRestaurantPage = () => {
           socket.close();
         };
       }, []); 
-    console.log(dailySummary)
 
     return (
         <Fragment>
