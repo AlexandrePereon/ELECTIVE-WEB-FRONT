@@ -6,7 +6,11 @@ export const userHeader = [
     {
       title : "Les restaurants",
       link : "/user-accueil/restaurants"
-}];
+    },
+    {
+      title : "Historique des commandes",
+      link : "/historique-des-commandes"
+    }];
 
 export const restaurantHeader = [
     {
@@ -20,6 +24,10 @@ export const restaurantHeader = [
     {
         title : "Tableau de bord",
         link : "/restaurant-accueil/tableau-de-bord"
+    },
+    {
+      title : "Historique des commandes",
+      link : "/historique-des-commandes"
     }];
 
 export const deliverymanHeader = [
@@ -30,7 +38,11 @@ export const deliverymanHeader = [
     {
       title : "Livraisons disponibles",
       link : "/restaurants"
-}];
+    },
+    {
+      title : "Espace livraison",
+      link : "deliveryman-accueil/espace-livraison"
+    }];
 
 export const developerHeader = [
     {
