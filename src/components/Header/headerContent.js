@@ -22,8 +22,8 @@ export const restaurantHeader = [
       link : "/restaurant-accueil/soumission"
     },
     {
-        title : "Tableau de bord",
-        link : "/restaurant-accueil/tableau-de-bord"
+      title : "Tableau de bord",
+      link : "/restaurant-accueil/tableau-de-bord"
     },
     {
       title : "Historique des commandes",

@@ -11,7 +11,7 @@ const useGetAllArticlesFromRestaurant = (restaurantID,pagination) => {
         const getAllArticlesFromRestaurant = async (restaurantID,pagination) => {
             setIsLoadingArticles(true);
             try {
-                const response = await axiosReq.get(`/api/restaurant/${restaurantID}/articles/${pagination}`);
+                const response = await axiosReq.get(`/api-restaurant/${restaurantID}/articles/${pagination}`);
                 if (response) {
                     setMaxPageArticles(response.data.maxPage);
                     setArticlesData(response.data.articles);

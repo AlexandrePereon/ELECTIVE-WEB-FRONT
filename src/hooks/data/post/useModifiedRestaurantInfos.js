@@ -10,7 +10,7 @@ const useModifiedRestaurantInfos = () => {
         e.preventDefault();
         setisLoadingModificationRestaurantInfos(true);
         try {
-            const response = await axiosReq.put(`/api/restaurant/`, {
+            const response = await axiosReq.put(`/api-restaurant/`, {
                 name : e.target.elements.name.value ,
                 image : imageValue,
                 description : e.target.elements.description.value,

@@ -9,7 +9,7 @@ const usePreparedOrder = () => {
     const handlePreparedOrder = async (orderId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put("/api/order/prepared/",{
+            const response = await axiosReq.put("/api-order/prepared/",{
                 orderId : orderId
             });
             if (response) {

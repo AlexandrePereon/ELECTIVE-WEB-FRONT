@@ -1,11 +1,8 @@
-import React,{ Fragment }  from "react";
+import React from "react";
+import DiffText from "../components/DiffText/diffText"; 
 
 const Error404 = () => {
-    return (
-        <Fragment>
-            <h1>404 test</h1>
-        </Fragment>
-    )
+    return (<DiffText/>)
 }
 
 export default Error404;

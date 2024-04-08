@@ -8,7 +8,7 @@ const DiffText = () => {
                 <div className="bg-green-500 text-primary-content text-9xl font-black grid place-content-center">Uber</div>
             </div>
             <div className="diff-item-2">
-                <div className="bg-base-200 text-9xl font-black grid place-content-center">Uber</div>
+                <div className="bg-base-200 text-9xl font-black grid place-content-center">Erreur 404</div>
             </div>
             <div className="diff-resizer"></div>
         </div>

@@ -10,7 +10,7 @@ const useModifiedUserInfos = () => {
         e.preventDefault();
         setIsLoadingModificationUserInfos(true);
         try {
-            const response = await axiosReq.put("/api/auth/update", {
+            const response = await axiosReq.put("/api-auth/update", {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
                 email: e.target.elements.email.value,
