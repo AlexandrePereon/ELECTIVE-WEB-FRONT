@@ -7,7 +7,7 @@ const NotificationCard = ({role, tabNotifications}) => {
     if(tabNotifications) {
         tabNotifs = tabNotifications.map((notif, index) => {
             return(
-                <Notification role={role} description={notif.message} isSeen={notif.seen} key={index}/>
+                <Notification description={notif.message} isSeen={notif.seen} key={index}/>
             );
         });
     } else {
