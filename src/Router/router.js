@@ -9,7 +9,6 @@ import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
 import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
 import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
 import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
-import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMyDeliveriesPage";
 import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
 import MyAccountPage from "../pages/myAccountPage";
 import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
@@ -19,6 +18,9 @@ import ProtectedRoute from "./protectedRoute";
 import ModificationProductPage from "../pages/RestaurantPages/modificationProductPage";
 import DashboardRestaurantPage from "../pages/RestaurantPages/dashboardRestaurantPage";
 import HistoryOrderPage from "../pages/historyOrderPage";
+import MarketingDashboardPage from "../pages/MarketingPages/marketingDashboardPage";
+import MarketingAccountManagementPage from "../pages/MarketingPages/marketingAccountManagementPage";
+import MarketingModificationAccountPage from "../pages/MarketingPages/marketingModificationAccountPage";
 import DevelopperApiPage from "../pages/DevelopperPages/developperApiPage";
 import ComposantsPage from "../pages/composantsPage";
 import TechnicalHomePage from "../pages/TechnicalPages/technicalHomePage";
@@ -132,8 +134,22 @@ const Router = () => {
           <ProtectedRoute allowedRoles={['marketing']}>
             <MarketingHomePage/>
           </ProtectedRoute>
-        } />
-
+        }/>
+        <Route path="/marketing-accueil/tableau-de-bord" element={
+          <ProtectedRoute allowedRoles={['marketing']}>
+            <MarketingDashboardPage/>
+          </ProtectedRoute>
+        }/>
+        <Route path="/marketing-accueil/gestion-compte" element={
+          <ProtectedRoute allowedRoles={['marketing']}>
+            <MarketingAccountManagementPage/>
+          </ProtectedRoute>
+        }/>
+        <Route path="/marketing-accueil/gestion-compte/modification/:id?" element={
+          <ProtectedRoute allowedRoles={['marketing']}>
+            <MarketingModificationAccountPage/>
+          </ProtectedRoute>
+        }/>
         {/* TECHNICAL ROUTES */}
         <Route path="/technical-accueil" element={
           <ProtectedRoute allowedRoles={['technical']}>
@@ -145,7 +161,6 @@ const Router = () => {
             <TechnicalPerformancePage/>
           </ProtectedRoute>
         } />
-
       </Routes>
     </BrowserRouter>
   );
