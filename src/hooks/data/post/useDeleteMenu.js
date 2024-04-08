@@ -9,7 +9,7 @@ const useDeleteMenu = () => {
     const handleDeleteMenu = async (menuId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.delete(`restaurant/menu/${menuId}`);
+            const response = await axiosReq.delete(`/api/restaurant/menu/${menuId}`);
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);

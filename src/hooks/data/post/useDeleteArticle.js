@@ -9,7 +9,7 @@ const useDeleteArticle = () => {
     const handleDeleteArticle = async (articleId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.delete(`restaurant/article/${articleId}`);
+            const response = await axiosReq.delete(`/api/restaurant/article/${articleId}`);
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);

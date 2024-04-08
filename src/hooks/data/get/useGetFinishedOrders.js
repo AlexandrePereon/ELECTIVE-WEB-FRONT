@@ -10,7 +10,7 @@ const useGetFinishedOrders = () => {
         const getInProgressOrders = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/order/inactive/`);
+                const response = await axiosReq.get(`/api/order/inactive/`);
                 if (response) {
                     setOrdersData(response.data.orders);
                 }

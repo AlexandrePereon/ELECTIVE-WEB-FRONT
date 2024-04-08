@@ -10,7 +10,7 @@ const useGetAllUsers = () => {
         const getAllUsers = async () => {
             setIsLoadingUsers(true);
             try {
-                const response = await axiosReq.get(`/auth/users`);
+                const response = await axiosReq.get(`/api/auth/users`);
                 if (response) {
                     setUsersData(response.data);
                 }

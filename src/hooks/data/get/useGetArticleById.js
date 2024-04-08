@@ -10,7 +10,7 @@ const useGetArticleById = (articleID) => {
         const getArticleById = async (articleID) => {
             setIsLoadingArticle(true);
             try {
-                const response = await axiosReq.get(`/restaurant/article/${articleID}`);
+                const response = await axiosReq.get(`/api/restaurant/article/${articleID}`);
                 if (response) {
                     setArticleData(response.data);
                 }

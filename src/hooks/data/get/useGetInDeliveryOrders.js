@@ -10,7 +10,7 @@ const useGetInDeliveryOrders = () => {
         const getInDeliveryOrders = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/order/in-delivery/`);
+                const response = await axiosReq.get(`/api/order/in-delivery/`);
                 if (response) {
                     setOrdersData(response.data.orders);
                 }

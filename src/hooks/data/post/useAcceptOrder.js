@@ -9,7 +9,7 @@ const useAcceptOrder = () => {
     const handleAcceptOrder = async (orderId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put("order/accept/",{
+            const response = await axiosReq.put("/api/order/accept/",{
                 orderId : orderId
             });
             if (response) {
