@@ -47,7 +47,7 @@ export const developerHeader = [
     },
     {
       title : "API",
-      link : "/mon-api"
+      link : "/developer-accueil/mon-api"
     },
     {
       title : "Les composants",
@@ -75,7 +75,7 @@ export const technicalHeader = [
   },
   {
     title : "Performance",
-    link : "/performance"
+    link : "/technical-accueil/performance"
   },
   {
     title : "Les composants",

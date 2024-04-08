@@ -9,9 +9,6 @@ const getTokenFromSessionStorage = () => {
           return dataObject.valeur;
       } else {
           sessionStorage.removeItem('token');
-          sessionStorage.removeItem('userInfos');
-          sessionStorage.removeItem('refreshToken');
-          window.location.href= "/login";
       }
   }
   return null;
