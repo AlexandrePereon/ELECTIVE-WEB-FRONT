@@ -9,7 +9,6 @@ import heroContent from "../components/Hero/heroContent";
 const HomePage = () => {
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(heroContent.find((item)=> item.role === userInfos?.role))
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
