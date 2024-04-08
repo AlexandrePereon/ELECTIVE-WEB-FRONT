@@ -4,12 +4,6 @@ import HomePage from "../pages/homePage";
 import Error404 from "../pages/error404";
 import AddProductPage from "../pages/RestaurantPages/addProductPage";
 import CreateRestaurantPage from "../pages/RestaurantPages/createRestaurantPage";
-import UserHomePage from "../pages/ClientPages/userHomePage";
-import RestaurantHomePage from "../pages/RestaurantPages/restaurantHomePage";
-import DeliverymanHomePage from "../pages/DeliverymanPages/deliverymanHomePage";
-import DevelopperHomePage from "../pages/DevelopperPages/developperHomePage";
-import MarketingHomePage from "../pages/MarketingPages/marketingHomePage";
-import DeliverymanMyDeliveriesPage from "../pages/DeliverymanPages/deliverymanMyDeliveriesPage";
 import RestaurantPage from "../pages/RestaurantPages/restaurantPage";
 import MyAccountPage from "../pages/myAccountPage";
 import RestaurantsSelectionPage from "../pages/restaurantsSelectionPage";
@@ -22,6 +16,9 @@ import HistoryOrderPage from "../pages/historyOrderPage";
 import MarketingDashboardPage from "../pages/MarketingPages/marketingDashboardPage";
 import MarketingAccountManagementPage from "../pages/MarketingPages/marketingAccountManagementPage";
 import MarketingModificationAccountPage from "../pages/MarketingPages/marketingModificationAccountPage";
+import DevelopperApiPage from "../pages/DevelopperPages/developperApiPage";
+import ComposantsPage from "../pages/composantsPage";
+import TechnicalPerformancePage from "../pages/TechnicalPages/technicalPerformancePage";
 
 const Router = () => {
   return (
@@ -36,7 +33,7 @@ const Router = () => {
         {/* CLIENT ROUTES */}
         <Route path="/user-accueil" element={
           <ProtectedRoute allowedRoles={['user']}>
-            <UserHomePage/>
+            <HomePage/>
           </ProtectedRoute>
         } />
         <Route path="/user-accueil/restaurants" element={
@@ -53,7 +50,7 @@ const Router = () => {
         {/* DELIVERY ROUTES */}
         <Route path="/deliveryman-accueil" element={
           <ProtectedRoute allowedRoles={['deliveryman']}>
-            <DeliverymanHomePage/>
+            <HomePage/>
           </ProtectedRoute>
         } />
         <Route path="/deliveryman-accueil/espace-livraison" element={
@@ -66,7 +63,7 @@ const Router = () => {
         {/* RESTAURANT ROUTES */}
         <Route path="/restaurant-accueil" element={
           <ProtectedRoute allowedRoles={['restaurant']}>
-            <RestaurantHomePage/>
+            <HomePage/>
           </ProtectedRoute>
         }/>
         <Route path="/restaurant-accueil/soumission" element={
@@ -107,19 +104,29 @@ const Router = () => {
             <HistoryOrderPage/>
           </ProtectedRoute>
         } />
+        <Route path="/composants" element={
+          <ProtectedRoute allowedRoles={['developer', 'technical']}>
+            <ComposantsPage/>
+          </ProtectedRoute>
+        } />
 
 
         {/* DEVELOPPER ROUTES */}
-        <Route path="/developper-accueil" element={
-          <ProtectedRoute allowedRoles={['developper']}>
-            <DevelopperHomePage/>
+        <Route path="/developer-accueil" element={
+          <ProtectedRoute allowedRoles={['developer']}>
+            <HomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/developer-accueil/mon-api" element={
+          <ProtectedRoute allowedRoles={['developer']}>
+            <DevelopperApiPage/>
           </ProtectedRoute>
         } />
         
         {/* MARKETING ROUTES */}
         <Route path="/marketing-accueil" element={
           <ProtectedRoute allowedRoles={['marketing']}>
-            <MarketingHomePage/>
+            <HomePage/>
           </ProtectedRoute>
         }/>
         <Route path="/marketing-accueil/tableau-de-bord" element={
@@ -137,7 +144,17 @@ const Router = () => {
             <MarketingModificationAccountPage/>
           </ProtectedRoute>
         }/>
-
+        {/* TECHNICAL ROUTES */}
+        <Route path="/technical-accueil" element={
+          <ProtectedRoute allowedRoles={['technical']}>
+            <HomePage/>
+          </ProtectedRoute>
+        } />
+        <Route path="/technical-accueil/performance" element={
+          <ProtectedRoute allowedRoles={['technical']}>
+            <TechnicalPerformancePage/>
+          </ProtectedRoute>
+        } />
       </Routes>
     </BrowserRouter>
   );

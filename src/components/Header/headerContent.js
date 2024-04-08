@@ -44,6 +44,14 @@ export const developerHeader = [
     {
       title : "Mon compte",
       link : "/mon-compte"
+    },
+    {
+      title : "API",
+      link : "/developer-accueil/mon-api"
+    },
+    {
+      title : "Les composants",
+      link : "/composants"
     }];
 
 export const marketingHeader = [
@@ -61,7 +69,15 @@ export const marketingHeader = [
 }];
 
 export const technicalHeader = [
-    {
-      title : "Mon compte",
-      link : "/mon-compte"
-    }];
+  {
+    title : "Mon compte",
+    link : "/mon-compte"
+  },
+  {
+    title : "Performance",
+    link : "/technical-accueil/performance"
+  },
+  {
+    title : "Les composants",
+    link : "/composants"
+  }];

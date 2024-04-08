@@ -9,9 +9,6 @@ const getTokenFromSessionStorage = () => {
           return dataObject.valeur;
       } else {
           sessionStorage.removeItem('token');
-          sessionStorage.removeItem('userInfos');
-          sessionStorage.removeItem('refreshToken');
-          window.location.href= "/login";
       }
   }
   return null;
@@ -39,7 +36,6 @@ axiosReq.interceptors.response.use(
   (response) => response,
   async (error) => {  
     const originalRequest = error.config;
-    console.log(originalRequest)
     if (error.response.status === 401 && !originalRequest._retry) {
       if (!refreshTokenRequest) {
         refreshTokenRequest = axiosReq.post('/auth/refresh', {

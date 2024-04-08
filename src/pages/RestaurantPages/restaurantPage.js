@@ -17,8 +17,6 @@ const RestaurantPage = () => {
 
     const {restaurantData, isLoading} = useGetRestaurantById(id);
 
-    console.log(restaurantData)
-
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
