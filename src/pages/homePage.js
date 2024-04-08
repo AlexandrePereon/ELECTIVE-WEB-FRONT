@@ -8,7 +8,6 @@ import useAuthentication from "../hooks/useAuthentication";
 const HomePage = () => {
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-    console.log(userInfos)
 
     return (
         <Fragment>
