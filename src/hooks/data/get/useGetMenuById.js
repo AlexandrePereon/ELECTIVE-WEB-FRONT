@@ -10,7 +10,7 @@ const useGetMenuById = (menuID) => {
         const getMenuById = async (menuID) => {
             setIsLoadingMenu(true);
             try {
-                const response = await axiosReq.get(`/api-restaurant/menu/${menuID}`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}menu/${menuID}`);
                 if (response) {
                     setMenuData(response.data);
                 }

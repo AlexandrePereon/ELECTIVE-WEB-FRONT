@@ -9,7 +9,7 @@ import TitleFade from "../../components/TitleFade/titleFade";
 
 const MarketingDashboardPage = () => {
 
-    const{socket}=useWebSocket("/order/marketing");
+    const{socket}=useWebSocket(`${process.env.REACT_APP_API_PREFIX_ORDER}marketing`);
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
     const [stats, setStats] = useState([])

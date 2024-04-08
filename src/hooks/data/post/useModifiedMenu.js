@@ -10,7 +10,7 @@ const useModifiedMenu = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axiosReq.put(`/api-restaurant/menu/${menuId}`, {
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}menu/${menuId}`, {
                 name : e.target.elements.name.value ,
                 image : imageValue,
                 description : e.target.elements.description.value,

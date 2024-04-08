@@ -11,17 +11,17 @@ const Statistic = ({stats}) => {
     const statsValue = tabStatus.map((stat, index) => {
             return(
                 <div className="stat" key={index}>
-                <div className="stat-figure text-secondary">
+                <div className="stat-figure">
                     {stat.svg}
                 </div>
-                <div className="stat-title">{stat.status}</div>
+                <div className="text-light-black stat-title">{stat.status}</div>
                 <div className="stat-value">{stats.find((item)=> item.status === stat.status)?.value || 0}</div>
             </div>
             );
     });
 
     return(
-        <div className="stats shadow">
+        <div className="contents md:flex text-light-black shadow">
             {statsValue}
         </div>
     );

@@ -20,7 +20,7 @@ const useLogIn = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axiosReq.post("/api-auth/login", {
+            const response = await axiosReq.post(`${process.env.REACT_APP_API_PREFIX_AUTH}login`, {
                 email: e.target.elements.email.value,
                 password: e.target.elements.password.value
             })

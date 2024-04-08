@@ -9,7 +9,7 @@ const useDeliveredOrder = () => {
     const handleDeliveredOrder = async (orderId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put("/api-order/delivered/",{
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}delivered/`,{
                 orderId : orderId
             });
             if (response) {

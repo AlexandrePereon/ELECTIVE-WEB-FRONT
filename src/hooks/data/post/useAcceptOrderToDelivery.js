@@ -9,7 +9,7 @@ const useAcceptOrderToDelivery = () => {
     const handleAcceptOrderToDelivery = async (orderId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put("/api-order/deliver/",{
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}deliver/`,{
                 orderId : orderId
             });
             if (response) {

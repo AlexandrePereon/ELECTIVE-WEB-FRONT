@@ -20,7 +20,7 @@ const useSignUp = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axiosReq.post("/api-auth/register", {
+            const response = await axiosReq.post(`${process.env.REACT_APP_API_PREFIX_AUTH}register`, {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
                 email: e.target.elements.email.value,

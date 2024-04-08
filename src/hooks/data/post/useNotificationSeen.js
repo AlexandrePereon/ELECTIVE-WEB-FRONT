@@ -12,7 +12,7 @@ import {axiosReq} from "../../../utils/axios";
 const useNotificationSeen = () => {
     const handleSubmit = async () => {
         try {
-            const response = await axiosReq.put("/api-order/notified")
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}notified`)
           } catch (error) {
             console.log(error)
           }

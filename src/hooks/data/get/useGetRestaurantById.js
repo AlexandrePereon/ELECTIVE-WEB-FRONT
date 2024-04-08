@@ -10,7 +10,7 @@ const useGetRestaurantById = (restaurantID) => {
         const getRestaurantById = async (restaurantID) => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/api-restaurant/${restaurantID}`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}${restaurantID}`);
                 if (response) {
                     setRestaurantData(response.data);
                 }

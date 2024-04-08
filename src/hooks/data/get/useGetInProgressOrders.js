@@ -10,7 +10,7 @@ const useGetInProgressOrders = () => {
         const getInProgressOrders = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/api-order/active/`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_ORDER}active/`);
                 if (response) {
                     setOrdersData(response.data.orders);
                 }

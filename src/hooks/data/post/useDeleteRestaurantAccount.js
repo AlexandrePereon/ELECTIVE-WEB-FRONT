@@ -9,7 +9,7 @@ const useDeleteRestaurantAccount = () => {
     const handleDeleteAccount = async (restaurantId) => {
         setIsLoadingDeleteAccount(true);
         try {
-            const response = await axiosReq.delete(`/api-restaurant/${restaurantId}`);
+            const response = await axiosReq.delete(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}${restaurantId}`);
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoadingDeleteAccount(false);

@@ -10,7 +10,7 @@ const useGetUserInfosById = (userId) => {
         const getUserInfosById = async (userId) => {
             setIsLoadingUserInfosById(true);
             try {
-                const response = await axiosReq.get(`/api-auth/user/${userId}`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_AUTH}user/${userId}`);
                 if (response) {
                     setUserInfosByIdData(response.data);
                 }
