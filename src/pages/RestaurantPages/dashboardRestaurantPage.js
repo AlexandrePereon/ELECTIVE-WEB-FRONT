@@ -9,7 +9,7 @@ import useWebSocket from "../../hooks/useWebSocket";
 
 const DashboardRestaurantPage = () => {
 
-    const{socket}=useWebSocket("/order/restaurant");
+    const{socket}=useWebSocket(`${process.env.REACT_APP_API_PREFIX_ORDER}restaurant`);
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
     const [stats, setStats] = useState([])
@@ -33,9 +33,14 @@ const DashboardRestaurantPage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-                <TitleFade title="Tableau de bord"/>
-                <Graph dailySummary={dailySummary}/>
-                <Statistic stats={stats}/>
+              <div className="sm:w-page m-auto pb-10">
+                  <TitleFade title="Tableau de bord"/>
+              </div>
+                  <Graph dailySummary={dailySummary}/>
+                  <div className="sm:w-page m-auto pb-10">    
+                  <Statistic stats={stats}/>
+                  </div>
+             
             <Footer/>
         </Fragment>
     )

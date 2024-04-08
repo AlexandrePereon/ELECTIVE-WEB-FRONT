@@ -5,7 +5,7 @@ const DiffText = () => {
     return (
         <div className="diff aspect-[16/9]">
             <div className="diff-item-1">
-                <div className="bg-green-500 text-primary-content text-9xl font-black grid place-content-center">Uber</div>
+                <div className="bg-green-500 text-primary-content text-9xl font-black grid place-content-center">Cesi EATS</div>
             </div>
             <div className="diff-item-2">
                 <div className="bg-base-200 text-9xl font-black grid place-content-center">Erreur 404</div>

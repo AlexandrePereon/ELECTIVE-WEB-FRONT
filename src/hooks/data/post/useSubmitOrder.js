@@ -10,7 +10,7 @@ const useSubmitOrder = () => {
         e.preventDefault();
         setIsLoadingSubmitOrder(true);
         try {
-            const response = await axiosReq.post("/api-order/create",{
+            const response = await axiosReq.post(`${process.env.REACT_APP_API_PREFIX_ORDER}create`,{
                 menus :order.menus,
                 articles :order.articles,
                 restaurantId : restaurantId,

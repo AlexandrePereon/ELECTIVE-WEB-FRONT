@@ -8,14 +8,20 @@ import HistoryOrderSectionFinished from "../components/HistoryOrderSections/hist
 import HistoryOrderSectionRequest from "../components/HistoryOrderSections/historyOrderSectionRequest";
 import HistoryOrderSectionFinalization from "../components/HistoryOrderSections/historyOrderSectionFinalization";
 import HistoryOrderSectionToDeliver from "../components/HistoryOrderSections/historyOrderSectionToDeliver";
+import { useLocation } from "react-router";
 
 const HistoryOrderPage = () => {
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
+    const location = useLocation();
+    const { hash } = location;
 
-    const [steps, setSteps] = useState(0);
-    const handleOnSwitchSteps = (value) => setSteps(value)
+    const [steps, setSteps] = useState(Number(hash.substring(1)) || 0);
+    const handleOnSwitchSteps = (value) => {
+        setSteps(value)
+        window.location.hash = `#${value}`;
+    }
     let parts = null;
     let content = null;
     switch (userInfos?.role) {

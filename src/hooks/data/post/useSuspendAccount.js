@@ -9,7 +9,7 @@ const useSuspendAccount = () => {
     const handleSuspendAccount = async (userId) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put("/api-auth/suspend/",{
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_AUTH}suspend/`,{
                 userId : userId
             });
             if (response) {

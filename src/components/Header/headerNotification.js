@@ -7,7 +7,7 @@ import useWebSocket from "../../hooks/useWebSocket";
 
    
 const HeaderNotification = ({role}) => {
-    const{socket}=useWebSocket("/order/notification");
+    const{socket}=useWebSocket(`${process.env.REACT_APP_API_PREFIX_ORDER}notification`);
     const [numberNotif, setNumberNotif] = useState(0)
     const [tabNotif, setTabNotif] = useState()
     const{handleSubmit}=useNotificationSeen();

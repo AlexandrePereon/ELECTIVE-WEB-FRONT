@@ -9,7 +9,7 @@ const useDeleteUserAccount = () => {
     const handleDeleteAccount = async () => {
         setIsLoadingDeleteAccount(true);
         try {
-            const response = await axiosReq.delete("/api-auth/delete");
+            const response = await axiosReq.delete(`${process.env.REACT_APP_API_PREFIX_AUTH}delete`);
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoadingDeleteAccount(false);

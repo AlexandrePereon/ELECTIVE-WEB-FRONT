@@ -13,15 +13,15 @@ const DevelopperApiPage = () => {
     const tabBtn = [
         {
             title: "API authentification",
-            link: "http://app.localhost/auth/api-docs/#/"
+            link: `${process.env.API_URL + process.env.REACT_APP_API_PREFIX_AUTH}api-docs/#/`
         },
         {
             title: "API commandes",
-            link: "http://app.localhost/order/api-docs/#/"
+            link: `${process.env.API_URL + process.env.REACT_APP_API_PREFIX_ORDER}api-docs/#/`
         },
         {
             title: "API restaurant",
-            link: "http://app.localhost/restaurant/api-docs/#/"
+            link: `${process.env.API_URL + process.env.REACT_APP_API_PREFIX_RESTAURANT}api-docs/#/`
         },
     ]
 

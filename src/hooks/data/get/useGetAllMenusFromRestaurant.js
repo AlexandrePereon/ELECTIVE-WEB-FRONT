@@ -11,7 +11,7 @@ const useGetAllMenusFromRestaurant = (restaurantID, pagination) => {
         const getAllMenusFromRestaurant = async (restaurantID, pagination) => {
             setIsLoadingMenus(true);
             try {
-                const response = await axiosReq.get(`/api-restaurant/${restaurantID}/menus/${pagination}`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}${restaurantID}/menus/${pagination}`);
                 if (response) {
                     setMaxPageMenus(response.data.maxPage)
                     setMenusData(response.data.menus);

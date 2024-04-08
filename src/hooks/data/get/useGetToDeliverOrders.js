@@ -10,7 +10,7 @@ const useGetToDeliverOrders = () => {
         const getToDeliverOrders = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/api-order/to-deliver/`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_ORDER}to-deliver/`);
                 if (response) {
                     setOrdersData(response.data.orders);
                 }
