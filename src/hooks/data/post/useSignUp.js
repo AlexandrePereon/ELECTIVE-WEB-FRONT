@@ -20,7 +20,7 @@ const useSignUp = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axiosReq.post("/api/auth/register", {
+            const response = await axiosReq.post("/api-auth/register", {
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
                 email: e.target.elements.email.value,

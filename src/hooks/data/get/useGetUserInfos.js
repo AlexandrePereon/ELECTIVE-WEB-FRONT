@@ -10,7 +10,7 @@ const useGetUserInfos = () => {
         const getUserInfos = async () => {
             setIsLoadingUserInfos(true);
             try {
-                const response = await axiosReq.get(`/api/auth/user`);
+                const response = await axiosReq.get(`/api-auth/user`);
                 if (response) {
                     setUserInfosData(response.data);
                 }

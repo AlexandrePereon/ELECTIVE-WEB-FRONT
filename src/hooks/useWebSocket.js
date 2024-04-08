@@ -9,8 +9,9 @@ import {getTokenFromSessionStorage} from "../utils/axios";
  * 
  * @returns {object} - 
  */
-const useWebSocket = (link) => {
 
+const useWebSocket = (link) => {
+    console.log(process.env.URL_WEBSOCKET)
     const websocketUrl = `ws://app.localhost${link}?socketToken=${getTokenFromSessionStorage()}`;
     const socket = new WebSocket(websocketUrl)
 

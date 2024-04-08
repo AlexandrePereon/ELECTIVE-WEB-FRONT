@@ -20,7 +20,7 @@ const usePostRestaurant = () => {
         e.preventDefault();
         setIsLoading(false);
         try {
-            const response = await axiosReq.post("/api/restaurant/create", {
+            const response = await axiosReq.post("/api-restaurant/create", {
                 name: e.target.elements.name.value,
                 image: imageValue,
                 description: e.target.elements.description.value})

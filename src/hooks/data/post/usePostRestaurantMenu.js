@@ -16,7 +16,7 @@ const usePostRestaurantMenu = () => {
     const handleSubmitMenu = async (formData) => {
         setIsLoading(false);
         try {
-            const response = await axiosReq.post("/api/restaurant/menu/create", {
+            const response = await axiosReq.post("/api-restaurant/menu/create", {
                 name: formData.find(item => item.id === 'name').value,
                 image: formData.find(item => item.id === 'image').value,
                 description: formData.find(item => item.id === 'description').value,
