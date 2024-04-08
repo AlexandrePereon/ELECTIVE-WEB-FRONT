@@ -5,7 +5,7 @@ const useUserVerifyData = () => {
     let data = null;
     const getUserVerifyData = async () => {
         try {
-            const response = await axiosReq.get("/auth/verify");
+            const response = await axiosReq.get("/api/auth/verify");
             if (response) {
                 data = response;
               }

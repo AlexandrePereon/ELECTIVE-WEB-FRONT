@@ -10,7 +10,7 @@ const useModifiedArticle = () => {
         e.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axiosReq.put(`/restaurant/article/${articleId}`, {
+            const response = await axiosReq.put(`/api/restaurant/article/${articleId}`, {
                 name : e.target.elements.name.value ,
                 image : imageValue,
                 description : e.target.elements.description.value,

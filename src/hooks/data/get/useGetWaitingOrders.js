@@ -10,7 +10,7 @@ const useGetWaitingOrders = () => {
         const getWaitingOrders = async () => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/order/waiting/`);
+                const response = await axiosReq.get(`/api/order/waiting/`);
                 if (response) {
                     setOrdersData(response.data.orders);
                 }

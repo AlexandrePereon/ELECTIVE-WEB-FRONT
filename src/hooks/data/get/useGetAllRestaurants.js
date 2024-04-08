@@ -11,7 +11,7 @@ const useGetAllRestaurants = (pagination) => {
         const getAllRestaurants = async (pagination) => {
             setIsLoading(true);
             try {
-                const response = await axiosReq.get(`/restaurant/all/${pagination}`);
+                const response = await axiosReq.get(`/api/restaurant/all/${pagination}`);
                 if (response) {
                     setMaxPageRestaurants(response.data.maxPage);
                     setRestaurantsData(response.data.restaurants);
