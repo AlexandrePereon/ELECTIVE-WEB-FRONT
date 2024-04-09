@@ -14,6 +14,7 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.22.3",
     "sass": "^1.43.4",
+    "serve": "^14.2.1",
     "socket.io-client": "^4.7.5"
   },
   "optionalDependencies": {
@@ -29,7 +30,7 @@
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
-    "startProd": "cross-env NODE_ENV=production react-scripts start",
+    "startProd": "npm run build && serve -s build -l 4000",
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
