@@ -38,7 +38,7 @@ const HeaderNotification = ({role}) => {
 
             <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-fit bg-base-100 shadow mr-5">
                 <div className="card-body">
-                <span className="font-bold text-lg m-auto">{numberNotif} Notifications</span>
+                <span className="font-bold text-lg m-auto">{numberNotif} Notification(s)</span>
                 <NotificationCard role={role} tabNotifications={tabNotif}/>
                 </div>
             </div>

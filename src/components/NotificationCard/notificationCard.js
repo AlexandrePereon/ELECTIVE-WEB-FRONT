@@ -10,7 +10,7 @@ const NotificationCard = ({role, tabNotifications}) => {
             );
         });
     } else {
-        tabNotifs= <p> pas de notification</p>
+        tabNotifs= <p> Pas de notification</p>
     }  
 
     return(

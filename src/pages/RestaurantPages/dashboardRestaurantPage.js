@@ -21,6 +21,7 @@ const DashboardRestaurantPage = () => {
           const dataWebSocket = JSON.parse(event.data);
           setStats(Object.entries(dataWebSocket && dataWebSocket.orderCountsByStatus).map(([cle, valeur]) => ({ status: cle, value: valeur })))
           setDailySummary(dataWebSocket && dataWebSocket.dailySummary)
+          dataWebSocket && setStats((prevstats) => [...prevstats, {status: "Prix total", value: Math.round(dataWebSocket.totalPrice)}]);
         } catch (error) {
           console.log(error)
         }

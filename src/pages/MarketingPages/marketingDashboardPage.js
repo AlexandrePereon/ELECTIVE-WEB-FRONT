@@ -21,6 +21,7 @@ const MarketingDashboardPage = () => {
           const dataWebSocket = JSON.parse(event.data);
           setStats(Object.entries(dataWebSocket && dataWebSocket.orderCountsByStatus).map(([cle, valeur]) => ({ status: cle, value: valeur })))
           setDailySummary(dataWebSocket && dataWebSocket.dailySummary)
+          dataWebSocket && setStats((prevstats) => [...prevstats, {status: "Prix total", value: Math.round(dataWebSocket.totalPrice)}]);
         } catch (error) {
           console.log(error)
         }
@@ -36,7 +37,9 @@ const MarketingDashboardPage = () => {
             <Header role={userInfos?.role}/>
             <TitleFade title="Tableau de bord"/>
                 <Graph dailySummary={dailySummary}/>
-                <Statistic stats={stats}/>
+                <div className="sm:w-page m-auto pb-10">    
+                  <Statistic stats={stats}/>
+                </div>
 
             <Footer/>
         </Fragment>

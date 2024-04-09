@@ -48,8 +48,8 @@ useEffect(()=>{
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-primary"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-primary">Total des montants des commandes</p>
-              <p className="text-sm font-medium">{xDate[0]} - aujourd'hui</p>
+              <p className="font-semibold text-primary">Montant total des commandes</p>
+              <p className="text-sm font-medium">{ xDate[0]?`${xDate[0]} - aujourd'hui`:'Aucune données'} </p>
             </div>
           </div>
         </div>
