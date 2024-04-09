@@ -93,6 +93,7 @@ const SubmissionTunnel = ({restaurantId}) => {
     const {handleSubmitMenu, isLoadingMenu, alertBannerMenu} = usePostRestaurantMenu();
     const alertBanner = alertBannerArticle||alertBannerMenu;
     const isLoading = isLoadingArticle||isLoadingMenu;
+    
 
     const submitRestaurantProduct = (type, e) => {
         e.preventDefault();

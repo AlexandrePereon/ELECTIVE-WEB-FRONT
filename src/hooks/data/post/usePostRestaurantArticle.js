@@ -35,7 +35,7 @@ const usePostRestaurantArticle = () => {
 
     const { alertBanner } = useDisplayAlert(message);
 
-    return { handleSubmitArticle, isLoading, alertBanner };
+    return { handleSubmitArticle, isLoadingArticle:isLoading, alertBannerArticle:alertBanner };
 };
 
 export default usePostRestaurantArticle;
