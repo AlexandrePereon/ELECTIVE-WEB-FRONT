@@ -24,6 +24,7 @@ const SignupForm = () => {
         id={input.id}
         type={input.type}
         size={input.size}
+        isRequired={input.isRequired}
         handlesetIsPasswordValid={handlesetIsPasswordValid}
         key={index}
         />
@@ -33,6 +34,7 @@ const SignupForm = () => {
         id={input.id}
         type={input.type}
         size={input.size}
+        isRequired={input.isRequired}
         options={input.type === "select" && input.options}
         key={index}
     />

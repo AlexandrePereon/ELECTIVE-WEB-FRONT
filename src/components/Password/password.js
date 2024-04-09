@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import Input from "../Input/input";
 
-const Password = ({handlesetIsPasswordValid, title, id, type, size, isDisable}) => {
+const Password = ({handlesetIsPasswordValid, title, id, type, size, isDisable,isRequired}) => {
 
     const [passwordValue,setPasswordValue] = useState(null);
 
@@ -65,6 +65,7 @@ const Password = ({handlesetIsPasswordValid, title, id, type, size, isDisable}) 
                     type={type}
                     size={size}
                     isDisable={isDisable}
+                    isRequired={isRequired || false}
                />
                 <ul>
                     {conditionList}

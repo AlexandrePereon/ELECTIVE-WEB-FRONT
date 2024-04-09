@@ -7,6 +7,7 @@
     "@react-icons/all-files": "^4.1.0",
     "apexcharts": "^3.47.0",
     "axios": "^0.24.0",
+    "cross-env": "^7.0.3",
     "heroicons-react": "^1.4.1",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.1",
@@ -27,8 +28,8 @@
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env NODE_ENV=local react-scripts start",
+    "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
