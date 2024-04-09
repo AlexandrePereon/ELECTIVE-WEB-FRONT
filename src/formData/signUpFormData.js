@@ -3,21 +3,25 @@ const signUpFormData = [
     title : "Prénom",
     type : "text",
     size : "w-medium",
+    isRequired : true,
     id : "firstName"},
     {
     title : "Nom",
     type : "text",
     size : "w-medium",
+    isRequired : true,
     id : "lastName"},
     {
     title : "Addresse email",
     type : "email",
     size : "w-large",
+    isRequired : true,
     id : "email"},
     {
     title : "Mot de passe",
     type : "password",
     size : "w-x-large",
+    isRequired : true,
     id : "password"},
     {
     title : "Rôle",

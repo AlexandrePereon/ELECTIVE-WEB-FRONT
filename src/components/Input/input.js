@@ -13,7 +13,7 @@ import React, { Fragment, useState } from "react";
  * @param {string} props.options - Les options pour les selects.
  * @returns {React.JSX.Element} - Le composant Input.
  */
-const Input = ({title, handleOnChange, id, type, size, options, isDisable, defaultValue}) => {
+const Input = ({title, handleOnChange, id, type, size, options, isDisable, defaultValue, isRequired}) => {
     const [isPasswordVisible,setIsPasswordVisible] = useState(false);
 
     let input= null;
@@ -49,6 +49,7 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
             defaultValue={defaultValue}
             autoComplete={title}
             placeholder={title}
+            required={isRequired || false}
             onChange={(e)=>{handleOnChange && handleOnChange(e.target.value ,id)}}
             className={`p-2 block text-black ${size} ${isDisable ? "bg-light-grey" : "bg-white"} rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6`}
             />

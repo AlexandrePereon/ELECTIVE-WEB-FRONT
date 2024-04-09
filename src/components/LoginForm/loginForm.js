@@ -20,6 +20,7 @@ const LoginForm = () => {
                           id={input.id}
                           type={input.type}
                           size={input.size}
+                          isRequired={input.isRequired}
                           key={index}
                           />
                         ))}
