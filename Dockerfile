@@ -1,27 +1,47 @@
-# syntax=docker/dockerfile:1.4
-
-# Create image based on the official Node image from dockerhub
+# Étape de développement
 FROM node:lts-buster-slim AS development
 
-# Create app directory
+# Répertoire de travail de l'application
 WORKDIR /usr/src/app
 
-# Copy dependency definitions
-COPY package.json /usr/src/app
-# COPY package-lock.json /usr/src/app
+# Copier les définitions des dépendances
+COPY package.json package-lock.json ./
 
-# Install dependecies
-#RUN npm set progress=false \
-#    && npm config set depth 0 \
-#    && npm i install
+# Installer les dépendances
+RUN npm ci --loglevel=verbose
+
+# Copier tout le code nécessaire pour exécuter l'application
+COPY . .
+
+# Étape de construction de l'application React
+FROM node:lts-buster-slim AS build
+
+# Répertoire de travail de l'application
+WORKDIR /app
+
+# Copier les fichiers de définition des dépendances
+COPY package*.json ./
+
+# Installer les dépendances
 RUN npm install
 
-# Get all the code needed to run the app
-COPY . /usr/src/app
+# Copier le reste du code de l'application dans le conteneur
+COPY . .
 
-# Expose the port the app runs in
-EXPOSE 3000
+# Construire l'application React
+RUN npm run build
 
-# Serve the app
-CMD ["npm", "run", "startProd"]
+# Étape de production avec Nginx
+FROM nginx:1.21.0-alpine
 
+# Copier la configuration Nginx dans le conteneur
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copier les fichiers de construction de l'application React dans le répertoire d'hébergement Nginx
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Exposer le port 80 pour Nginx
+EXPOSE 4000
+
+# Démarrer Nginx lorsque le conteneur démarre
+CMD ["nginx", "-g", "daemon off;"]
