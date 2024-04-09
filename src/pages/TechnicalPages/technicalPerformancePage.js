@@ -14,7 +14,7 @@ const TechnicalPerformancePage = () => {
         <Fragment>
         <Header role={userInfos?.role}/>
         <TitleFade title="Performance :"/>
-        <ButtonRedirect title="Accéder aux performances" url={`${process.env.API_URL}/metrics`} />
+        <ButtonRedirect title="Accéder aux performances" url={`/metrics`} />
         <Footer/>
     </Fragment>
     )
