@@ -7,8 +7,12 @@ import MyAccountForm from "../components/MyAccountForm/myAccountForm";
 import Tab from "../components/Tab/tab";
 import MyRestaurantAccountForm from "../components/MyAccountForm/myRestaurantAccountForm";
 import MyProductsAccountList from "../components/MyAccountForm/MyProductsAccountList";
+import useAuthentication from "../hooks/useAuthentication";
 
 const MyAccountPage = () => {
+
+    const {getUserInfosFromSessionStorage}=useAuthentication();
+    const userInfosFromSessionStorage = getUserInfosFromSessionStorage();
 
     const {userInfosData, isLoadingUserInfos}= useGetUserInfos();
     const [steps, setSteps]= useState(0);
@@ -22,10 +26,10 @@ const MyAccountPage = () => {
             form =<MyAccountForm userInfosData={userInfosData && userInfosData}/>
         break;
         case 1:
-            form = <MyRestaurantAccountForm restaurantId={userInfosData && userInfosData.restaurant}/>
+            form = <MyRestaurantAccountForm restaurantId={userInfosFromSessionStorage.restaurant || userInfosData?.restaurant }/>
         break;
         case 2:
-            form = <MyProductsAccountList restaurantId={userInfosData && userInfosData.restaurant}/>  
+            form = <MyProductsAccountList restaurantId={userInfosFromSessionStorage.restaurant || userInfosData?.restaurant}/>  
         break;            
     }
 

@@ -25,7 +25,7 @@ const useAuthentication = () => {
     
     const [userInfos, setUserInfos] = useState(getUserInfosFromSessionStorage());
     const updateRestaurantIdInSessionStorage = (restaurantId) => {
-      setUserInfos(prevState => ({...prevState, restaurantId : restaurantId}));
+      setUserInfos(prevState => ({...prevState, restaurant : restaurantId}));
     }
 
     useEffect(()=>{
