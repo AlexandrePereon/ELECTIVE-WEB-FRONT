@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from "react";
-import {getTokenFromSessionStorage} from "../../utils/axios";
 import NotificationCard from "../NotificationCard/notificationCard";
 import useNotificationSeen from "../../hooks/data/post/useNotificationSeen";
 import useWebSocket from "../../hooks/useWebSocket";

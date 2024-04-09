@@ -17,8 +17,6 @@ const MarketingAccountManagementPage = () => {
     const { handleDeleteAccount, isLoadingDeleteAccount, alertBannerDeleteAccount }= useDeleteAccount();
     const {usersData, isLoadingUsers}=useGetAllUsers();
 
-    console.log(usersData)
-
     return (
         <Fragment>
             <Header role={userInfos?.role}/>

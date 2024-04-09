@@ -36,7 +36,7 @@ const usePostRestaurantMenu = () => {
 
     const { alertBanner } = useDisplayAlert(message);
 
-    return { handleSubmitMenu, isLoading, alertBanner };
+    return { handleSubmitMenu, isLoadingMenu:isLoading, alertBannerMenu:alertBanner };
 };
 
 export default usePostRestaurantMenu;

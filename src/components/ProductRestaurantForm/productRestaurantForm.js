@@ -73,7 +73,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
     return(
         <Fragment>
             <TitleFade title="Liste articles :"/>
-            <CardList 
+            {maxPageArticles === null?"Aucun articles.":<CardList 
                 pagination={paginationArticles}
                 maxPagination={maxPageArticles}
                 handleSetPagination={handleSetPagination}
@@ -93,10 +93,10 @@ const ProductRestaurantForm = ({restaurantId}) => {
                          type="articles"
                          />
                     </Card>)} 
-
             </CardList>
+            }  
             <TitleFade title="Liste menus :"/>
-            <CardList 
+            {maxPageMenus === null?"Aucun menus.":<CardList 
                 pagination={paginationMenus}
                 maxPagination={maxPageMenus}
                 handleSetPagination={handleSetPagination}
@@ -117,6 +117,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                         />
                     </Card>)} 
                 </CardList>
+                }
                 <OrderSummary 
                     order={shoppingCart} 
                     restaurantId={restaurantId}
