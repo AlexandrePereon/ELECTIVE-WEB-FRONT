@@ -32,7 +32,7 @@ const MyRestaurantAccountForm = ({restaurantId}) => {
                 id={input.id} 
                 key={index}/>
             } else if (input.id ==="image" && !isEditable) {
-                return(<img src={restaurantData && restaurantData[input.id]} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto"/>)
+                return(<img src={restaurantData && restaurantData[input.id]} alt="Prévisualisation de l'image" className="rounded-full max-w-full max-h-48 m-auto" key={index}/>)
             }else {
                 return (<Input
                 defaultValue={restaurantData && restaurantData[input.id]}
