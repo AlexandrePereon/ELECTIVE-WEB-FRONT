@@ -28,8 +28,8 @@
     "tailwindcss": "^3.4.1"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=local react-scripts start",
-    "startProd": "cross-env NODE_ENV=production react-scripts start",
+    "start": "cross-env NODE_ENV=development react-scripts start",
+    "startProd": "npm run build && serve -s build",
     "build": "cross-env NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
