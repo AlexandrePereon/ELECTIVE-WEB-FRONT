@@ -29,6 +29,7 @@ const RestaurantPage = () => {
                 </div>
                 <div className="sm:w-page m-auto pb-10">
                     <TitleFade title={restaurantData.name}/>
+                    <p>{restaurantData.description}</p>
                     <ProductRestaurantForm restaurantId={id}/> 
                 </div>
                 

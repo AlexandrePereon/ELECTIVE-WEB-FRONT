@@ -7,6 +7,7 @@ import useGetAllRestaurants from "../hooks/data/get/useGetAllRestaurants";
 import Card from "../components/Card/card";
 import Skeleton from "../components/Skeleton/skeleton";
 import { Link } from 'react-router-dom';
+import Footer from "../components/Footer/footer";
 
 const RestaurantsSelectionPage = () => {
     
@@ -47,6 +48,7 @@ const RestaurantsSelectionPage = () => {
                         <Link to={`/user-accueil/restaurant/${item._id}`}>voir plus</Link>
                     </Card>)} 
             </CardList>
+            <Footer/>
         </Fragment>
     )
 }
