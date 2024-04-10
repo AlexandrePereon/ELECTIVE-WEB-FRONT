@@ -16,7 +16,7 @@ import ButtonWithVerification from "../../components/ButtonWithVerification/butt
 const MarketingModificationAccountPage = () => {
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
-    const role = getUserInfosFromSessionStorage();
+    const marketinUserInfos = getUserInfosFromSessionStorage();
 
     const {id}=useParams();
     const {userInfosByIdData, isLoadingUserInfosbyId}= useGetUserInfosById(id);
@@ -40,7 +40,7 @@ const MarketingModificationAccountPage = () => {
 
 return(
     <Fragment>
-    <Header role={role}/>
+    <Header role={marketinUserInfos?.role}/>
     <div className="sm:w-page m-auto pb-10">
     {alertBanner && alertBanner}
     {alertBannerDeleteAccount && alertBannerDeleteAccount}

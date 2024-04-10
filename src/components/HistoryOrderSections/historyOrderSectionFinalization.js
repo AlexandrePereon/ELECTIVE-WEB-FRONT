@@ -6,8 +6,8 @@ import Modal from "../Modal/modal"
 import NoContentTitle from "../NoContentTitle/noContentTitle";
 import Loader from "../Loader/loader";
 
-const HistoryOrderSectionFinalization = ({role}) => {
-    const {inDeliveryOrders, isLoadingInDeliveryOrders} = useGetInDeliveryOrders();
+const HistoryOrderSectionFinalization = () => {
+    const {inDeliveryOrders, isLoadingInDeliveryOrders, refetchInDeliveryOrders} = useGetInDeliveryOrders();
     const {handleDeliveredOrder} = useDeliveredOrder();
     
     const [isModalOpen, setIsModalOpen]=useState(null)
@@ -58,7 +58,7 @@ const HistoryOrderSectionFinalization = ({role}) => {
                              <button
                                  type="button"
                                  className={`rounded-md w-fit mr-2 p-2 bg-light-green font-semibold text-white shadow-sm hover:bg-medium-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                                 onClick={()=>handleDeliveredOrder(order._id)}
+                                 onClick={()=>{handleDeliveredOrder(order._id, refetchInDeliveryOrders)}}
                              >
                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />

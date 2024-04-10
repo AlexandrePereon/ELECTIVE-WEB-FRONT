@@ -4,7 +4,8 @@ import {axiosReq} from "../../../utils/axios";
 const useGetWaitingOrders = () => {
 
     const [ordersData, setOrdersData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);   
+    const [isLoading, setIsLoading] = useState(true);
+    const [isReload, setIsReload] = useState(false);   
     
     useEffect(()=>{
         const getWaitingOrders = async () => {
@@ -21,10 +22,13 @@ const useGetWaitingOrders = () => {
         };
 
         getWaitingOrders();
-    },[])
+    },[isReload])
     
+    const refetch = () => {
+        setIsReload(!isReload)
+    }
 
-    return {waitingOrders : ordersData, isLoadingWaitingOrders : isLoading};
+    return {waitingOrders : ordersData, isLoadingWaitingOrders : isLoading, refetchWaitingOrders : refetch};
 }
 
 export default useGetWaitingOrders;

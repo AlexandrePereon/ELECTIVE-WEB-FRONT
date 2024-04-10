@@ -6,7 +6,7 @@ import NoContentTitle from "../NoContentTitle/noContentTitle";
 import Loader from "../Loader/loader";
 
 const HistoryOrderSectionFinished = () => {
-    const {finishedOrders, isLoadingFinishedOrders} = useGetFinishedOrders();
+    const {finishedOrders, isLoadingFinishedOrders, refetchFinishedOrders} = useGetFinishedOrders();
     
     const [isModalOpen, setIsModalOpen]=useState(null)
 
