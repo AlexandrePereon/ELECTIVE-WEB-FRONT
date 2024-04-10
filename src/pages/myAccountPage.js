@@ -36,7 +36,7 @@ const MyAccountPage = () => {
     return (
         <Fragment>
             <Header role={userInfosData?.role}/>
-            <div className="sm:w-page m-auto pb-10 h-screen">
+            <div className="sm:w-page m-auto pb-10 h-min-screen">
             {userInfosData?.role === "restaurant" && 
                 <Tab 
                     steps={steps} 

@@ -13,7 +13,7 @@ const usePostRestaurantMenu = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleSubmitMenu = async (formData) => {
+    const handleSubmitMenu = async (formData, resetFormData) => {
         setIsLoading(false);
         try {
             const response = await axiosReq.post(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}menu/create`, {
@@ -26,6 +26,7 @@ const usePostRestaurantMenu = () => {
             if (response) {
                 setMessage({ code: response.status, description: response.data.message });
                 setIsLoading(false);
+                window.location.reload();
             }
         } catch (error) {
             setMessage({ code: error.response.status, description: error.response.data.message });

@@ -37,7 +37,7 @@ const Collapse = ({title, handleOnChange, submissionTunnelFormListArticle, resta
         <p>Aucun article</p> 
     
     return(
-        <div className="collapse collapse-plus rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
+        <div className="collapse collapse-plus rounded-sm border border-stroke bg-white sm:px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1">
             <input type="checkbox" /> 
             <div className="collapse-title mb-6 text-xl font-semibold text-black">
                 {title}
