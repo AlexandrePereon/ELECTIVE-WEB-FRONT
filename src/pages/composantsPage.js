@@ -14,7 +14,7 @@ const ComposantsPage = () => {
         <Fragment>
         <Header role={userInfos?.role}/>
         <TitleFade title="Lien des composants :"/>
-        <ButtonRedirect title="Liste des composants" url={`/gitlab/root/ELECTIVE-WEB-FRONT/-/tree/develop/src/components?ref_type=heads`} />
+        <ButtonRedirect title="Liste des composants" url={`/gitlab/`} />
         <Footer/>
     </Fragment>
     )
