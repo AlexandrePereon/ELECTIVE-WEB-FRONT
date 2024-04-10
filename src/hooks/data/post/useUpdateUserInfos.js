@@ -14,7 +14,8 @@ const useUpdateUserInfos = () => {
                 userId : userId,
                 firstName: e.target.elements.firstName.value,
                 lastName:  e.target.elements.lastName.value,
-                email: e.target.elements.email.value
+                email: e.target.elements.email.value,
+                partnerCode: e.target.elements.partnerCode.value
             });
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
