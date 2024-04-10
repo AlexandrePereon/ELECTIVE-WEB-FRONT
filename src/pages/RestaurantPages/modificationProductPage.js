@@ -21,22 +21,28 @@ const ModificationProductPage = ({elementType}) => {
 
     
     const {articleData, isLoadingArticle}=useGetArticleById(id) 
-    const { handleSubmitArticleModification } = useModifiedArticle();
+    const { handleSubmitArticleModification, isLoadingArticleModification, alertBannerArticleModification } = useModifiedArticle();
 
     const {menuData, isLoadingMenu}=useGetMenuById(id) 
-    const { handleSubmitMenuModification } = useModifiedMenu();
+    const { handleSubmitMenuModification, isLoadingMenuModification, alertBannerMenuModification } = useModifiedMenu();
 
     let form = null;
     let productData = null;
     let handleSubmit = null;
+    let isLoading = null;
+    let alertBanner = null;
     if (elementType=== "menu") {
         form = menuFormData
         productData = menuData;
         handleSubmit = handleSubmitMenuModification;
+        isLoading=isLoadingMenuModification;
+        alertBanner=alertBannerMenuModification;
     }else{
         form = articleFormData;
         productData = articleData;
         handleSubmit = handleSubmitArticleModification;
+        isLoading=isLoadingArticleModification;
+        alertBanner=alertBannerArticleModification;
     }
     
     const [imageValue, setImageValue] = useState(productData?.image);
@@ -58,6 +64,8 @@ const ModificationProductPage = ({elementType}) => {
                     handleSubmit={handleSubmit}
                     imageValue={imageValue}
                     productId={id}
+                    isLoading={isLoading}
+                    alertBanner={alertBanner}
                 />}
             </div>
             <Footer/>

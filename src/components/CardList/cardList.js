@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Pagination from "../Pagination/pagination";
 
 const CardList = ({children, pagination, handleSetPagination, maxPagination, type}) => {
 
     return(
-        <div>
+        <Fragment>
             <div className="flex overflow-x-auto lg:overflow-x-visible ">
                 {children}
             </div>
@@ -14,7 +14,7 @@ const CardList = ({children, pagination, handleSetPagination, maxPagination, typ
             maxPagination={maxPagination}
             type={type}
             />
-        </div>
+        </Fragment>
     );
 }
 
