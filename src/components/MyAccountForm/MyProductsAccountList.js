@@ -8,11 +8,11 @@ import MyProductsAccountForm from "./myProductsAccountForm";
 
 const MyProductsAccountList = ({restaurantId}) => {
 
-    const { handleDeleteArticle, alertBannerDeleteArticle } = useDeleteArticle();
+    const { handleDeleteArticle,isLoadingDeleteArticle, alertBannerDeleteArticle } = useDeleteArticle();
     const [paginationArticles, setPaginationArticles]=useState(1)
     const {articlesData, maxPageArticles} = useGetAllArticlesFromRestaurant(restaurantId,paginationArticles);
     
-    const { handleDeleteMenu, alertBannerDeleteMenu } = useDeleteMenu();
+    const { handleDeleteMenu,isLoadingDeleteMenu, alertBannerDeleteMenu } = useDeleteMenu();
     const [paginationMenus, setPaginationMenus]=useState(1)
     const {menusData, maxPageMenus} = useGetAllMenusFromRestaurant(restaurantId,paginationMenus);
 
@@ -24,7 +24,7 @@ const MyProductsAccountList = ({restaurantId}) => {
     }
 
     return(
-        <div className="sm:w-page m-auto pb-10">
+        <div>
         {alertBannerDeleteArticle && alertBannerDeleteArticle}
         <TitleFade title="Espace modification produits"/>
         {articlesData && <MyProductsAccountForm
@@ -33,6 +33,7 @@ const MyProductsAccountList = ({restaurantId}) => {
             handleSetPagination={handleSetPagination}
             maxPage={maxPageArticles}
             pagination={paginationArticles}
+            isLoading={isLoadingDeleteArticle}
             type={"article"}
         />}
         {menusData && <MyProductsAccountForm
@@ -41,6 +42,7 @@ const MyProductsAccountList = ({restaurantId}) => {
             handleSetPagination={handleSetPagination}
             maxPage={maxPageMenus}
             pagination={paginationMenus}
+            isLoading={isLoadingDeleteMenu}
             type={"menu"}
         />}
 

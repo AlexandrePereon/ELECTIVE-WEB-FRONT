@@ -6,7 +6,7 @@ const useSuspendAccount = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleSuspendAccount = async (userId) => {
+    const handleSuspendAccount = async (userId, refetch) => {
         setIsLoading(true);
         try {
             const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_AUTH}suspend/`,{
@@ -15,6 +15,7 @@ const useSuspendAccount = () => {
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);
+                refetch();
               }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});

@@ -48,8 +48,10 @@ const HistoryOrderPage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <Tab partsName={parts} steps={steps} handleOnSwitchSteps={handleOnSwitchSteps}/>
-            {content[steps]}
+            <div className="sm:w-page m-auto pb-10 h-screen">
+                <Tab partsName={parts} steps={steps} handleOnSwitchSteps={handleOnSwitchSteps}/>
+                {content[steps]}
+            </div>
             <Footer/>
         </Fragment>
     )

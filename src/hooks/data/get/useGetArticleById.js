@@ -10,7 +10,7 @@ const useGetArticleById = (articleID) => {
         const getArticleById = async (articleID) => {
             setIsLoadingArticle(true);
             try {
-                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_RESTAURANTarticle}/${articleID}`);
+                const response = await axiosReq.get(`${process.env.REACT_APP_API_PREFIX_RESTAURANT}article/${articleID}`);
                 if (response) {
                     setArticleData(response.data);
                 }

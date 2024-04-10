@@ -5,6 +5,7 @@ const useGetAllUsers = () => {
 
     const [usersData, setUsersData] = useState(null);
     const [isLoadingUsers, setIsLoadingUsers] = useState(true);   
+    const [isReload, setIsReload] = useState(false);   
     
     useEffect(()=>{
         const getAllUsers = async () => {
@@ -21,10 +22,13 @@ const useGetAllUsers = () => {
         };
 
         getAllUsers();
-    },[])
+    },[isReload])
     
+    const refetch = () => {
+        setIsReload(!isReload);
+    };
 
-    return {usersData, isLoadingUsers};
+    return {refetchUsersData : refetch, usersData, isLoadingUsers};
 }
 
 export default useGetAllUsers;

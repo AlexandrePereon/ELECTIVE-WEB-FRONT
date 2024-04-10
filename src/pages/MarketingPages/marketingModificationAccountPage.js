@@ -11,6 +11,7 @@ import Input from "../../components/Input/input";
 import ButtonValidationForm from "../../components/ButtonValidationForm/buttonValidationForm";
 import useDeleteAccount from "../../hooks/data/post/useDeleteAccount";
 import useUpdateUserInfos from "../../hooks/data/post/useUpdateUserInfos";
+import ButtonWithVerification from "../../components/ButtonWithVerification/buttonWithVerification";
 
 const MarketingModificationAccountPage = () => {
 
@@ -45,13 +46,7 @@ return(
     {alertBannerDeleteAccount && alertBannerDeleteAccount}
     <TitleFade title="Modification de compte"/>
     <Fragment>
-        <button
-        type="button"
-        className={`rounded-md w-small bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-        onClick={()=>handleDeleteAccount(id)}
-        >
-            Supprimer
-        </button>
+        <ButtonWithVerification query={handleDeleteAccount} isLoading={isLoadingDeleteAccount} id={id}/> 
         <form action="#" method="PUT" onSubmit={(e) => handleSubmit(e,id)}>
             <div className="border-b border-gray-900/10 pb-2">
                 {inputs}
