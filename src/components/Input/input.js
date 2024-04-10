@@ -44,6 +44,7 @@ const Input = ({title, handleOnChange, id, type, size, options, isDisable, defau
             input=<input
             disabled={isDisable || false}
             type={type==="password" && isPasswordVisible && 'text' || type}
+            {...(type === "number" && {min: 0})}
             name={id}
             id={id}
             defaultValue={defaultValue}

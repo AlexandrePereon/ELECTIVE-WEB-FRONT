@@ -22,8 +22,6 @@ const MarketingModificationAccountPage = () => {
     const { handleDeleteAccount, isLoadingDeleteAccount, alertBannerDeleteAccount }= useDeleteAccount();
     const { handleSubmit, isLoadingUpdateUserInfos, alertBanner } = useUpdateUserInfos();
 
-    console.log(userInfosByIdData)
-
 
     const inputs = userInfosFormData.map((input, index)=>{
         if (input.id ==="currentPassword" || input.id ==="newPassword") {

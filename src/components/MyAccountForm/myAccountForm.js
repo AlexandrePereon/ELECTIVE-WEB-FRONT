@@ -56,18 +56,18 @@ const MyAccountForm = ({userInfosData}) => {
         <TitleFade title="Espace mon compte"/>
         <Fragment>
             {userInfosData &&      
-                <div className="">
+                <div className="grid grid-cols-1 gap-4">
                     <button
                     type="button"
                     onClick={()=>{setIsEditable(!isEditable)}}
-                    className={`rounded-md w-small bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                    className={`rounded-md bg-blue-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-fit`}
                     >
-                        modifier
+                        Modifier
                     </button>
                     <form action="#" method="DELETE" onSubmit={() => handleDeleteAccount()}>
                         <button
                         type="submit"
-                        className={`rounded-md w-small bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                        className={`rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-fit`}
                         >
                             Supprimer
                         </button>

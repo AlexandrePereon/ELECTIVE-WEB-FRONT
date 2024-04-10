@@ -15,6 +15,7 @@ const TechnicalPerformancePage = () => {
         <Header role={userInfos?.role}/>
         <TitleFade title="Performance :"/>
         <ButtonRedirect title="Accéder aux performances" url={`/metrics`} />
+        <ButtonRedirect title="Accéder à prometheus" url={`/prometheus/graph`} />
         <Footer/>
     </Fragment>
     )

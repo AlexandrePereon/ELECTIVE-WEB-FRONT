@@ -12,7 +12,7 @@ const signUpFormData = [
     isRequired : true,
     id : "lastName"},
     {
-    title : "Addresse email",
+    title : "Adresse E-mail",
     type : "email",
     size : "w-large",
     isRequired : true,

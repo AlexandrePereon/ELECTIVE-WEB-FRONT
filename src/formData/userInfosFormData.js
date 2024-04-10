@@ -10,7 +10,7 @@ const userInfosFormData = [
     size : "w-medium",
     id : "lastName"},
     {
-    title : "Addresse email",
+    title : "Adresse E-mail",
     type : "email",
     size : "w-large",
     id : "email"},

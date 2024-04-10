@@ -1,5 +1,4 @@
-import React, {useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
 import Notification from "./notification";
 
 const NotificationCard = ({role, tabNotifications}) => {
@@ -11,7 +10,7 @@ const NotificationCard = ({role, tabNotifications}) => {
             );
         });
     } else {
-        tabNotifs= <p> pas de notification</p>
+        tabNotifs= <p> Pas de notification</p>
     }  
 
     return(

@@ -32,6 +32,7 @@ const MarketingAccountManagementPage = () => {
                     role={user.role} 
                     title={user.firstName + ' ' +user.lastName}
                     description={user.email}
+                    role={user.role}
                 >
                     <Link
                     to={`modification/${user.id}`}
