@@ -8,7 +8,7 @@ import Loader from "../Loader/loader";
 
 const HistoryOrderSectionInProgress = ({role}) => {
    
-    const {inProgressOrders, isLoadingFinishedOrders} = useGetInProgressOrders();
+    const {inProgressOrders, isLoadingInProgressOrders, refetchInProgressOrders} = useGetInProgressOrders();
     const {handlePreparedOrder} = usePreparedOrder();
 
     const [isModalOpen, setIsModalOpen]=useState(null)
@@ -22,13 +22,13 @@ const HistoryOrderSectionInProgress = ({role}) => {
     
     let content = null;
 
-    if (isLoadingFinishedOrders) {
+    if (isLoadingInProgressOrders) {
         content = <Loader/>
     }
-    if (inProgressOrders && inProgressOrders.length===0 && !isLoadingFinishedOrders) {
+    if (inProgressOrders && inProgressOrders.length===0 && !isLoadingInProgressOrders) {
         content = <NoContentTitle title="Aucune commande"/>
     }
-    if (inProgressOrders && inProgressOrders.length>0 && !isLoadingFinishedOrders) {
+    if (inProgressOrders && inProgressOrders.length>0 && !isLoadingInProgressOrders) {
         content = inProgressOrders.map((order,index)=>{
             return(
              <Fragment>
@@ -61,7 +61,7 @@ const HistoryOrderSectionInProgress = ({role}) => {
                                  <button
                                  type="button"
                                  className={`rounded-md w-fit mr-2 p-2 bg-light-green font-semibold text-white shadow-sm hover:bg-medium-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                                 onClick={()=>handlePreparedOrder(order._id)}
+                                 onClick={()=>{handlePreparedOrder(order._id, refetchInProgressOrders)}}
                                  >
                                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />

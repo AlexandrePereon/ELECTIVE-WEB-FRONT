@@ -4,7 +4,8 @@ import {axiosReq} from "../../../utils/axios";
 const useGetToDeliverOrders = () => {
 
     const [ordersData, setOrdersData] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);   
+    const [isLoading, setIsLoading] = useState(true);
+    const [isReload, setIsReload] = useState(false);   
     
     useEffect(()=>{
         const getToDeliverOrders = async () => {
@@ -21,10 +22,14 @@ const useGetToDeliverOrders = () => {
         };
 
         getToDeliverOrders();
-    },[])
+    },[isReload])
+
+    const refetch = () => {
+        setIsReload(!isReload)
+    }
     
 
-    return {toDeliverOrders : ordersData, isLoadingToDeliverOrders : isLoading};
+    return {toDeliverOrders : ordersData, isLoadingToDeliverOrders : isLoading, refetchToDeliverOrders : refetch};
 }
 
 export default useGetToDeliverOrders;
