@@ -40,21 +40,20 @@ axiosReq.interceptors.response.use(
         refreshTokenRequest = axiosReq.post(`${process.env.REACT_APP_API_PREFIX_AUTH}refresh`, {
           refreshToken: sessionStorage.getItem('refreshToken'),
         });
+        try {
+          const response = await refreshTokenRequest;
+          if(response){
+            sessionStorage.setItem('token', JSON.stringify({ valeur: response.data.token, expiration: new Date().getTime() + (15 * 60 * 1000) }));
+            originalRequest.headers.Authorization = response.data.token;
+            return axiosReq(originalRequest);
+          }
+        } catch (error) {
+          logout();
+        } finally {
+          refreshTokenRequest = null;
+        }
       }
-
-      try {
-        const response = await refreshTokenRequest;
-        const Token = response.data.token;
-        let dateExpiration = new Date().getTime() + (15 * 60 * 1000);
-        sessionStorage.setItem('token', JSON.stringify({ valeur: Token, expiration: dateExpiration }));
-        originalRequest.headers.Authorization = `${Token}`;
-        return axiosReq(originalRequest);
-      } catch (refreshError) {
-        console.error('Erreur lors du rafraîchissement du jeton :', refreshError);
-        logout();
-      } finally {
-        refreshTokenRequest = null;
-      }
+      
     }
 
     return Promise.reject(error);
