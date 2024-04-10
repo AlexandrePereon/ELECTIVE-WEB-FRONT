@@ -10,12 +10,13 @@ import HorizontalUserCard from "../../components/HorizontalCard/horizontalUserCa
 import TitleFade from "../../components/TitleFade/titleFade";
 import Modal from "../../components/Modal/modal";
 import Loader from "../../components/Loader/loader";
+import { useNavigate} from 'react-router-dom';
 
 const MarketingAccountManagementPage = () => {
 
     const {getUserInfosFromSessionStorage}=useAuthentication();
     const userInfos = getUserInfosFromSessionStorage();
-
+    const navigate = useNavigate();
     const { handleSuspendAccount, alertBannerSuspendAccount }= useSuspendAccount();
     const { handleDeleteAccount, isLoadingDeleteAccount, alertBannerDeleteAccount }= useDeleteAccount();
     const { refetchUsersData, usersData, isLoadingUsers }=useGetAllUsers();
@@ -45,14 +46,13 @@ const MarketingAccountManagementPage = () => {
                         title={user.firstName + ' ' + user.lastName}
                         description={user.email}
                     >
-                        <Link
-                        to={`modification/${user.id}`}
-                        className={`rounded-md w-fit mr-2 p-2 bg-blue-500 font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                        >
+                        <button 
+                        className={`rounded-md mr-2 p-2 bg-blue-500 font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
+                        onClick={() => navigate(`modification/${user.id}`)}>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
                             </svg>
-                        </Link>
+                        </button>
                         <button
                             onClick={()=>handleSuspendAccount(user.id ,refetchUsersData)}
                             className={`rounded-md w-fit mr-2 p-2 ${user.isBlocked ? "bg-orange-500 hover:bg-orange-600" : "bg-light-green hover:bg-medium-green"} font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}

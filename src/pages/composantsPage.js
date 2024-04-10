@@ -13,8 +13,10 @@ const ComposantsPage = () => {
     return (
         <Fragment>
         <Header role={userInfos?.role}/>
+        <div className="min-h-screen sm:w-page m-auto pt-10">
         <TitleFade title="Lien des composants :"/>
         <ButtonRedirect title="Liste des composants" url={`/gitlab/`} />
+        </div>
         <Footer/>
     </Fragment>
     )
