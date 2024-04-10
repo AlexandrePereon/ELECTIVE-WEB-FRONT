@@ -15,7 +15,7 @@ const AddProductPage = () => {
     return (
         <Fragment>
             <Header role={userInfosFromSessionStorage?.role}/>
-            <div className="w-4/6 m-auto">
+            <div className="sm:w-4/6 m-auto">
                 <SubmissionTunnel restaurantId={userInfosFromSessionStorage.restaurant || userInfosData?.restaurant}/>
             </div>
             <Footer/>

@@ -19,6 +19,8 @@ const MyProductsAccountList = ({restaurantId}) => {
     const handleSetPagination = (value, type) => {
         if((value>0) && (value<=maxPageArticles)){
             type === "article" &&  setPaginationArticles(value)
+        }
+        if((value>0) && (value<=maxPageMenus)){
             type === "menu" &&  setPaginationMenus(value)
         }
     }

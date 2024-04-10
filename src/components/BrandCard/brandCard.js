@@ -32,7 +32,7 @@ import React from "react";
               </div>
   
   
-              <div className=" items-center justify-center p-2.5 sm:flex xl:p-5">
+              <div className="items-center justify-center p-2.5 sm:flex xl:p-5">
                  {children}
               </div>
             </div>

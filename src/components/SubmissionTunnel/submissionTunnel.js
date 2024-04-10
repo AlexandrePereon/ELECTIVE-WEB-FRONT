@@ -4,7 +4,6 @@ import Tab from "../../components/Tab/tab";
 import TitleFade from "../../components/TitleFade/titleFade";
 import Collapse from "../../components/Collapse/collapse";
 import Input from "../../components/Input/input";
-import Loader from "../../components/Loader/loader";
 import usePostRestaurantArticle from "../../hooks/data/post/usePostRestaurantArticle";
 import usePostRestaurantMenu from "../../hooks/data/post/usePostRestaurantMenu";
 import productFormData from "../../formData/productFormData";
@@ -75,6 +74,7 @@ const SubmissionTunnel = ({restaurantId}) => {
                     <Input 
                         title={item.title[steps]} 
                         handleOnChange={handleInputChange} 
+                        defaultValue={item.value}
                         id={item.id} 
                         type={item.type} 
                         size={item.size}
@@ -113,7 +113,7 @@ const SubmissionTunnel = ({restaurantId}) => {
                 {submissionTunnelFormInput}
             </div>
             <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
-                {isLoading ? <Loader/> : <ButtonValidationForm title="Ajouter" isLoading={isLoading} size={"w-small"}/>} 
+                <ButtonValidationForm title="Ajouter" isLoading={isLoading} size={"w-small"}/> 
             </div>
         </form>
     )
