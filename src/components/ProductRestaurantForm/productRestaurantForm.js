@@ -84,6 +84,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                     title={item.name}
                     description={item.description}
                     image={item.image}
+                    price={item.price}
                     key={index}
                     >
                          <AddNumberButton
@@ -107,6 +108,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                     title={item.name}
                     description={item.description}
                     image={item.image}
+                    price={item.price}
                     key={index}
                     >
                         <AddNumberButton
