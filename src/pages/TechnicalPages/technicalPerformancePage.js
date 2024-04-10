@@ -13,9 +13,11 @@ const TechnicalPerformancePage = () => {
     return (
         <Fragment>
         <Header role={userInfos?.role}/>
+        <div className="min-h-screen sm:w-page m-auto pt-10">
         <TitleFade title="Performance :"/>
         <ButtonRedirect title="Accéder aux performances" url={`/metrics`} />
         <ButtonRedirect title="Accéder à prometheus" url={`/prometheus/graph`} />
+        </div>
         <Footer/>
     </Fragment>
     )

@@ -34,7 +34,7 @@ const DevelopperApiPage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <div className="min-h-screen">
+            <div className="min-h-screen sm:w-page m-auto pt-10">
             <TitleFade title="Liens API :"/>
             {btnList}
             </div>
