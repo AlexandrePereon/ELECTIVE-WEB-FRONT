@@ -2,20 +2,21 @@ import React,{ Fragment }  from "react";
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import SubmissionTunnel from "../../components/SubmissionTunnel/submissionTunnel";
+import useAuthentication from "../../hooks/useAuthentication";
+import useGetUserInfos from "../../hooks/data/get/useGetUserInfos";
 
 const AddProductPage = () => {
 
-    const getUserInfosFromSessionStorage = () => {
-        return JSON.parse(sessionStorage.getItem('userInfos'));
-      };
+    const {getUserInfosFromSessionStorage} = useAuthentication();
+    const userInfosFromSessionStorage = getUserInfosFromSessionStorage()
 
-    const userInfos = getUserInfosFromSessionStorage();
+    const {userInfosData}= useGetUserInfos();
 
     return (
         <Fragment>
-            <Header role={userInfos?.role}/>
+            <Header role={userInfosFromSessionStorage?.role}/>
             <div className="w-4/6 m-auto">
-                <SubmissionTunnel restaurantId={userInfos.restaurantId}/>
+                <SubmissionTunnel restaurantId={userInfosFromSessionStorage.restaurant || userInfosData?.restaurant}/>
             </div>
             <Footer/>
         </Fragment>

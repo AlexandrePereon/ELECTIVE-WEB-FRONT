@@ -37,7 +37,7 @@ axiosReq.interceptors.response.use(
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
       if (!refreshTokenRequest) {
-        refreshTokenRequest = axiosReq.post(`${process.env.REACT_APP_API_PREFIX_AUTH}/refresh`, {
+        refreshTokenRequest = axiosReq.post(`${process.env.REACT_APP_API_PREFIX_AUTH}refresh`, {
           refreshToken: sessionStorage.getItem('refreshToken'),
         });
       }
