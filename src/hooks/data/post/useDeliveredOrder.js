@@ -6,7 +6,7 @@ const useDeliveredOrder = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleDeliveredOrder = async (orderId) => {
+    const handleDeliveredOrder = async (orderId, refetch) => {
         setIsLoading(true);
         try {
             const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}delivered/`,{
@@ -15,6 +15,7 @@ const useDeliveredOrder = () => {
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);
+                refetch();
               }
           } catch (error) {
             setMessage({code : error.response.status, description : error.response.data.message});

@@ -5,11 +5,13 @@ import useAcceptOrder from "../../hooks/data/post/useAcceptOrder";
 import Loader from "../Loader/loader";
 import NoContentTitle from "../NoContentTitle/noContentTitle";
 import Modal from "../Modal/modal";
+import useCancelOrder from "../../hooks/data/post/useCancelOrder";
 
 const HistoryOrderSectionRequest = ({role}) => {
    
-    const {waitingOrders , isLoadingWaitingOrders} = useGetWaitingOrders();
+    const {waitingOrders , isLoadingWaitingOrders, refetchWaitingOrders} = useGetWaitingOrders();
     const { handleAcceptOrder, isLoadingAcceptOrder, alertBannerAcceptOrder } = useAcceptOrder();
+    const { handleCancelOrder, isLoadingCancelOrder, alertBannerCancelOrder } = useCancelOrder();
     
     const [isModalOpen, setIsModalOpen]=useState(null)
 
@@ -60,7 +62,7 @@ const HistoryOrderSectionRequest = ({role}) => {
                             <button
                                 type="button"
                                 className={`rounded-md w-fit mr-2 p-2 bg-light-green font-semibold text-white shadow-sm hover:bg-medium-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                                onClick={()=>handleAcceptOrder(order._id)}
+                                onClick={()=>{handleAcceptOrder(order._id, refetchWaitingOrders)}}
                             >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
@@ -69,7 +71,8 @@ const HistoryOrderSectionRequest = ({role}) => {
                             <button
                                 type="button"
                                 className={`rounded-md w-fit p-2 bg-red-500 font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                                >
+                                onClick={()=>{handleCancelOrder(order._id, refetchWaitingOrders)}}
+                            >
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                                     </svg>

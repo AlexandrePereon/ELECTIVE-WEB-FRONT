@@ -5,6 +5,7 @@ const useGetInProgressOrders = () => {
 
     const [ordersData, setOrdersData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);   
+    const [isReload, setIsReload] = useState(false);   
     
     useEffect(()=>{
         const getInProgressOrders = async () => {
@@ -21,10 +22,13 @@ const useGetInProgressOrders = () => {
         };
 
         getInProgressOrders();
-    },[])
+    },[isReload])
     
+    const refetch = () => {
+        setIsReload(!isReload)
+    }
 
-    return {inProgressOrders : ordersData, isLoadingInProgressOrders : isLoading};
+    return {inProgressOrders : ordersData, isLoadingInProgressOrders : isLoading, refetchInProgressOrders : refetch};
 }
 
 export default useGetInProgressOrders;

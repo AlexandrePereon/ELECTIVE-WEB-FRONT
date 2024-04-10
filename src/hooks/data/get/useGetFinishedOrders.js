@@ -5,6 +5,7 @@ const useGetFinishedOrders = () => {
 
     const [ordersData, setOrdersData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);   
+    const [isReload, setIsReload] = useState(false);   
     
     useEffect(()=>{
         const getInProgressOrders = async () => {
@@ -21,10 +22,13 @@ const useGetFinishedOrders = () => {
         };
 
         getInProgressOrders();
-    },[])
+    },[isReload])
     
-
-    return {finishedOrders : ordersData, isLoadingFinishedOrders : isLoading};
+    const refetch = () => {
+        setIsReload(!isReload)
+    }
+    
+    return {finishedOrders : ordersData, isLoadingFinishedOrders : isLoading, refetchFinishedOrders : refetch};
 }
 
 export default useGetFinishedOrders;

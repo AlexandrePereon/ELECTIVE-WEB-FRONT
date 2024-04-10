@@ -2,14 +2,14 @@ import {useState} from "react";
 import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 
-const useAcceptOrder = () => {
+const useCancelOrder = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
-    const handleAcceptOrder = async (orderId, refetch) => {
+    const handleCancelOrder = async (orderId, refetch) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}accept/`,{
+            const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}cancel/`,{
                 orderId : orderId
             });
             if (response) {
@@ -25,7 +25,7 @@ const useAcceptOrder = () => {
 
     const {alertBanner}= useDisplayAlert(message);
 
-    return { handleAcceptOrder, isLoadingAcceptOrder : isLoading, alertBannerAcceptOrder : alertBanner };
+    return { handleCancelOrder, isLoadingCancelOrder : isLoading, alertBannerCancelOrder : alertBanner };
 };
 
-export default useAcceptOrder;
+export default useCancelOrder;
