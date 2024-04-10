@@ -7,6 +7,7 @@ import useDeleteRestaurantAccount from "../../hooks/data/post/useDeleteRestauran
 import useGetRestaurantById from "../../hooks/data/get/useGetRestaurantById";
 import useModifiedRestaurantInfos from "../../hooks/data/post/useModifiedRestaurantInfos";
 import FileUploader from "../FileUploader/fileUploader";
+import ButtonWithVerification from "../ButtonWithVerification/buttonWithVerification";
 
 const MyRestaurantAccountForm = ({restaurantId}) => {
 
@@ -47,7 +48,7 @@ const MyRestaurantAccountForm = ({restaurantId}) => {
             }})
 
     return(
-        <div className="sm:w-page m-auto pb-10">
+        <div>
 
         {alertBanner && alertBanner}
         {alertBannerDeleteAccount && alertBannerDeleteAccount}
@@ -62,17 +63,10 @@ const MyRestaurantAccountForm = ({restaurantId}) => {
                     >
                         Modifier
                     </button>
-                    <form action="#" method="DELETE" onSubmit={() => handleDeleteAccount(restaurantId)}>
-                        <button
-                        type="submit"
-                        className={`rounded-md w-small bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-                        >
-                            Supprimer
-                        </button>
-                    </form>
+                    <ButtonWithVerification query={handleDeleteAccount} isLoading={isLoadingDeleteAccount} id={restaurantId}/>
                 </div>
             }
-            <form action="#" method="PUT" onSubmit={(e) => handleSubmit(e,restaurantId, imageValue)}>
+            <form action="#" method="PUT" onSubmit={(e) => handleSubmit(e, imageValue)}>
                 <div className={isEditable && "border-b border-gray-900/10 pb-2"}>
                     {inputs}
                 </div>

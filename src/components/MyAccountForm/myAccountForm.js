@@ -6,6 +6,7 @@ import ButtonValidationForm from "../ButtonValidationForm/buttonValidationForm";
 import useDeleteUserAccount from "../../hooks/data/post/useDeleteUserAccount";
 import Password from "../Password/password";
 import TitleFade from "../TitleFade/titleFade";
+import ButtonWithVerification from "../ButtonWithVerification/buttonWithVerification";
 
 const MyAccountForm = ({userInfosData}) => {
 
@@ -49,7 +50,7 @@ const MyAccountForm = ({userInfosData}) => {
             }})
 
     return(
-        <div className="sm:w-page m-auto pb-10">
+        <div>
 
         {alertBanner && alertBanner}
         {alertBannerDeleteAccount && alertBannerDeleteAccount}
@@ -64,14 +65,7 @@ const MyAccountForm = ({userInfosData}) => {
                     >
                         Modifier
                     </button>
-                    <form action="#" method="DELETE" onSubmit={() => handleDeleteAccount()}>
-                        <button
-                        type="submit"
-                        className={`rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-fit`}
-                        >
-                            Supprimer
-                        </button>
-                    </form>
+                    <ButtonWithVerification query={handleDeleteAccount} isLoading={isLoadingDeleteAccount}/>
                 </div>
             }
             <form action="#" method="PUT" onSubmit={(e) => handleSubmit(e)}>
