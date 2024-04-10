@@ -13,15 +13,15 @@ const DevelopperApiPage = () => {
     const tabBtn = [
         {
             title: "API authentification",
-            link: `/${process.env.REACT_APP_API_PREFIX_AUTH}api-docs/#/`
+            link: `${process.env.REACT_APP_API_PREFIX_AUTH}api-docs/#/`
         },
         {
             title: "API commandes",
-            link: `/${process.env.REACT_APP_API_PREFIX_ORDER}api-docs/#/`
+            link: `${process.env.REACT_APP_API_PREFIX_ORDER}api-docs/#/`
         },
         {
             title: "API restaurant",
-            link: `/${process.env.REACT_APP_API_PREFIX_RESTAURANT}api-docs/#/`
+            link: `${process.env.REACT_APP_API_PREFIX_RESTAURANT}api-docs/#/`
         },
     ]
 
@@ -34,9 +34,10 @@ const DevelopperApiPage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <div className="min-h-screen"></div>
+            <div className="min-h-screen">
             <TitleFade title="Liens API :"/>
             {btnList}
+            </div>
             <Footer/>
         </Fragment>
     )
