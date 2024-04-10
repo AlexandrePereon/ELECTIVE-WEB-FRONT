@@ -37,7 +37,7 @@ const MarketingDashboardPage = () => {
             <Header role={userInfos?.role}/>
             <TitleFade title="Tableau de bord"/>
                 <Graph dailySummary={dailySummary}/>
-                <div className="sm:w-page m-auto pb-10">    
+                <div className="m-auto pb-10">    
                   <Statistic stats={stats}/>
                 </div>
 

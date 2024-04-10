@@ -38,7 +38,7 @@ const DashboardRestaurantPage = () => {
                   <TitleFade title="Tableau de bord"/>
               </div>
                   <Graph dailySummary={dailySummary}/>
-                  <div className="sm:w-page m-auto pb-10">    
+                  <div className="m-auto pb-10">    
                   <Statistic stats={stats}/>
                   </div>
              
