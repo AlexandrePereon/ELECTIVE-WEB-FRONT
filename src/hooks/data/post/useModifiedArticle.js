@@ -28,7 +28,7 @@ const useModifiedArticle = () => {
 
     const {alertBanner}= useDisplayAlert(message);
 
-    return { handleSubmitArticleModification : handleSubmit, isLoading, alertBanner };
+    return { handleSubmitArticleModification : handleSubmit, isLoadingArticleModification : isLoading, alertBannerArticleModification : alertBanner };
 };
 
 export default useModifiedArticle;
