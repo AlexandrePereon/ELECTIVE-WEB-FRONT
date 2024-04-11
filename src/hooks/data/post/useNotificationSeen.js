@@ -13,9 +13,7 @@ const useNotificationSeen = () => {
     const handleSubmit = async () => {
         try {
             const response = await axiosReq.put(`${process.env.REACT_APP_API_PREFIX_ORDER}notified`)
-          } catch (error) {
-            console.log(error)
-          }
+          } catch (error) {}
         };
     return {handleSubmit};
 };

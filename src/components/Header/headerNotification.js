@@ -17,9 +17,7 @@ const HeaderNotification = ({role}) => {
                 const dataWebSocket = JSON.parse(event.data);
                 setNumberNotif(dataWebSocket.filter(notif => !notif.seen).length)
                 setTabNotif(dataWebSocket)
-            } catch(error) {
-                console.log(error)
-            }
+            } catch(error) {}
             };
         return () => {
             socket.close();
