@@ -106,7 +106,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                 {menusData && menusData.map((item, index)=>
                     <Card
                     title={item.name}
-                    description={item.description}
+                    description={item.description.length > 100 ? item.description.substring(0, 100) + "..." : item.description}
                     image={item.image}
                     price={item.price}
                     key={index}

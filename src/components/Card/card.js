@@ -7,7 +7,7 @@ const Card = ({isLoading, image, title, description, price, children}) => {
             <figure className={`${isLoading && "skeleton"} h-40`}>
                {!isLoading && <img src={image} alt="" className="w-x-large h-auto" />}
             </figure>
-            <div className={`${isLoading && "skeleton"} card-body indicator`}>
+            <div className={`${isLoading && "skeleton"} card-body indicator w-fit`}>
                 {price >= 0 && <span className="text-white indicator-item indicator-top p-2 w-fit h-fit indicator-center badge">{price} €</span>}
                 <h2 className={`${isLoading && "skeleton"} `}>{title}</h2>
                 <p className={`${isLoading && "skeleton"} text-xs`}>{description}</p>

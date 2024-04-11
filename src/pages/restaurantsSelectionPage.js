@@ -43,7 +43,7 @@ const RestaurantsSelectionPage = () => {
                             restaurantsData && restaurantsData.map((item, index)=>
                             <Card
                             title={item.name}
-                            description={item.description}
+                            description={item.description.length > 100 ? item.description.substring(0, 100) + "..." : item.description}
                             image={item.image}
                             key={index}
                             >
