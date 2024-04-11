@@ -5,7 +5,7 @@ const CardList = ({children, pagination, handleSetPagination, maxPagination, typ
 
     return(
         <Fragment>
-            <div className="flex overflow-x-auto lg:overflow-x-visible ">
+            <div className="flex sm:justify-center overflow-x-auto lg:overflow-x-visible ">
                 {children}
             </div>
             <Pagination 
