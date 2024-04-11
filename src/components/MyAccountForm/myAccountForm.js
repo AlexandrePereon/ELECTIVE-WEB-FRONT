@@ -74,7 +74,7 @@ const MyAccountForm = ({userInfosData}) => {
                 </div>
                 {!isEditable && <div>Vous avez parrainé {userInfosData.partnerNumber} personne{userInfosData.partnerNumber>1 && "s"}</div>}
                {isEditable && <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <ButtonValidationForm isLoading={isLoadingModificationUserInfos} size={"w-small"} title={"Sauvegarder"}/>
+                    <ButtonValidationForm isLoading={isLoadingModificationUserInfos} size={"w-fit"} title={"Sauvegarder"}/>
                 </div>}
             </form>
         </Fragment>

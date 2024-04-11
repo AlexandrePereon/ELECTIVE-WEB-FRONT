@@ -113,7 +113,7 @@ const SubmissionTunnel = ({restaurantId}) => {
                 {submissionTunnelFormInput}
             </div>
             <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
-                <ButtonValidationForm title="Ajouter" isLoading={isLoading} size={"w-small"}/> 
+                <ButtonValidationForm title="Ajouter" isLoading={isLoading} size={"w-fit"}/> 
             </div>
         </form>
     )

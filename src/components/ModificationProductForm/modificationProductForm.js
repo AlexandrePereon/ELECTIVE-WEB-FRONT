@@ -65,7 +65,7 @@ const ModificationProductForm = ({restaurantId, productData, formData, handleSet
                 {alertBanner && alertBanner}
                 {modificationProductFormInput}
                 <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
-                    <ButtonValidationForm size={"w-small"} title={"Valider"} isLoading={isLoading}/>
+                    <ButtonValidationForm size={"w-fit"} title={"Valider"} isLoading={isLoading}/>
                 </div>
             </form>
     )
