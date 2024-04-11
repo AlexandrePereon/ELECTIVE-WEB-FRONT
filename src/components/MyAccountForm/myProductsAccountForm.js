@@ -5,7 +5,7 @@ import { useNavigate} from 'react-router-dom';
 import Pagination from "../Pagination/pagination";
 import ButtonWithVerification from "../ButtonWithVerification/buttonWithVerification";
 
-const MyProductsAccountForm = ({productData,handleDelete, pagination, maxPage, type, handleSetPagination, isLoading}) => {
+const MyProductsAccountForm = ({productData, handleDelete, pagination, maxPage, type, handleSetPagination, isLoading}) => {
     const navigate = useNavigate();
 
     const productsList = productData && productData.map((product, index)=>{

@@ -5,7 +5,7 @@ import Input from "../../components/Input/input";
 import ButtonValidationForm from "../ButtonValidationForm/buttonValidationForm";
 
 
-const ModificationProductForm = ({restaurantId, productData, formData, handleSetImageValue, handleSubmit, imageValue}) => {
+const ModificationProductForm = ({restaurantId, productData, formData, handleSetImageValue, handleSubmit, imageValue, isLoading, alertBanner}) => {
     const [submissionTunnelFormListArticle, setSubmissionTunnelFormListArticle] = useState(productData?.articles?.map(article => article._id))
 
     const handleListArticleChange = (value, type, action) => {
@@ -62,10 +62,10 @@ const ModificationProductForm = ({restaurantId, productData, formData, handleSet
 
     return (
             <form onSubmit={(e)=>handleSubmit(e, productData._id, imageValue, submissionTunnelFormListArticle)} className="border-b border-gray-900/10 pb-2">
-                {/* {alertBanner && alertBanner} */}
+                {alertBanner && alertBanner}
                 {modificationProductFormInput}
                 <div className="mt-6 flex items-center justify-end gap-x-6 pb-2">
-                    <ButtonValidationForm size={"w-small"} title={"Valider"}/>
+                    <ButtonValidationForm size={"w-small"} title={"Valider"} isLoading={isLoading}/>
                 </div>
             </form>
     )

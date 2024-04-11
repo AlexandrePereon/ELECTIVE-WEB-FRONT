@@ -15,7 +15,7 @@ const userInfosFormData = [
     size : "w-large",
     id : "email"},
     {
-    title : "Mot de passe actuelle",
+    title : "Mot de passe actuel",
     type : "password",
     size : "w-x-large",
     id : "currentPassword"},

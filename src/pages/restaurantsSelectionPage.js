@@ -27,27 +27,30 @@ const RestaurantsSelectionPage = () => {
     return (
         <Fragment>
             <Header role={userInfos?.role}/>
-            <TitleFade title="Page restaurants :"/>
-            <CardList 
-                cardData={restaurantsData} 
-                isLoading={isLoadingRestaurants}
-                pagination={pagination}
-                maxPagination={maxPageRestaurants}
-                handleSetPagination={handleSetPagination}
-                type="articles"
-            >  
-                {isLoadingRestaurants ?
-                    <Skeleton/> :
-                    restaurantsData && restaurantsData.map((item, index)=>
-                    <Card
-                    title={item.name}
-                    description={item.description}
-                    image={item.image}
-                    key={index}
-                    >
-                        <Link to={`/user-accueil/restaurant/${item._id}`}>voir plus</Link>
-                    </Card>)} 
-            </CardList>
+                    <div className="h-screen sm:w-page m-auto pb-10">
+                        <TitleFade title="Page restaurants :"/>
+                    
+                    <CardList 
+                        cardData={restaurantsData} 
+                        isLoading={isLoadingRestaurants}
+                        pagination={pagination}
+                        maxPagination={maxPageRestaurants}
+                        handleSetPagination={handleSetPagination}
+                        type="articles"
+                    >  
+                        {isLoadingRestaurants ?
+                            <Skeleton/> :
+                            restaurantsData && restaurantsData.map((item, index)=>
+                            <Card
+                            title={item.name}
+                            description={item.description}
+                            image={item.image}
+                            key={index}
+                            >
+                                <Link to={`/user-accueil/restaurant/${item._id}`}>voir plus</Link>
+                            </Card>)} 
+                    </CardList>
+                    </div>
             <Footer/>
         </Fragment>
     )

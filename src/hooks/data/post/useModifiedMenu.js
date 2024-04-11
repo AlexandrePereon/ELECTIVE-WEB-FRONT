@@ -2,7 +2,7 @@ import {useState} from "react";
 import {axiosReq} from "../../../utils/axios";
 import useDisplayAlert from "../../useDisplayAlert";
 
-const useModifiedMenu = () => {
+const  useModifiedMenu = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [message, setMessage] = useState({ code: null, description: null });
 
@@ -29,7 +29,7 @@ const useModifiedMenu = () => {
 
     const {alertBanner}= useDisplayAlert(message);
 
-    return { handleSubmitMenuModification : handleSubmit, isLoading, alertBanner };
+    return { handleSubmitMenuModification : handleSubmit, isLoadingMenuModification: isLoading, alertBannerMenuModification: alertBanner };
 };
 
 export default useModifiedMenu;
