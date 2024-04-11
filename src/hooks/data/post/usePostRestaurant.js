@@ -27,7 +27,6 @@ const usePostRestaurant = () => {
             if (response) {
                 setMessage({ code: response.status, description: response.data.message });
                 setIsLoading(false);
-                console.log(response.data.id)
                 updateRestaurantIdInSessionStorage(response.data.id)
                 window.location.href = '/restaurant-accueil';
             }
