@@ -71,7 +71,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
         }
     };
     return(
-        <div className="sm:w-3/4 m-auto">
+        <Fragment>
             <TitleFade title="Liste articles :"/>
             {maxPageArticles === null ? "Aucun article" : <CardList 
                 pagination={paginationArticles}
@@ -82,7 +82,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                 {articlesData && articlesData.map((item, index)=>
                     <Card
                     title={item.name}
-                    description={item.description}
+                    description={item.description.length > 100 ? item.description.substring(0, 100) + "..." : item.description}
                     image={item.image}
                     price={item.price}
                     key={index}
@@ -106,7 +106,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                 {menusData && menusData.map((item, index)=>
                     <Card
                     title={item.name}
-                    description={item.description}
+                    description={item.description.length > 100 ? item.description.substring(0, 100) + "..." : item.description}
                     image={item.image}
                     price={item.price}
                     key={index}
@@ -124,7 +124,7 @@ const ProductRestaurantForm = ({restaurantId}) => {
                     order={shoppingCart} 
                     restaurantId={restaurantId}
                 />
-        </div>
+        </Fragment>
     );
 }
 

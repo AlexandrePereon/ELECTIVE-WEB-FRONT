@@ -71,7 +71,7 @@ const MyRestaurantAccountForm = ({restaurantId}) => {
                     {inputs}
                 </div>
                {isEditable && <div className="mt-6 flex items-center justify-end gap-x-6">
-                    <ButtonValidationForm isLoading={isLoadingModificationRestaurantInfos} size={"w-small"} title={"Sauvegarder"}/>
+                    <ButtonValidationForm isLoading={isLoadingModificationRestaurantInfos} size={"w-fit"} title={"Sauvegarder"}/>
                 </div>}
             </form>
         </Fragment>

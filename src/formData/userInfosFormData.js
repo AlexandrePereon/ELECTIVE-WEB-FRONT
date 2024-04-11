@@ -27,7 +27,7 @@ const userInfosFormData = [
     {
     title : "Code parrain",
     type : "partnerCode",
-    size : "w-small",
+    size : "w-medium",
     id : "partnerCode"}
 ]
 

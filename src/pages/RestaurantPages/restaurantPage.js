@@ -30,8 +30,8 @@ const RestaurantPage = () => {
                 <div className="sm:w-page m-auto pb-10">
                     <TitleFade title={restaurantData.name}/>
                     <p className="text-black">{restaurantData.description}</p>
-                </div>
                 <ProductRestaurantForm restaurantId={id}/> 
+                </div>
                 
             </Fragment>  
             }
