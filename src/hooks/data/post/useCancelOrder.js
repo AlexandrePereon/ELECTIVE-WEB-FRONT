@@ -9,9 +9,7 @@ const useCancelOrder = () => {
     const handleCancelOrder = async (orderId, refetch) => {
         setIsLoading(true);
         try {
-            const response = await axiosReq.delete(`${process.env.REACT_APP_API_PREFIX_ORDER}cancel/`,{
-                orderId : orderId
-            });
+            const response = await axiosReq.delete(`${process.env.REACT_APP_API_PREFIX_ORDER}cancel/${orderId}`);
             if (response) {
                 setMessage({code : response.status, description : response.data.message});
                 setIsLoading(false);
