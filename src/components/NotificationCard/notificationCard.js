@@ -14,7 +14,7 @@ const NotificationCard = ({role, tabNotifications}) => {
     }  
 
     return(
-        <ul className="divide-y border-light-gray">
+        <ul className="max-h-80 divide-y border-light-gray" style={{overflowY:"overlay"}}>
             {tabNotifs}
         </ul>
     )
