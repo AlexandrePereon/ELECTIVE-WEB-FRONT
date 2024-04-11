@@ -3,7 +3,6 @@ import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
 import useAuthentication from "../../hooks/useAuthentication";
 import useGetAllUsers from "../../hooks/data/get/useGetAllUsers";
-import { Link } from "react-router-dom";
 import useSuspendAccount from "../../hooks/data/post/useSuspendAccount";
 import useDeleteAccount from "../../hooks/data/post/useDeleteAccount";
 import HorizontalUserCard from "../../components/HorizontalCard/horizontalUserCard";

@@ -23,7 +23,6 @@ const MarketingDashboardPage = () => {
           setDailySummary(dataWebSocket && dataWebSocket.dailySummary)
           dataWebSocket && setStats((prevstats) => [...prevstats, {status: "Prix total", value: Math.round(dataWebSocket.totalPrice)}]);
         } catch (error) {
-          console.log(error)
         }
       };
         return () => {
